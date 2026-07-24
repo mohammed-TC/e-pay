@@ -26,9 +26,9 @@
 | `ink.primary` | `#101914` | Headlines, amounts (near-black with green undertone) |
 | `ink.secondary` | `#4A564F` | Body, labels |
 | `ink.tertiary` | `#8A968F` | Captions, placeholders |
-| `accent.primary` | `#0E9F6E` | Emerald — CTAs, active, positive money |
-| `accent.deep` | `#065F46` | Pressed CTA, emphasis text on light |
-| `accent.tint` | `#DEF7EC` | Accent-tinted fills (reward chips, success bg) |
+| `accent.primary` | `#00B368` | Vivid Emerald — CTAs, active, positive money |
+| `accent.deep` | `#007A46` | Pressed CTA, emphasis text on light |
+| `accent.tint` | `#D7F7E7` | Accent-tinted fills (reward chips, success bg) |
 | `plate.shadow` | `#101914` @ 100% | Hard offset shadow of the NeoPop Plate |
 | `semantic.danger` | `#D64545` | Fines, overdue, errors |
 | `semantic.warning` | `#C9902A` | Due-soon |
@@ -45,9 +45,9 @@
 | `ink.primary` | `#F2F5F3` |
 | `ink.secondary` | `#A9B4AE` |
 | `ink.tertiary` | `#6C7671` |
-| `accent.primary` | `#2FD08F` (brightened for contrast) |
-| `accent.deep` | `#0E9F6E` |
-| `accent.tint` | `#123B2C` |
+| `accent.primary` | `#22E39C` (brightened for contrast) |
+| `accent.deep` | `#00B368` |
+| `accent.tint` | `#0F3D2C` |
 | `plate.shadow` | `#000000` @ 100% |
 | Semantic | danger `#F87171`, warning `#E0B45C`, gold `#D9B45F` |
 
