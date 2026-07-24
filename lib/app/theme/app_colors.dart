@@ -46,7 +46,7 @@ class AppColors extends ThemeExtension<AppColors> {
     accentDeep: Color(0xFF065F46),
     accentTint: Color(0xFFDEF7EC),
     plateShadow: Color(0xFF101914),
-    semanticDanger: Color(0xFFD64545),
+    semanticDanger: Color(0xFFC13A3A),
     semanticWarning: Color(0xFFC9902A),
     semanticInfo: Color(0xFF2563EB),
     goldReward: Color(0xFFC9A24B),

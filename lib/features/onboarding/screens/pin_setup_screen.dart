@@ -10,6 +10,7 @@ import '../../../app/router/routes.dart';
 import '../../../app/theme/app_colors.dart';
 import '../../../app/theme/app_spacing.dart';
 import '../../../core/extensions/build_context_l10n.dart';
+import '../../../core/widgets/np_card.dart';
 import '../../../core/widgets/np_pin_pad.dart';
 import '../../../core/widgets/np_scaffold.dart';
 import '../providers/auth_state_provider.dart';
@@ -102,47 +103,83 @@ class _PinSetupScreenState extends ConsumerState<PinSetupScreen>
     final textTheme = Theme.of(context).textTheme;
 
     return NPScaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: AppSpacing.xxxl),
-          Text(
-            _confirming
-                ? context.l10n.pinSetupConfirmTitle
-                : context.l10n.pinSetupCreateTitle,
-            style: textTheme.displayMedium,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-          Text(
-            _confirming
-                ? context.l10n.pinSetupConfirmSubtitle
-                : context.l10n.pinSetupCreateSubtitle,
-            style: textTheme.bodyLarge?.copyWith(color: colors.inkSecondary),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: AppSpacing.xxl),
-          AnimatedBuilder(
-            animation: _shakeController,
-            builder: (context, child) {
-              return Transform.translate(
-                offset: Offset(_shakeOffset(_shakeController.value), 0),
-                child: child,
-              );
-            },
-            child: _PinDots(length: _pinLength, filled: _currentInput.length),
-          ),
-          if (_error != null) ...[
-            const SizedBox(height: AppSpacing.md),
-            Text(
-              _error!,
-              style: textTheme.bodySmall?.copyWith(
-                color: colors.semanticDanger,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    _confirming
+                        ? context.l10n.pinSetupConfirmTitle
+                        : context.l10n.pinSetupCreateTitle,
+                    style: textTheme.displayMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSpacing.sm),
+                  Text(
+                    _confirming
+                        ? context.l10n.pinSetupConfirmSubtitle
+                        : context.l10n.pinSetupCreateSubtitle,
+                    style: textTheme.bodyLarge?.copyWith(
+                      color: colors.inkSecondary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  Semantics(
+                    liveRegion: true,
+                    label: context.l10n.pinSetupProgressLabel(
+                      _currentInput.length,
+                      _pinLength,
+                    ),
+                    child: AnimatedBuilder(
+                      animation: _shakeController,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(
+                            _shakeOffset(_shakeController.value),
+                            0,
+                          ),
+                          child: child,
+                        );
+                      },
+                      child: NPCard(
+                        interactive: false,
+                        borderRadius: AppRadius.card,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.xl,
+                          vertical: AppSpacing.lg,
+                        ),
+                        child: _PinDots(
+                          length: _pinLength,
+                          filled: _currentInput.length,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.md),
+                  SizedBox(
+                    height: 16,
+                    child: _error != null
+                        ? Text(
+                            _error!,
+                            style: textTheme.bodySmall?.copyWith(
+                              color: colors.semanticDanger,
+                            ),
+                          )
+                        : null,
+                  ),
+                  const SizedBox(height: AppSpacing.sectionGap),
+                  NPPinPad(onKeyTap: _handleKeyTap),
+                  const SizedBox(height: AppSpacing.lg),
+                ],
               ),
             ),
-          ],
-          const Spacer(),
-          NPPinPad(onKeyTap: _handleKeyTap),
-          const SizedBox(height: AppSpacing.lg),
-        ],
+          );
+        },
       ),
     );
   }

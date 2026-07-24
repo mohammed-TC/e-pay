@@ -279,6 +279,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pinSetupMismatch => 'PINs didn\'t match, try again';
 
   @override
+  String pinSetupProgressLabel(int filled, int length) {
+    return 'PIN entry, $filled of $length digits entered';
+  }
+
+  @override
   String get biometricEnableTitle => 'Enable biometric login';
 
   @override
@@ -329,6 +334,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeDebugTestPayment => 'Debug: test payment';
+
+  @override
+  String get homeServicesSectionTitle => 'Services';
 
   @override
   String get homeServiceBills => 'Bills';

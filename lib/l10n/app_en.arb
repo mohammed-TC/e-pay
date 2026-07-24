@@ -97,6 +97,18 @@
   "pinSetupConfirmTitle": "Confirm your PIN",
   "pinSetupConfirmSubtitle": "Re-enter the PIN to confirm",
   "pinSetupMismatch": "PINs didn't match, try again",
+  "pinSetupProgressLabel": "PIN entry, {filled} of {length} digits entered",
+  "@pinSetupProgressLabel": {
+    "description": "Screen-reader label announcing how many PIN digits have been entered.",
+    "placeholders": {
+      "filled": {
+        "type": "int"
+      },
+      "length": {
+        "type": "int"
+      }
+    }
+  },
   "biometricEnableTitle": "Enable biometric login",
   "biometricEnableBody": "Use your fingerprint or face to sign in faster next time.",
   "biometricEnableCta": "Enable",
@@ -114,6 +126,7 @@
   "homeQuickActionScan": "Scan",
   "homeQuickActionRequest": "Request",
   "homeDebugTestPayment": "Debug: test payment",
+  "homeServicesSectionTitle": "Services",
   "homeServiceBills": "Bills",
   "homeServiceRecharge": "Recharge",
   "homeServiceGovernment": "Government",

@@ -278,6 +278,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pinSetupMismatch => 'الرمزان غير متطابقين، حاول مرة أخرى';
 
   @override
+  String pinSetupProgressLabel(int filled, int length) {
+    return 'إدخال الرمز السري، تم إدخال $filled من $length أرقام';
+  }
+
+  @override
   String get biometricEnableTitle => 'تفعيل تسجيل الدخول بالبصمة';
 
   @override
@@ -328,6 +333,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get homeDebugTestPayment => 'تجربة: دفعة اختبارية';
+
+  @override
+  String get homeServicesSectionTitle => 'الخدمات';
 
   @override
   String get homeServiceBills => 'الفواتير';

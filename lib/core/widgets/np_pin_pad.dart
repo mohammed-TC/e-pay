@@ -56,7 +56,7 @@ class NPPinPad extends StatelessWidget {
           if (onBiometricTap != null)
             _NPPinKey(icon: Icons.fingerprint, onTap: onBiometricTap)
           else
-            const SizedBox(width: 64, height: 64),
+            const _NPPinKey(label: '#'),
           _NPPinKey(label: '0', onTap: () => onKeyTap('0')),
           _NPPinKey(
             icon: Icons.backspace_outlined,

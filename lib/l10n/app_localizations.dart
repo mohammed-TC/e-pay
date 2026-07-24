@@ -626,6 +626,12 @@ abstract class AppLocalizations {
   /// **'PINs didn\'t match, try again'**
   String get pinSetupMismatch;
 
+  /// Screen-reader label announcing how many PIN digits have been entered.
+  ///
+  /// In en, this message translates to:
+  /// **'PIN entry, {filled} of {length} digits entered'**
+  String pinSetupProgressLabel(int filled, int length);
+
   /// No description provided for @biometricEnableTitle.
   ///
   /// In en, this message translates to:
@@ -727,6 +733,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Debug: test payment'**
   String get homeDebugTestPayment;
+
+  /// No description provided for @homeServicesSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get homeServicesSectionTitle;
 
   /// No description provided for @homeServiceBills.
   ///
