@@ -1,0 +1,5 @@
+[
+  { "id": "c1", "maskedNumber": "•••• 4821", "brand": "Visa", "expiry": "08/28", "isDefault": true },
+  { "id": "c2", "maskedNumber": "•••• 1190", "brand": "Mastercard", "expiry": "02/27", "isDefault": false },
+  { "id": "c3", "maskedNumber": "•••• 7734", "brand": "Visa", "expiry": "11/29", "isDefault": false }
+]

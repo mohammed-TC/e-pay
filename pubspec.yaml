@@ -40,3 +40,12 @@ flutter:
   generate: true
   assets:
     - assets/images/logo.png
+    - assets/mock/billers.json
+    - assets/mock/accounts.json
+    - assets/mock/transactions.json
+    - assets/mock/beneficiaries.json
+    - assets/mock/fines.json
+    - assets/mock/vehicles.json
+    - assets/mock/institutions.json
+    - assets/mock/cards.json
+    - assets/mock/quotes.json

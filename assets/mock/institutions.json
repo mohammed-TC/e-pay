@@ -1,0 +1,28 @@
+[
+  {
+    "id": "i1",
+    "name": "Crescent International School",
+    "type": "school",
+    "students": [
+      { "id": "s1", "institutionId": "i1", "name": "Layla Ahmed", "outstandingFee": { "minorUnits": 350000, "currencyCode": "OMR" } },
+      { "id": "s2", "institutionId": "i1", "name": "Omar Saeed", "outstandingFee": { "minorUnits": 280000, "currencyCode": "OMR" } }
+    ]
+  },
+  {
+    "id": "i2",
+    "name": "Horizon Academy",
+    "type": "school",
+    "students": [
+      { "id": "s3", "institutionId": "i2", "name": "Fatima Ali", "outstandingFee": { "minorUnits": 420000, "currencyCode": "OMR" } }
+    ]
+  },
+  {
+    "id": "i3",
+    "name": "Gulf State University",
+    "type": "university",
+    "students": [
+      { "id": "s4", "institutionId": "i3", "name": "Yousef Khalid", "outstandingFee": { "minorUnits": 950000, "currencyCode": "OMR" } },
+      { "id": "s5", "institutionId": "i3", "name": "Noor Abdullah", "outstandingFee": { "minorUnits": 875500, "currencyCode": "OMR" } }
+    ]
+  }
+]

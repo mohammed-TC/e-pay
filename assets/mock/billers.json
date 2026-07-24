@@ -1,0 +1,14 @@
+[
+  { "id": "b1", "name": "VoltGrid", "category": "electricity", "brandColorHex": "#F2B705" },
+  { "id": "b2", "name": "PowerLine", "category": "electricity", "brandColorHex": "#FF6B35" },
+  { "id": "b3", "name": "AquaFlow", "category": "water", "brandColorHex": "#1CA7EC" },
+  { "id": "b4", "name": "HydroPure", "category": "water", "brandColorHex": "#00B8A9" },
+  { "id": "b5", "name": "TeleOne", "category": "telecom", "brandColorHex": "#7B2CBF" },
+  { "id": "b6", "name": "RingNet", "category": "telecom", "brandColorHex": "#EF476F" },
+  { "id": "b7", "name": "ConnectPlus", "category": "telecom", "brandColorHex": "#118AB2" },
+  { "id": "b8", "name": "SkyNet", "category": "internet", "brandColorHex": "#06D6A0" },
+  { "id": "b9", "name": "FiberWave", "category": "internet", "brandColorHex": "#3A86FF" },
+  { "id": "b10", "name": "NetSpeed", "category": "internet", "brandColorHex": "#FB5607" },
+  { "id": "b11", "name": "StreamBox", "category": "tvEntertainment", "brandColorHex": "#8338EC" },
+  { "id": "b12", "name": "VisionPlus", "category": "tvEntertainment", "brandColorHex": "#FF006E" }
+]

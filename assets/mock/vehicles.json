@@ -1,0 +1,11 @@
+[
+  {
+    "id": "v1",
+    "plateNumber": "78214",
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "insuranceValid": true,
+    "registrationExpiry": "2026-11-15T00:00:00.000Z"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  { "id": "a1", "billerId": "b1", "accountNumber": "100234567", "nickname": "Home Electricity", "savedAt": "2026-04-10T09:00:00.000Z" },
+  { "id": "a2", "billerId": "b3", "accountNumber": "200345678", "nickname": "Home Water", "savedAt": "2026-04-10T09:05:00.000Z" },
+  { "id": "a3", "billerId": "b5", "accountNumber": "96899123456", "nickname": "My Mobile", "savedAt": "2026-05-02T10:00:00.000Z" },
+  { "id": "a4", "billerId": "b8", "accountNumber": "INT00998877", "nickname": "Home Internet", "savedAt": "2026-05-02T10:10:00.000Z" },
+  { "id": "a5", "billerId": "b11", "accountNumber": "STR445566", "nickname": "Family TV", "savedAt": "2026-06-15T08:30:00.000Z" },
+  { "id": "a6", "billerId": "b1", "accountNumber": "100234999", "nickname": "Parents' House", "savedAt": "2026-06-20T11:15:00.000Z" }
+]

@@ -1,0 +1,6 @@
+[
+  { "id": "ben1", "name": "Arjun Nair", "bankName": "State Trust Bank", "accountNumber": "IN00123456789", "countryCode": "IN", "relationship": "Brother", "purpose": "Family support" },
+  { "id": "ben2", "name": "Maria Santos", "bankName": "Metro Bank Corp", "accountNumber": "PH00998877665", "countryCode": "PH", "relationship": "Spouse", "purpose": "Family support" },
+  { "id": "ben3", "name": "Ahmed Hassan", "bankName": "Nile Commercial Bank", "accountNumber": "EG00223344556", "countryCode": "EG", "relationship": "Friend", "purpose": "Personal" },
+  { "id": "ben4", "name": "Sana Khan", "bankName": "Indus Valley Bank", "accountNumber": "PK00778899001", "countryCode": "PK", "relationship": "Parent", "purpose": "Family support" }
+]

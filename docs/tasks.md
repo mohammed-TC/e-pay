@@ -14,12 +14,12 @@
 - [x] App runs → shows placeholder Splash
 
 ## Phase 1 — Mock Data Layer (everything has data)
-- [ ] All seed JSON assets in `assets/mock/` per product.md §6: billers, accounts, transactions (30), beneficiaries, fines, vehicles, institutions, cards, quotes
-- [ ] Freezed models for every domain entity + codegen
-- [ ] All 9 repositories (architecture.md §2) as in-memory stores loading seeds, 300–800ms artificial latency
-- [ ] Global providers: `authStateProvider`, `walletProvider`, `transactionsProvider`, `rewardsProvider`
-- [ ] `PaymentService` atomic invariant: debit wallet → append txn → credit points
-- [ ] Smoke test: repos load, balance = 250.000, history = 30 items
+- [x] All seed JSON assets in `assets/mock/` per product.md §6: billers, accounts, transactions (30), beneficiaries, fines, vehicles, institutions, cards, quotes
+- [x] Freezed models for every domain entity + codegen
+- [x] All 9 repositories (architecture.md §2) as in-memory stores loading seeds, 300–800ms artificial latency
+- [x] Global providers: `authStateProvider`, `walletProvider`, `transactionsProvider`, `rewardsProvider`
+- [x] `PaymentService` atomic invariant: debit wallet → append txn → credit points
+- [x] Smoke test: repos load, balance = 250.000, history = 30 items
 
 ## Phase 2 — Design System Widgets (build vocabulary once)
 - [ ] `NPCard` + `NPButton` with NeoPop Plate physics incl. RTL shadow flip + haptics (design.md §4)

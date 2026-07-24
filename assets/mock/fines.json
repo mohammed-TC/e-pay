@@ -1,0 +1,7 @@
+[
+  { "id": "f1", "plateNumber": "78214", "description": "Speeding - 20km/h over limit", "amount": { "minorUnits": 25000, "currencyCode": "OMR" }, "issuedDate": "2026-05-12T00:00:00.000Z", "location": "Sultan Qaboos Street" },
+  { "id": "f2", "plateNumber": "78214", "description": "Parking violation", "amount": { "minorUnits": 10000, "currencyCode": "OMR" }, "issuedDate": "2026-05-28T00:00:00.000Z", "location": "Al Khuwair" },
+  { "id": "f3", "plateNumber": "78214", "description": "Mobile phone use while driving", "amount": { "minorUnits": 30000, "currencyCode": "OMR" }, "issuedDate": "2026-06-10T00:00:00.000Z", "location": "Muscat Expressway" },
+  { "id": "f4", "plateNumber": "78214", "description": "Red light violation", "amount": { "minorUnits": 50000, "currencyCode": "OMR" }, "issuedDate": "2026-06-30T00:00:00.000Z", "location": "Ghubra Roundabout" },
+  { "id": "f5", "plateNumber": "78214", "description": "Seatbelt violation", "amount": { "minorUnits": 10000, "currencyCode": "OMR" }, "issuedDate": "2026-07-05T00:00:00.000Z", "location": "Qurum" }
+]

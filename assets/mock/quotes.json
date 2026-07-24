@@ -1,0 +1,16 @@
+[
+  {
+    "id": "q1",
+    "vehicleId": "v1",
+    "provider": "Gulf Shield Insurance",
+    "premium": { "minorUnits": 145500, "currencyCode": "OMR" },
+    "coverageDetails": ["Comprehensive coverage", "Roadside assistance", "Agency repair"]
+  },
+  {
+    "id": "q2",
+    "vehicleId": "v1",
+    "provider": "Oryx Insurance Co.",
+    "premium": { "minorUnits": 118750, "currencyCode": "OMR" },
+    "coverageDetails": ["Third-party liability", "Comprehensive coverage", "24/7 claims support"]
+  }
+]
