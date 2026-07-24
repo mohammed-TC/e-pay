@@ -30,14 +30,14 @@
 - [x] Temporary widget gallery screen to visually verify all components in EN/AR, light/dark
 
 ## Phase 3 — Auth + Shell + Shared Payment Flow (demo spine) ⭐
-- [ ] A1 Splash → A2 Language Select (live RTL flip) → A3 Onboarding
-- [ ] A4 Login → A5 OTP (`123456`) → A6 Profile → A7 PIN setup → A8 Biometric toggle
-- [ ] Session persistence + auth guard working
-- [ ] B4 Bottom nav shell (Home / History / Rewards / Profile + Scan FAB)
-- [ ] B1 Home Dashboard fully wired to mock data (balance count-up, quick actions, services grid, recent 5 txns)
-- [ ] **Shared payment flow** (`features/payment/`): PaymentRequest → ConfirmSheet → PIN (3 attempts, shake) → processing → Success takeover (confetti, rewards fly-in) / ErrorSheet
-- [ ] J1 Transaction History (filters, month groups) + J2 Detail
-- ✅ **Checkpoint: login → home → (flow ready) → history runs smoothly**
+- [x] A1 Splash → A2 Language Select (live RTL flip) → A3 Onboarding
+- [x] A4 Login → A5 OTP (`123456`) → A6 Profile → A7 PIN setup → A8 Biometric toggle
+- [x] Session persistence + auth guard working
+- [x] B4 Bottom nav shell (Home / History / Rewards / Profile + Scan FAB)
+- [x] B1 Home Dashboard fully wired to mock data (balance count-up, quick actions, services grid, recent 5 txns)
+- [x] **Shared payment flow** (`features/payment/`): PaymentRequest → ConfirmSheet → PIN (3 attempts, shake) → processing → Success takeover (confetti, rewards fly-in) / ErrorSheet
+- [x] J1 Transaction History (filters, month groups) + J2 Detail
+- ✅ **Checkpoint: login → home → (flow ready) → history runs smoothly** — verified via `flutter analyze` (0 issues), `flutter test` (smoke test passes), and a `kDebugMode`-gated test-payment trigger on Home exercising the full confirm→PIN→receipt flow end-to-end (real Bills/Wallet triggers land in Phase 4/5). Rewards/Profile shell tabs stay placeholder until Phase 6/8 per the build order.
 
 ## Phase 4 — Wallet (first full money loop)
 - [ ] C1 Wallet Home, C2 Top-up (quick chips, mock sources)

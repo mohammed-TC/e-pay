@@ -50,7 +50,7 @@ final class AppAuthStateProvider
   }
 }
 
-String _$appAuthStateHash() => r'740528b122306a966d9aa7c9682c65b18078bcc6';
+String _$appAuthStateHash() => r'6cf334be730e32c78e36935a25a747755897e034';
 
 /// Auth lifecycle — architecture.md §3 `authStateProvider`. `app_router.dart`'s
 /// redirect listens to this. Named `AppAuthState` (see `AppLocale` in

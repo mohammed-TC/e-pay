@@ -1,12 +1,40 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../app/router/routes.dart';
 import '../../../core/extensions/build_context_l10n.dart';
+import '../providers/auth_state_provider.dart';
+import '../providers/session_persistence.dart';
 
 /// Screen A1 — Splash
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends ConsumerState<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    unawaited(_navigateNext());
+  }
+
+  Future<void> _navigateNext() async {
+    await Future<void>.delayed(const Duration(milliseconds: 1200));
+    if (!mounted) return;
+    final authState = ref.read(appAuthStateProvider);
+    final target = authState.maybeWhen(
+      authed: (_) => Routes.home,
+      orElse: () => bootOnboardingSeen ? Routes.login : Routes.language,
+    );
+    context.go(target);
+  }
 
   @override
   Widget build(BuildContext context) {

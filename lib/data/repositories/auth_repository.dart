@@ -47,6 +47,14 @@ class AuthRepository {
   }
 
   UserProfile? get currentProfile => _profile;
+
+  /// Restores an in-memory session from persisted state at boot — see
+  /// `session_persistence.dart`. Skips the OTP/profile/PIN steps so a
+  /// relaunched app lands directly on the authed state.
+  void rehydrate({required UserProfile profile, required String pin}) {
+    _profile = profile;
+    _pin = pin;
+  }
 }
 
 @Riverpod(keepAlive: true)

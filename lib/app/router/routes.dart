@@ -7,10 +7,12 @@ abstract final class Routes {
   static const otp = '/otp';
   static const profileSetup = '/profile-setup';
   static const pinSetup = '/pin-setup';
+  static const biometricSetup = '/biometric-setup';
 
   // Shell (bottom nav)
   static const home = '/home';
   static const history = '/history';
+  static const transactionDetail = '/history/detail';
   static const rewards = '/rewards';
   static const profile = '/profile';
 

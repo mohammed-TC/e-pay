@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 
 import '../../../app/locale_provider.dart';
 import '../../../app/theme/app_spacing.dart';
@@ -72,7 +71,7 @@ class _WidgetGalleryScreenState extends ConsumerState<WidgetGalleryScreen> {
               actions: [
                 IconButton(
                   tooltip: context.l10n.galleryToggleLanguage,
-                  icon: const Icon(LucideIcons.languages),
+                  icon: const Icon(Icons.language),
                   onPressed: () {
                     final next = isArabic
                         ? const Locale('en')
@@ -84,7 +83,7 @@ class _WidgetGalleryScreenState extends ConsumerState<WidgetGalleryScreen> {
                 ),
                 IconButton(
                   tooltip: context.l10n.galleryToggleTheme,
-                  icon: Icon(_dark ? LucideIcons.sun : LucideIcons.moon),
+                  icon: Icon(_dark ? Icons.wb_sunny_outlined : Icons.nightlight_outlined),
                   onPressed: () => setState(() => _dark = !_dark),
                 ),
               ],
@@ -198,7 +197,7 @@ class _WidgetGalleryScreenState extends ConsumerState<WidgetGalleryScreen> {
                   title: context.l10n.gallerySectionListsAndTags,
                   children: [
                     NPListTile(
-                      leading: const Icon(LucideIcons.zap),
+                      leading: const Icon(Icons.bolt_outlined),
                       title: context.l10n.galleryListTileTitle,
                       subtitle: context.l10n.galleryListTileSubtitle,
                       trailingAmount: Money.fromAmount(-18.5),
@@ -211,7 +210,7 @@ class _WidgetGalleryScreenState extends ConsumerState<WidgetGalleryScreen> {
                       children: [
                         NPBadge(
                           label: context.l10n.galleryBadgeLabel,
-                          icon: LucideIcons.sparkles,
+                          icon: Icons.auto_awesome,
                         ),
                         NPChip(
                           label: context.l10n.galleryChipUnselected,
@@ -230,15 +229,15 @@ class _WidgetGalleryScreenState extends ConsumerState<WidgetGalleryScreen> {
                       segments: [
                         (
                           label: context.l10n.gallerySegmentHome,
-                          icon: LucideIcons.home,
+                          icon: Icons.home_outlined,
                         ),
                         (
                           label: context.l10n.gallerySegmentHistory,
-                          icon: LucideIcons.history,
+                          icon: Icons.history,
                         ),
                         (
                           label: context.l10n.gallerySegmentRewards,
-                          icon: LucideIcons.gift,
+                          icon: Icons.card_giftcard_outlined,
                         ),
                       ],
                       selectedIndex: _segment,
