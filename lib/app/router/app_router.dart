@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/_gallery/screens/widget_gallery_screen.dart';
 import '../../features/onboarding/screens/splash_screen.dart';
 import 'routes.dart';
+
+/// Dev-only route for the Phase 2 widget gallery — not part of the product
+/// route map in routes.dart. Remove alongside the gallery screen in
+/// Phase 9's release-hardening pass (tasks.md).
+const _devGalleryRoute = '/dev/gallery';
 
 /// go_router skeleton — architecture.md §6. Screens beyond Splash are wired
 /// to [_PlaceholderScreen] until their phase builds them.
@@ -10,9 +16,19 @@ final appRouter = GoRouter(
   initialLocation: Routes.splash,
   redirect: _authRedirect,
   routes: [
-    GoRoute(path: Routes.splash, builder: (context, state) => const SplashScreen()),
+    GoRoute(
+      path: Routes.splash,
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: _devGalleryRoute,
+      builder: (context, state) => const WidgetGalleryScreen(),
+    ),
     for (final path in _placeholderRoutes)
-      GoRoute(path: path, builder: (context, state) => _PlaceholderScreen(path: path)),
+      GoRoute(
+        path: path,
+        builder: (context, state) => _PlaceholderScreen(path: path),
+      ),
   ],
 );
 

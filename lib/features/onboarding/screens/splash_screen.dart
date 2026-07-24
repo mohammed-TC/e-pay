@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/extensions/build_context_l10n.dart';
 
@@ -19,6 +21,13 @@ class SplashScreen extends StatelessWidget {
             Text(context.l10n.appTitle, style: theme.textTheme.displayMedium),
             const SizedBox(height: 8),
             Text(context.l10n.splashTagline, style: theme.textTheme.bodyLarge),
+            if (kDebugMode) ...[
+              const SizedBox(height: 32),
+              TextButton(
+                onPressed: () => context.push('/dev/gallery'),
+                child: Text(context.l10n.galleryDebugLaunch),
+              ),
+            ],
           ],
         ),
       ),

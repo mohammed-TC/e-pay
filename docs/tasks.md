@@ -22,12 +22,12 @@
 - [x] Smoke test: repos load, balance = 250.000, history = 30 items
 
 ## Phase 2 — Design System Widgets (build vocabulary once)
-- [ ] `NPCard` + `NPButton` with NeoPop Plate physics incl. RTL shadow flip + haptics (design.md §4)
-- [ ] `NPScaffold`, `NPTextField`, `NPAmountInput`, `NPListTile`, `NPBottomSheet`
-- [ ] `NPShimmer`, `NPEmptyState`, `NPErrorState`
-- [ ] `NPOtpField`, `NPPinPad`, `NPBalanceCard`, `NPBadge`, `NPChip`, `NPSegmentedTabs`, `NPStatusTimeline`
-- [ ] `NPSuccessAnimation` (check draw + confetti)
-- [ ] Temporary widget gallery screen to visually verify all components in EN/AR, light/dark
+- [x] `NPCard` + `NPButton` with NeoPop Plate physics incl. RTL shadow flip + haptics (design.md §4)
+- [x] `NPScaffold`, `NPTextField`, `NPAmountInput`, `NPListTile`, `NPBottomSheet`
+- [x] `NPShimmer`, `NPEmptyState`, `NPErrorState`
+- [x] `NPOtpField`, `NPPinPad`, `NPBalanceCard`, `NPBadge`, `NPChip`, `NPSegmentedTabs`, `NPStatusTimeline`
+- [x] `NPSuccessAnimation` (check draw + confetti)
+- [x] Temporary widget gallery screen to visually verify all components in EN/AR, light/dark
 
 ## Phase 3 — Auth + Shell + Shared Payment Flow (demo spine) ⭐
 - [ ] A1 Splash → A2 Language Select (live RTL flip) → A3 Onboarding

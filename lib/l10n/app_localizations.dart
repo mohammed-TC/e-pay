@@ -109,6 +109,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your money, in one place.'**
   String get splashTagline;
+
+  /// Debug-only button on Splash, removed before release (Phase 9).
+  ///
+  /// In en, this message translates to:
+  /// **'Design system gallery (dev)'**
+  String get galleryDebugLaunch;
+
+  /// No description provided for @galleryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Design system gallery'**
+  String get galleryTitle;
+
+  /// No description provided for @galleryToggleTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle theme'**
+  String get galleryToggleTheme;
+
+  /// No description provided for @galleryToggleLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle language'**
+  String get galleryToggleLanguage;
+
+  /// No description provided for @gallerySectionButtons.
+  ///
+  /// In en, this message translates to:
+  /// **'Buttons'**
+  String get gallerySectionButtons;
+
+  /// No description provided for @gallerySectionCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get gallerySectionCards;
+
+  /// No description provided for @gallerySectionInputs.
+  ///
+  /// In en, this message translates to:
+  /// **'Inputs'**
+  String get gallerySectionInputs;
+
+  /// No description provided for @gallerySectionListsAndTags.
+  ///
+  /// In en, this message translates to:
+  /// **'Lists & tags'**
+  String get gallerySectionListsAndTags;
+
+  /// No description provided for @gallerySectionStates.
+  ///
+  /// In en, this message translates to:
+  /// **'States'**
+  String get gallerySectionStates;
+
+  /// No description provided for @gallerySectionFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature widgets'**
+  String get gallerySectionFeature;
+
+  /// No description provided for @galleryButtonPrimary.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary'**
+  String get galleryButtonPrimary;
+
+  /// No description provided for @galleryButtonSecondary.
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary'**
+  String get galleryButtonSecondary;
+
+  /// No description provided for @galleryButtonGhost.
+  ///
+  /// In en, this message translates to:
+  /// **'Ghost'**
+  String get galleryButtonGhost;
+
+  /// No description provided for @galleryButtonLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get galleryButtonLoading;
+
+  /// No description provided for @galleryCardStatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Static card'**
+  String get galleryCardStatic;
+
+  /// No description provided for @galleryCardInteractive.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap me'**
+  String get galleryCardInteractive;
+
+  /// No description provided for @galleryTextFieldLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get galleryTextFieldLabel;
+
+  /// No description provided for @galleryTextFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 9123 4567'**
+  String get galleryTextFieldHint;
+
+  /// No description provided for @galleryTextFieldError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid number'**
+  String get galleryTextFieldError;
+
+  /// No description provided for @galleryOtpLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'One-time code'**
+  String get galleryOtpLabel;
+
+  /// No description provided for @galleryPinLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter PIN'**
+  String get galleryPinLabel;
+
+  /// No description provided for @galleryListTileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity bill'**
+  String get galleryListTileTitle;
+
+  /// No description provided for @galleryListTileSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Due in 3 days'**
+  String get galleryListTileSubtitle;
+
+  /// No description provided for @galleryBadgeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get galleryBadgeLabel;
+
+  /// No description provided for @galleryChipUnselected.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get galleryChipUnselected;
+
+  /// No description provided for @galleryChipSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Bills'**
+  String get galleryChipSelected;
+
+  /// No description provided for @gallerySegmentHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get gallerySegmentHome;
+
+  /// No description provided for @gallerySegmentHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get gallerySegmentHistory;
+
+  /// No description provided for @gallerySegmentRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards'**
+  String get gallerySegmentRewards;
+
+  /// No description provided for @galleryShimmerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading state'**
+  String get galleryShimmerLabel;
+
+  /// No description provided for @galleryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved accounts yet'**
+  String get galleryEmptyTitle;
+
+  /// No description provided for @galleryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add one to pay in two taps.'**
+  String get galleryEmptyBody;
+
+  /// No description provided for @galleryEmptyCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Add account'**
+  String get galleryEmptyCta;
+
+  /// No description provided for @galleryErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load data'**
+  String get galleryErrorTitle;
+
+  /// No description provided for @galleryErrorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your connection and try again.'**
+  String get galleryErrorBody;
+
+  /// No description provided for @galleryErrorRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get galleryErrorRetry;
+
+  /// No description provided for @galleryBalanceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Available balance'**
+  String get galleryBalanceLabel;
+
+  /// No description provided for @galleryTimelineStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get galleryTimelineStep1;
+
+  /// No description provided for @galleryTimelineStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing'**
+  String get galleryTimelineStep2;
+
+  /// No description provided for @galleryTimelineStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get galleryTimelineStep3;
+
+  /// No description provided for @gallerySuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid!'**
+  String get gallerySuccessTitle;
+
+  /// No description provided for @gallerySuccessDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get gallerySuccessDone;
+
+  /// No description provided for @galleryShowSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Show success'**
+  String get galleryShowSuccess;
 }
 
 class _AppLocalizationsDelegate
