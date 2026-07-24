@@ -70,7 +70,14 @@
 - [ ] B2 Notifications, B3 Search
 - [ ] J3 Profile, J4 Saved cards, J5 Security, J6 Branch locator (static map), J7 Self meter reading, J8 Support, J9 Settings (live language + theme switch)
 
-## Phase 9 — Polish & Demo Hardening
+## Phase 9 — AI Assistant ("Ask Emral")
+- [ ] K1 Chat screen: bubbles, typing indicator, quick-reply chips, input bar
+- [ ] Rule-based intent engine (offline, no LLM): bills due, wallet balance, rewards status, recent txns, pay/send handoff to shared payment flow
+- [ ] Rich cards: bill reminder, wallet summary, rewards, payment shortcut (preview-only, never inline-confirms)
+- [ ] Home entry points: draggable circular blob FAB (wobble + highlight pulse, snap-to-edge) + services-grid tile
+- [ ] `/assistant` route wired; ARB keys (canned replies included) both locales
+
+## Phase 10 — Polish & Demo Hardening
 - [ ] Motion pass: entrance staggers, pull-to-refresh, tab morphs, reduced-motion fallback
 - [ ] Full RTL audit — every screen screenshot-checked in Arabic
 - [ ] Dark mode audit — every screen

@@ -20,16 +20,16 @@
 
 | Token | Hex | Use |
 |---|---|---|
-| `surface.page` | `#F7F8F6` | App background (porcelain, slightly warm) |
+| `surface.page` | `#FBFCFA` | App background (crisp porcelain) |
 | `surface.card` | `#FFFFFF` | Cards, sheets |
 | `surface.sunken` | `#EEF1ED` | Input fills, inactive chips |
-| `ink.primary` | `#101914` | Headlines, amounts (near-black with green undertone) |
+| `ink.primary` | `#0B140F` | Headlines, amounts (near-black with green undertone) |
 | `ink.secondary` | `#4A564F` | Body, labels |
 | `ink.tertiary` | `#8A968F` | Captions, placeholders |
-| `accent.primary` | `#00B368` | Vivid Emerald — CTAs, active, positive money |
-| `accent.deep` | `#007A46` | Pressed CTA, emphasis text on light |
-| `accent.tint` | `#D7F7E7` | Accent-tinted fills (reward chips, success bg) |
-| `plate.shadow` | `#101914` @ 100% | Hard offset shadow of the NeoPop Plate |
+| `accent.primary` | `#00A868` | Deep Jewel Emerald — CTAs, active, positive money |
+| `accent.deep` | `#00703F` | Pressed CTA, emphasis text on light |
+| `accent.tint` | `#C9F2DE` | Accent-tinted fills (reward chips, success bg) |
+| `plate.shadow` | `#0B140F` @ 100% | Hard offset shadow of the NeoPop Plate |
 | `semantic.danger` | `#D64545` | Fines, overdue, errors |
 | `semantic.warning` | `#C9902A` | Due-soon |
 | `semantic.info` | `#2563EB` | Informational only (rare) |
@@ -45,9 +45,9 @@
 | `ink.primary` | `#F2F5F3` |
 | `ink.secondary` | `#A9B4AE` |
 | `ink.tertiary` | `#6C7671` |
-| `accent.primary` | `#22E39C` (brightened for contrast) |
-| `accent.deep` | `#00B368` |
-| `accent.tint` | `#0F3D2C` |
+| `accent.primary` | `#29D999` (brightened for contrast) |
+| `accent.deep` | `#00A868` |
+| `accent.tint` | `#0E3A2A` |
 | `plate.shadow` | `#000000` @ 100% |
 | Semantic | danger `#F87171`, warning `#E0B45C`, gold `#D9B45F` |
 
@@ -149,7 +149,19 @@ Icons: **lucide** style (2px stroke, rounded) via `lucide_icons` or `flutter_svg
 
 Sentence case everywhere. Plain verbs: "Pay bill", "Send money", "Add card" — the button names the outcome, and the same word follows through to the toast ("Paid", "Sent"). Errors state what happened + the fix, no apologies ("Balance too low. Top up to continue."). Empty states invite action ("No saved accounts yet. Add one to pay in two taps."). No exclamation marks except the success screen ("Paid!").
 
-## 10. Don'ts
+## 11. AI Assistant Chat ("Ask Emral" — K1)
+
+- **Bubbles:** assistant = `surface.card` soft-shadow (static, not tappable) pill, radius 20, `AlignmentDirectional.centerStart`; user = `accent.tint` fill, `AlignmentDirectional.centerEnd`. Entrance: same fade+translateY stagger as any list (design.md §5), never a bespoke motion.
+- **Rich cards** (bill reminder, wallet summary, rewards, payment shortcut) are `NPCard` (soft/static variant) embedded inside the assistant bubble column — never a new card primitive.
+- **Typing indicator:** 3-dot bounce, reuse `NPButton`'s `_BouncingDots` motion spec (900ms loop) in `ink.tertiary`.
+- **Quick-reply chips:** `NPChip` row, horizontally scrollable, sits above the input bar.
+- **Assistant Blob FAB (Home-only):** circular plate (56px), `accent.primary` fill, `accent.deep` hard shadow — same shadow-flip rule as every other plate (§4). Two motion layers, both respecting `MediaQuery.disableAnimations` (freeze to static if on):
+  1. **Idle "blob" wobble:** continuous ~1600ms `easeInOut` loop, scale 1.0↔1.06 + a few degrees of skew — organic breathing, not a spin.
+  2. **Highlight pulse:** soft `accent.primary` glow ring behind the circle, opacity 0↔0.4 loop — draws the eye without adding a second accent color.
+  - **Draggable:** free-drag anywhere within the Home safe area; releases with an `easeOutBack` snap to the nearest horizontal edge. Default spawn corner is bottom-**end** (flips with RTL, never hardcoded bottom-right). Selection haptic on drag-start, `heavyImpact` on snap.
+  - Tap → push `/assistant` (K1).
+
+## 12. Don'ts
 
 - No gradients (single exception: subtle emerald sheen permitted on the dark balance card).
 - No soft Material elevation on tappables; no ripple — plate physics replaces both (`splashFactory: NoSplash`).

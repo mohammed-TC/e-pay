@@ -134,6 +134,7 @@
   "homeServiceEducation": "Education",
   "homeServiceRemittance": "Remittance",
   "homeServiceRewards": "Rewards",
+  "homeServiceAiAssistant": "Ask Emral",
   "homeServiceMore": "More",
   "homePromoTitle1": "Send money instantly",
   "homePromoBody1": "Zero fees to any Emral Pay wallet.",
@@ -290,5 +291,84 @@
   "smartMeterNumberHint": "Enter meter number",
   "smartMeterFetchCta": "Fetch Charge",
   "smartMeterTotalLabel": "Total",
-  "smartMeterPayCta": "Pay Now"
+  "smartMeterPayCta": "Pay Now",
+  "chatScreenTitle": "Ask Emral",
+  "chatFabSemanticLabel": "Open Ask Emral chat",
+  "chatInputHint": "Ask about bills, balance, rewards…",
+  "chatVoiceComingSoon": "Voice input coming soon",
+  "chatPayNowCta": "Pay now",
+  "chatReviewAndPayCta": "Review & pay",
+  "chatWalletSummaryLabel": "Available balance",
+  "chatQuickReplyBills": "Show my bills",
+  "chatQuickReplyBalance": "Wallet balance",
+  "chatQuickReplyRewards": "My rewards",
+  "chatQuickReplyTxns": "Recent transactions",
+  "chatErrorTitle": "Couldn't load chat",
+  "chatErrorBody": "Something went wrong loading Ask Emral.",
+  "chatErrorRetry": "Retry",
+  "chatReplyGreeting": "Hi! I'm Emral, your money assistant. Ask me about bills, your wallet, or rewards.",
+  "chatReplyHelp": "I can check bills due, your wallet balance, reward points, recent transactions, or help you pay a bill or send money.",
+  "chatReplyFallback": "I didn't quite catch that. Try asking about bills, balance, or rewards — or tap a suggestion below.",
+  "chatReplyWalletBalanceIntro": "Here's your wallet balance:",
+  "chatReplyRewardsIntro": "Here's where your rewards stand:",
+  "chatReplyNoTxns": "You don't have any transactions yet.",
+  "chatReplyTxnLine": "{title} — {amount}",
+  "@chatReplyTxnLine": {
+    "placeholders": {
+      "title": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+  "chatReplyRecentTxnsIntro": "Here are your recent transactions:\n{lines}",
+  "@chatReplyRecentTxnsIntro": {
+    "placeholders": {
+      "lines": {"type": "String"}
+    }
+  },
+  "chatReplyNoBills": "You don't have any saved billers yet. Add one from Bills to get reminders here.",
+  "chatReplyBillsDueIntro": "Here's what's due:",
+  "chatReplyPayBillNotFound": "I couldn't find that biller in your saved accounts. Try naming one, like \"pay VoltGrid\".",
+  "chatReplyPayBillFound": "Found it — here's {accountNickname}:",
+  "@chatReplyPayBillFound": {
+    "placeholders": {
+      "accountNickname": {"type": "String"}
+    }
+  },
+  "chatReplySendMoneyFound": "Here's a quick send to {contactName}:",
+  "@chatReplySendMoneyFound": {
+    "placeholders": {
+      "contactName": {"type": "String"}
+    }
+  },
+  "chatReplySendMoneyNotFound": "I couldn't find that contact. Try naming a saved contact, like \"send to Aisha\".",
+  "chatSendMoneyCardTitle": "Send to {contactName}",
+  "@chatSendMoneyCardTitle": {
+    "placeholders": {
+      "contactName": {"type": "String"}
+    }
+  },
+  "chatBillDueBadge": "Due in {days} days",
+  "@chatBillDueBadge": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "chatBillDueSoonBadge": "Due in {days} days",
+  "@chatBillDueSoonBadge": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "chatRewardsPointsLabel": "{points} points",
+  "@chatRewardsPointsLabel": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRewardsThresholdLabel": "{threshold} points to redeem",
+  "@chatRewardsThresholdLabel": {
+    "placeholders": {
+      "threshold": {"type": "int"}
+    }
+  }
 }

@@ -359,6 +359,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeServiceRewards => 'المكافآت';
 
   @override
+  String get homeServiceAiAssistant => 'اسأل إمرال';
+
+  @override
   String get homeServiceMore => 'المزيد';
 
   @override
@@ -810,4 +813,127 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get smartMeterPayCta => 'ادفع الآن';
+
+  @override
+  String get chatScreenTitle => 'اسأل إمرال';
+
+  @override
+  String get chatFabSemanticLabel => 'افتح محادثة اسأل إمرال';
+
+  @override
+  String get chatInputHint => 'اسأل عن الفواتير أو الرصيد أو المكافآت…';
+
+  @override
+  String get chatVoiceComingSoon => 'الإدخال الصوتي قريبًا';
+
+  @override
+  String get chatPayNowCta => 'ادفع الآن';
+
+  @override
+  String get chatReviewAndPayCta => 'مراجعة والدفع';
+
+  @override
+  String get chatWalletSummaryLabel => 'الرصيد المتاح';
+
+  @override
+  String get chatQuickReplyBills => 'عرض فواتيري';
+
+  @override
+  String get chatQuickReplyBalance => 'رصيد المحفظة';
+
+  @override
+  String get chatQuickReplyRewards => 'مكافآتي';
+
+  @override
+  String get chatQuickReplyTxns => 'المعاملات الأخيرة';
+
+  @override
+  String get chatErrorTitle => 'تعذّر تحميل المحادثة';
+
+  @override
+  String get chatErrorBody => 'حدث خطأ أثناء تحميل اسأل إمرال.';
+
+  @override
+  String get chatErrorRetry => 'إعادة المحاولة';
+
+  @override
+  String get chatReplyGreeting =>
+      'مرحبًا! أنا إمرال، مساعدك المالي. اسألني عن الفواتير أو محفظتك أو مكافآتك.';
+
+  @override
+  String get chatReplyHelp =>
+      'يمكنني التحقق من الفواتير المستحقة، ورصيد محفظتك، ونقاط مكافآتك، ومعاملاتك الأخيرة، أو مساعدتك في دفع فاتورة أو إرسال أموال.';
+
+  @override
+  String get chatReplyFallback =>
+      'لم أفهم ذلك تمامًا. جرّب السؤال عن الفواتير أو الرصيد أو المكافآت — أو اختر اقتراحًا أدناه.';
+
+  @override
+  String get chatReplyWalletBalanceIntro => 'إليك رصيد محفظتك:';
+
+  @override
+  String get chatReplyRewardsIntro => 'إليك وضع مكافآتك:';
+
+  @override
+  String get chatReplyNoTxns => 'لا توجد لديك أي معاملات بعد.';
+
+  @override
+  String chatReplyTxnLine(String title, String amount) {
+    return '$title — $amount';
+  }
+
+  @override
+  String chatReplyRecentTxnsIntro(String lines) {
+    return 'إليك معاملاتك الأخيرة:\n$lines';
+  }
+
+  @override
+  String get chatReplyNoBills =>
+      'ليس لديك أي فواتير محفوظة بعد. أضف واحدة من الفواتير لتصلك التذكيرات هنا.';
+
+  @override
+  String get chatReplyBillsDueIntro => 'إليك ما هو مستحق:';
+
+  @override
+  String get chatReplyPayBillNotFound =>
+      'لم أتمكن من العثور على هذا المزوّد ضمن حساباتك المحفوظة. جرّب ذكر اسمه، مثل \"ادفع VoltGrid\".';
+
+  @override
+  String chatReplyPayBillFound(String accountNickname) {
+    return 'وجدته — إليك $accountNickname:';
+  }
+
+  @override
+  String chatReplySendMoneyFound(String contactName) {
+    return 'إليك إرسال سريع إلى $contactName:';
+  }
+
+  @override
+  String get chatReplySendMoneyNotFound =>
+      'لم أتمكن من العثور على جهة الاتصال هذه. جرّب ذكر جهة اتصال محفوظة، مثل \"أرسل إلى عائشة\".';
+
+  @override
+  String chatSendMoneyCardTitle(String contactName) {
+    return 'إرسال إلى $contactName';
+  }
+
+  @override
+  String chatBillDueBadge(int days) {
+    return 'يستحق خلال $days أيام';
+  }
+
+  @override
+  String chatBillDueSoonBadge(int days) {
+    return 'يستحق خلال $days أيام';
+  }
+
+  @override
+  String chatRewardsPointsLabel(int points) {
+    return '$points نقطة';
+  }
+
+  @override
+  String chatRewardsThresholdLabel(int threshold) {
+    return '$threshold نقطة للاسترداد';
+  }
 }

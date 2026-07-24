@@ -24,6 +24,7 @@ import '../../payment/models/payment_request.dart';
 import '../../payment/models/payment_result.dart';
 import '../../rewards/providers/rewards_provider.dart';
 import '../../wallet/providers/wallet_provider.dart';
+import '../widgets/assistant_fab.dart';
 import '../widgets/promo_carousel.dart';
 
 /// Screen B1 — Home Dashboard
@@ -47,38 +48,46 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return NPScaffold(
       applyGutter: true,
-      body: ListView(
-        // Bottom padding clears the AppShell's centerDocked scan FAB, which
-        // floats ~28px into the body above the bottom bar (Scaffold doesn't
-        // reserve space for it) — without this the FAB overlaps whatever
-        // scrolls to the bottom, per architecture.md's B4 shell notes.
-        padding: const EdgeInsets.fromLTRB(
-          0,
-          AppSpacing.lg,
-          0,
-          AppSpacing.xxxl + AppSpacing.xxl,
-        ),
+      body: Stack(
+        fit: StackFit.expand,
         children: [
-          _BalanceSection(
-            hidden: _balanceHidden,
-            onToggleHidden: () {
-              setState(() => _balanceHidden = !_balanceHidden);
-            },
+          ListView(
+            // Bottom padding clears the AppShell's centerDocked scan FAB,
+            // which floats ~28px into the body above the bottom bar
+            // (Scaffold doesn't reserve space for it) — without this the FAB
+            // overlaps whatever scrolls to the bottom, per architecture.md's
+            // B4 shell notes.
+            padding: const EdgeInsets.fromLTRB(
+              0,
+              AppSpacing.lg,
+              0,
+              AppSpacing.xxxl + AppSpacing.xxl,
+            ),
+            children: [
+              _BalanceSection(
+                hidden: _balanceHidden,
+                onToggleHidden: () {
+                  setState(() => _balanceHidden = !_balanceHidden);
+                },
+              ),
+              const SizedBox(height: AppSpacing.xl),
+              const _QuickActionsRow(),
+              if (kDebugMode) ...[
+                const SizedBox(height: AppSpacing.lg),
+                const _DebugPaymentTile(),
+              ],
+              const SizedBox(height: AppSpacing.sectionGap),
+              const _ServicesGrid(),
+              const SizedBox(height: AppSpacing.sectionGap),
+              const PromoCarousel(),
+              const SizedBox(height: AppSpacing.sectionGap),
+              const _RecentTransactionsSection(),
+              const SizedBox(height: AppSpacing.xl),
+              const _RewardsSection(),
+            ],
           ),
-          const SizedBox(height: AppSpacing.xl),
-          const _QuickActionsRow(),
-          if (kDebugMode) ...[
-            const SizedBox(height: AppSpacing.lg),
-            const _DebugPaymentTile(),
-          ],
-          const SizedBox(height: AppSpacing.sectionGap),
-          const _ServicesGrid(),
-          const SizedBox(height: AppSpacing.sectionGap),
-          const PromoCarousel(),
-          const SizedBox(height: AppSpacing.sectionGap),
-          const _RecentTransactionsSection(),
-          const SizedBox(height: AppSpacing.xl),
-          const _RewardsSection(),
+          // Draggable "Ask Emral" entry point — design.md §11, Home-only.
+          const AssistantFab(),
         ],
       ),
     );
@@ -354,6 +363,11 @@ class _ServicesGrid extends StatelessWidget {
         icon: Icons.card_giftcard_outlined,
         label: l10n.homeServiceRewards,
         onTap: () => context.go(Routes.rewards),
+      ),
+      (
+        icon: Icons.smart_toy_outlined,
+        label: l10n.homeServiceAiAssistant,
+        onTap: () => context.push(Routes.assistant),
       ),
       (
         icon: Icons.more_horiz,

@@ -782,6 +782,12 @@ abstract class AppLocalizations {
   /// **'Rewards'**
   String get homeServiceRewards;
 
+  /// No description provided for @homeServiceAiAssistant.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask Emral'**
+  String get homeServiceAiAssistant;
+
   /// No description provided for @homeServiceMore.
   ///
   /// In en, this message translates to:
@@ -1675,6 +1681,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pay Now'**
   String get smartMeterPayCta;
+
+  /// No description provided for @chatScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask Emral'**
+  String get chatScreenTitle;
+
+  /// No description provided for @chatFabSemanticLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Ask Emral chat'**
+  String get chatFabSemanticLabel;
+
+  /// No description provided for @chatInputHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about bills, balance, rewards…'**
+  String get chatInputHint;
+
+  /// No description provided for @chatVoiceComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice input coming soon'**
+  String get chatVoiceComingSoon;
+
+  /// No description provided for @chatPayNowCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay now'**
+  String get chatPayNowCta;
+
+  /// No description provided for @chatReviewAndPayCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Review & pay'**
+  String get chatReviewAndPayCta;
+
+  /// No description provided for @chatWalletSummaryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Available balance'**
+  String get chatWalletSummaryLabel;
+
+  /// No description provided for @chatQuickReplyBills.
+  ///
+  /// In en, this message translates to:
+  /// **'Show my bills'**
+  String get chatQuickReplyBills;
+
+  /// No description provided for @chatQuickReplyBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet balance'**
+  String get chatQuickReplyBalance;
+
+  /// No description provided for @chatQuickReplyRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'My rewards'**
+  String get chatQuickReplyRewards;
+
+  /// No description provided for @chatQuickReplyTxns.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent transactions'**
+  String get chatQuickReplyTxns;
+
+  /// No description provided for @chatErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load chat'**
+  String get chatErrorTitle;
+
+  /// No description provided for @chatErrorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong loading Ask Emral.'**
+  String get chatErrorBody;
+
+  /// No description provided for @chatErrorRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get chatErrorRetry;
+
+  /// No description provided for @chatReplyGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi! I\'m Emral, your money assistant. Ask me about bills, your wallet, or rewards.'**
+  String get chatReplyGreeting;
+
+  /// No description provided for @chatReplyHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'I can check bills due, your wallet balance, reward points, recent transactions, or help you pay a bill or send money.'**
+  String get chatReplyHelp;
+
+  /// No description provided for @chatReplyFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'I didn\'t quite catch that. Try asking about bills, balance, or rewards — or tap a suggestion below.'**
+  String get chatReplyFallback;
+
+  /// No description provided for @chatReplyWalletBalanceIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s your wallet balance:'**
+  String get chatReplyWalletBalanceIntro;
+
+  /// No description provided for @chatReplyRewardsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s where your rewards stand:'**
+  String get chatReplyRewardsIntro;
+
+  /// No description provided for @chatReplyNoTxns.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any transactions yet.'**
+  String get chatReplyNoTxns;
+
+  /// No description provided for @chatReplyTxnLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} — {amount}'**
+  String chatReplyTxnLine(String title, String amount);
+
+  /// No description provided for @chatReplyRecentTxnsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here are your recent transactions:\n{lines}'**
+  String chatReplyRecentTxnsIntro(String lines);
+
+  /// No description provided for @chatReplyNoBills.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have any saved billers yet. Add one from Bills to get reminders here.'**
+  String get chatReplyNoBills;
+
+  /// No description provided for @chatReplyBillsDueIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s what\'s due:'**
+  String get chatReplyBillsDueIntro;
+
+  /// No description provided for @chatReplyPayBillNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'I couldn\'t find that biller in your saved accounts. Try naming one, like \"pay VoltGrid\".'**
+  String get chatReplyPayBillNotFound;
+
+  /// No description provided for @chatReplyPayBillFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Found it — here\'s {accountNickname}:'**
+  String chatReplyPayBillFound(String accountNickname);
+
+  /// No description provided for @chatReplySendMoneyFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s a quick send to {contactName}:'**
+  String chatReplySendMoneyFound(String contactName);
+
+  /// No description provided for @chatReplySendMoneyNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'I couldn\'t find that contact. Try naming a saved contact, like \"send to Aisha\".'**
+  String get chatReplySendMoneyNotFound;
+
+  /// No description provided for @chatSendMoneyCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to {contactName}'**
+  String chatSendMoneyCardTitle(String contactName);
+
+  /// No description provided for @chatBillDueBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Due in {days} days'**
+  String chatBillDueBadge(int days);
+
+  /// No description provided for @chatBillDueSoonBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Due in {days} days'**
+  String chatBillDueSoonBadge(int days);
+
+  /// No description provided for @chatRewardsPointsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} points'**
+  String chatRewardsPointsLabel(int points);
+
+  /// No description provided for @chatRewardsThresholdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{threshold} points to redeem'**
+  String chatRewardsThresholdLabel(int threshold);
 }
 
 class _AppLocalizationsDelegate

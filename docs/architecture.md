@@ -74,6 +74,7 @@ lib/
     ├── rewards/                  # I1–I2
     ├── history/                  # J1–J2
     ├── profile/                  # J3–J9
+    ├── ai_chat/                  # K1 — assistant chat, feature-local models/providers
     └── payment/                  # SHARED payment flow (confirm → PIN → receipt)
 ```
 
@@ -115,6 +116,7 @@ Key global providers:
 | `transactionsProvider` | AsyncNotifier<List<Txn>> | appended by every payment; History screen watches |
 | `rewardsProvider` | AsyncNotifier<Rewards> | points; incremented on payment success |
 | `paymentFlowProvider` | Notifier<PaymentFlowState> | shared confirm→PIN→result state machine (see §4) |
+| `chatProvider` | AsyncNotifier<List<ChatMessage>> | `features/ai_chat/` conversation state; intent engine reads wallet/bills/rewards/transactions providers read-only, hands off money intents to `PaymentRequest` |
 
 **Invariant:** any successful payment does exactly three things atomically in `PaymentService`: (1) debit wallet, (2) append transaction, (3) credit reward points. No screen implements this itself.
 
@@ -189,6 +191,7 @@ Build once, use everywhere (visual specs in design.md):
 /notifications          → B2
 /search                 → B3
 /settings/...           → J4–J9
+/assistant              → K1 (AI chat — Home entry via draggable FAB + services tile)
 ```
 
 Auth guard: unauthenticated users are redirected to `/login`; authed users skip onboarding routes.

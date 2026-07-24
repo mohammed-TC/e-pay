@@ -165,6 +165,16 @@
 
 ---
 
+### Module K — AI Assistant
+
+| ID | Screen | Requirements |
+|----|--------|--------------|
+| K1 | Assistant Chat ("Ask Emral") | Conversation UI: assistant/user bubbles, quick-reply chips, typing indicator. Rule-based (offline, no LLM/network) intent engine answers from existing mock data: wallet balance, bills due (saved accounts), rewards status, recent transactions. Rich cards (bill reminder, wallet summary, rewards, payment shortcut) render inline. Any pay/send intent builds a `PaymentRequest` and hands off to the shared payment flow (never an inline confirm) — payment-flow.md |
+
+**Entry points:** draggable circular "blob" FAB on Home Dashboard (B1) — see design.md §11 — plus a static tile in the B1 services grid for discoverability.
+
+**Rules:** All assistant reply copy goes through `context.l10n.*` like any other screen — no hardcoded canned strings, even for mock "AI" text.
+
 ## 5. Cross-cutting Rules
 
 1. **Every payment flow ends in the shared Confirmation → PIN → Success Receipt pattern** (C7/E9). One reusable flow component.

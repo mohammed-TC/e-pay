@@ -44,7 +44,7 @@ final class AccountEntryFormProvider
   }
 }
 
-String _$accountEntryFormHash() => r'2ea55b6f7768d83964c4fa6b3a6e3dfac732f495';
+String _$accountEntryFormHash() => r'b94b49209dcd38e15ff16abfb3b1b14d22b146fb';
 
 /// Autodispose: fresh per push of the account entry screen.
 

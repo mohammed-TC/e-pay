@@ -63,6 +63,9 @@ abstract final class Routes {
   static const notifications = '/notifications';
   static const search = '/search';
 
+  // AI Assistant K1
+  static const assistant = '/assistant';
+
   // Settings J4–J9
   static const settings = '/settings';
   static const settingsCards = '/settings/cards';

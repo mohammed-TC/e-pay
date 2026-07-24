@@ -360,6 +360,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeServiceRewards => 'Rewards';
 
   @override
+  String get homeServiceAiAssistant => 'Ask Emral';
+
+  @override
   String get homeServiceMore => 'More';
 
   @override
@@ -814,4 +817,127 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get smartMeterPayCta => 'Pay Now';
+
+  @override
+  String get chatScreenTitle => 'Ask Emral';
+
+  @override
+  String get chatFabSemanticLabel => 'Open Ask Emral chat';
+
+  @override
+  String get chatInputHint => 'Ask about bills, balance, rewards…';
+
+  @override
+  String get chatVoiceComingSoon => 'Voice input coming soon';
+
+  @override
+  String get chatPayNowCta => 'Pay now';
+
+  @override
+  String get chatReviewAndPayCta => 'Review & pay';
+
+  @override
+  String get chatWalletSummaryLabel => 'Available balance';
+
+  @override
+  String get chatQuickReplyBills => 'Show my bills';
+
+  @override
+  String get chatQuickReplyBalance => 'Wallet balance';
+
+  @override
+  String get chatQuickReplyRewards => 'My rewards';
+
+  @override
+  String get chatQuickReplyTxns => 'Recent transactions';
+
+  @override
+  String get chatErrorTitle => 'Couldn\'t load chat';
+
+  @override
+  String get chatErrorBody => 'Something went wrong loading Ask Emral.';
+
+  @override
+  String get chatErrorRetry => 'Retry';
+
+  @override
+  String get chatReplyGreeting =>
+      'Hi! I\'m Emral, your money assistant. Ask me about bills, your wallet, or rewards.';
+
+  @override
+  String get chatReplyHelp =>
+      'I can check bills due, your wallet balance, reward points, recent transactions, or help you pay a bill or send money.';
+
+  @override
+  String get chatReplyFallback =>
+      'I didn\'t quite catch that. Try asking about bills, balance, or rewards — or tap a suggestion below.';
+
+  @override
+  String get chatReplyWalletBalanceIntro => 'Here\'s your wallet balance:';
+
+  @override
+  String get chatReplyRewardsIntro => 'Here\'s where your rewards stand:';
+
+  @override
+  String get chatReplyNoTxns => 'You don\'t have any transactions yet.';
+
+  @override
+  String chatReplyTxnLine(String title, String amount) {
+    return '$title — $amount';
+  }
+
+  @override
+  String chatReplyRecentTxnsIntro(String lines) {
+    return 'Here are your recent transactions:\n$lines';
+  }
+
+  @override
+  String get chatReplyNoBills =>
+      'You don\'t have any saved billers yet. Add one from Bills to get reminders here.';
+
+  @override
+  String get chatReplyBillsDueIntro => 'Here\'s what\'s due:';
+
+  @override
+  String get chatReplyPayBillNotFound =>
+      'I couldn\'t find that biller in your saved accounts. Try naming one, like \"pay VoltGrid\".';
+
+  @override
+  String chatReplyPayBillFound(String accountNickname) {
+    return 'Found it — here\'s $accountNickname:';
+  }
+
+  @override
+  String chatReplySendMoneyFound(String contactName) {
+    return 'Here\'s a quick send to $contactName:';
+  }
+
+  @override
+  String get chatReplySendMoneyNotFound =>
+      'I couldn\'t find that contact. Try naming a saved contact, like \"send to Aisha\".';
+
+  @override
+  String chatSendMoneyCardTitle(String contactName) {
+    return 'Send to $contactName';
+  }
+
+  @override
+  String chatBillDueBadge(int days) {
+    return 'Due in $days days';
+  }
+
+  @override
+  String chatBillDueSoonBadge(int days) {
+    return 'Due in $days days';
+  }
+
+  @override
+  String chatRewardsPointsLabel(int points) {
+    return '$points points';
+  }
+
+  @override
+  String chatRewardsThresholdLabel(int threshold) {
+    return '$threshold points to redeem';
+  }
 }

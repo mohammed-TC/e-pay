@@ -7,6 +7,7 @@ import '../../core/models/biller_category.dart';
 import '../../core/models/txn.dart';
 import '../../core/widgets/np_background.dart';
 import '../../features/_gallery/screens/widget_gallery_screen.dart';
+import '../../features/ai_chat/screens/chat_screen.dart';
 import '../../features/bills/screens/account_entry_screen.dart';
 import '../../features/bills/screens/bill_categories_screen.dart';
 import '../../features/bills/screens/bill_detail_screen.dart';
@@ -164,6 +165,10 @@ List<RouteBase> get appRoutes => [
       GoRoute(
         path: _devGalleryRoute,
         builder: (context, state) => const WidgetGalleryScreen(),
+      ),
+      GoRoute(
+        path: Routes.assistant,
+        builder: (context, state) => const ChatScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),

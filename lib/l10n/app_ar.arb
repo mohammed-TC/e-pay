@@ -114,6 +114,7 @@
   "homeServiceEducation": "التعليم",
   "homeServiceRemittance": "التحويلات",
   "homeServiceRewards": "المكافآت",
+  "homeServiceAiAssistant": "اسأل إمرال",
   "homeServiceMore": "المزيد",
   "homePromoTitle1": "أرسل الأموال فورًا",
   "homePromoBody1": "بدون رسوم لأي محفظة Emral Pay.",
@@ -270,5 +271,84 @@
   "smartMeterNumberHint": "أدخل رقم العداد",
   "smartMeterFetchCta": "جلب المبلغ",
   "smartMeterTotalLabel": "الإجمالي",
-  "smartMeterPayCta": "ادفع الآن"
+  "smartMeterPayCta": "ادفع الآن",
+  "chatScreenTitle": "اسأل إمرال",
+  "chatFabSemanticLabel": "افتح محادثة اسأل إمرال",
+  "chatInputHint": "اسأل عن الفواتير أو الرصيد أو المكافآت…",
+  "chatVoiceComingSoon": "الإدخال الصوتي قريبًا",
+  "chatPayNowCta": "ادفع الآن",
+  "chatReviewAndPayCta": "مراجعة والدفع",
+  "chatWalletSummaryLabel": "الرصيد المتاح",
+  "chatQuickReplyBills": "عرض فواتيري",
+  "chatQuickReplyBalance": "رصيد المحفظة",
+  "chatQuickReplyRewards": "مكافآتي",
+  "chatQuickReplyTxns": "المعاملات الأخيرة",
+  "chatErrorTitle": "تعذّر تحميل المحادثة",
+  "chatErrorBody": "حدث خطأ أثناء تحميل اسأل إمرال.",
+  "chatErrorRetry": "إعادة المحاولة",
+  "chatReplyGreeting": "مرحبًا! أنا إمرال، مساعدك المالي. اسألني عن الفواتير أو محفظتك أو مكافآتك.",
+  "chatReplyHelp": "يمكنني التحقق من الفواتير المستحقة، ورصيد محفظتك، ونقاط مكافآتك، ومعاملاتك الأخيرة، أو مساعدتك في دفع فاتورة أو إرسال أموال.",
+  "chatReplyFallback": "لم أفهم ذلك تمامًا. جرّب السؤال عن الفواتير أو الرصيد أو المكافآت — أو اختر اقتراحًا أدناه.",
+  "chatReplyWalletBalanceIntro": "إليك رصيد محفظتك:",
+  "chatReplyRewardsIntro": "إليك وضع مكافآتك:",
+  "chatReplyNoTxns": "لا توجد لديك أي معاملات بعد.",
+  "chatReplyTxnLine": "{title} — {amount}",
+  "@chatReplyTxnLine": {
+    "placeholders": {
+      "title": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+  "chatReplyRecentTxnsIntro": "إليك معاملاتك الأخيرة:\n{lines}",
+  "@chatReplyRecentTxnsIntro": {
+    "placeholders": {
+      "lines": {"type": "String"}
+    }
+  },
+  "chatReplyNoBills": "ليس لديك أي فواتير محفوظة بعد. أضف واحدة من الفواتير لتصلك التذكيرات هنا.",
+  "chatReplyBillsDueIntro": "إليك ما هو مستحق:",
+  "chatReplyPayBillNotFound": "لم أتمكن من العثور على هذا المزوّد ضمن حساباتك المحفوظة. جرّب ذكر اسمه، مثل \"ادفع VoltGrid\".",
+  "chatReplyPayBillFound": "وجدته — إليك {accountNickname}:",
+  "@chatReplyPayBillFound": {
+    "placeholders": {
+      "accountNickname": {"type": "String"}
+    }
+  },
+  "chatReplySendMoneyFound": "إليك إرسال سريع إلى {contactName}:",
+  "@chatReplySendMoneyFound": {
+    "placeholders": {
+      "contactName": {"type": "String"}
+    }
+  },
+  "chatReplySendMoneyNotFound": "لم أتمكن من العثور على جهة الاتصال هذه. جرّب ذكر جهة اتصال محفوظة، مثل \"أرسل إلى عائشة\".",
+  "chatSendMoneyCardTitle": "إرسال إلى {contactName}",
+  "@chatSendMoneyCardTitle": {
+    "placeholders": {
+      "contactName": {"type": "String"}
+    }
+  },
+  "chatBillDueBadge": "يستحق خلال {days} أيام",
+  "@chatBillDueBadge": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "chatBillDueSoonBadge": "يستحق خلال {days} أيام",
+  "@chatBillDueSoonBadge": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "chatRewardsPointsLabel": "{points} نقطة",
+  "@chatRewardsPointsLabel": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRewardsThresholdLabel": "{threshold} نقطة للاسترداد",
+  "@chatRewardsThresholdLabel": {
+    "placeholders": {
+      "threshold": {"type": "int"}
+    }
+  }
 }
