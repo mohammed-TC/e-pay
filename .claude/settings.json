@@ -1,0 +1,54 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter *)",
+      "Bash(dart *)",
+      "Bash(git *)",
+      "Edit(lib/**)",
+      "Edit(assets/**)",
+      "Edit(test/**)",
+      "Edit(docs/**)",
+      "Write(lib/**)",
+      "Write(assets/**)",
+      "Write(test/**)",
+      "Write(docs/**)"
+    ],
+    "deny": [
+      "Edit(android/**/*.jks)",
+      "Edit(android/key.properties)",
+      "Edit(android/app/build.gradle*)",
+      "Edit(ios/Runner.xcodeproj/**)",
+      "Edit(ios/Runner/*.entitlements)",
+      "Edit(ios/**/*.mobileprovision)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=$(cat | python3 -c 'import json,sys; print(json.load(sys.stdin).get(\"tool_input\",{}).get(\"file_path\",\"\"))'); case \"$file\" in *.dart) dart format \"$file\" ;; esac"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: update docs/tasks.md checkboxes for any completed items before ending session.'"
+          }
+        ]
+      }
+    ]
+  }
+}

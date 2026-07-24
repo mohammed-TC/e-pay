@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "Emral Pay",
+  "@appTitle": {
+    "description": "App display name, shown on Splash (Screen A1)."
+  },
+  "splashTagline": "Your money, in one place.",
+  "@splashTagline": {
+    "description": "Splash screen (A1) tagline shown under the logo."
+  }
+}
