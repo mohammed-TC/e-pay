@@ -48,48 +48,64 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return NPScaffold(
       applyGutter: true,
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          ListView(
-            // Bottom padding clears the AppShell's centerDocked scan FAB,
-            // which floats ~28px into the body above the bottom bar
-            // (Scaffold doesn't reserve space for it) — without this the FAB
-            // overlaps whatever scrolls to the bottom, per architecture.md's
-            // B4 shell notes.
-            padding: const EdgeInsets.fromLTRB(
-              0,
-              AppSpacing.lg,
-              0,
-              AppSpacing.xxxl + AppSpacing.xxl,
-            ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final bounds = constraints.biggest;
+          return Stack(
+            fit: StackFit.expand,
             children: [
-              _BalanceSection(
-                hidden: _balanceHidden,
-                onToggleHidden: () {
-                  setState(() => _balanceHidden = !_balanceHidden);
-                },
+              _HomeBody(
+                balanceHidden: _balanceHidden,
+                onToggleBalance: _toggleBalance,
               ),
-              const SizedBox(height: AppSpacing.xl),
-              const _QuickActionsRow(),
-              if (kDebugMode) ...[
-                const SizedBox(height: AppSpacing.lg),
-                const _DebugPaymentTile(),
-              ],
-              const SizedBox(height: AppSpacing.sectionGap),
-              const _ServicesGrid(),
-              const SizedBox(height: AppSpacing.sectionGap),
-              const PromoCarousel(),
-              const SizedBox(height: AppSpacing.sectionGap),
-              const _RecentTransactionsSection(),
-              const SizedBox(height: AppSpacing.xl),
-              const _RewardsSection(),
+              // Draggable "Ask Emral" entry point — design.md §11, Home-only.
+              AssistantFab(bounds: bounds),
             ],
-          ),
-          // Draggable "Ask Emral" entry point — design.md §11, Home-only.
-          const AssistantFab(),
-        ],
+          );
+        },
       ),
+    );
+  }
+
+  void _toggleBalance() => setState(() => _balanceHidden = !_balanceHidden);
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody({required this.balanceHidden, required this.onToggleBalance});
+
+  final bool balanceHidden;
+  final VoidCallback onToggleBalance;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      // Bottom padding clears the AppShell's centerDocked scan FAB, which
+      // floats ~28px into the body above the bottom bar (Scaffold doesn't
+      // reserve space for it) — without this the FAB overlaps whatever
+      // scrolls to the bottom, per architecture.md's B4 shell notes.
+      padding: const EdgeInsets.fromLTRB(
+        0,
+        AppSpacing.lg,
+        0,
+        AppSpacing.xxxl + AppSpacing.xxl,
+      ),
+      children: [
+        _BalanceSection(hidden: balanceHidden, onToggleHidden: onToggleBalance),
+        const SizedBox(height: AppSpacing.xl),
+        const _QuickActionsRow(),
+        if (kDebugMode) ...[
+          const SizedBox(height: AppSpacing.lg),
+          const _DebugPaymentTile(),
+        ],
+        const SizedBox(height: AppSpacing.sectionGap),
+        const _ServicesGrid(),
+        const SizedBox(height: AppSpacing.sectionGap),
+        const PromoCarousel(),
+        const SizedBox(height: AppSpacing.sectionGap),
+        const _RecentTransactionsSection(),
+        const SizedBox(height: AppSpacing.xl),
+        const _RewardsSection(),
+      ],
     );
   }
 }
@@ -231,25 +247,24 @@ class _ActionTile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Accent tiles: no flat fill — a soft circular accent glow behind a
-          // colored glyph, so the icon itself carries the highlight instead
-          // of sitting inside an opaque green chip (design-tokens.md's
-          // restraint rule: accent reads as a moment, not a background).
+          // Accent tiles: solid accent.primary fill, white glyph — the
+          // primary CTA plate treatment from design.md §4 ("fill
+          // accent.primary, label white") applied to the icon well, so the
+          // four money-moving actions read as a distinct, unmissable tier
+          // above the neutral services grid.
           Container(
             width: accent ? 48 : 46,
             height: accent ? 48 : 46,
             decoration: BoxDecoration(
-              color: accent
-                  ? colors.accentPrimary.withValues(alpha: 0.10)
-                  : colors.surfaceSunken,
+              color: accent ? colors.accentPrimary : colors.surfaceSunken,
               shape: accent ? BoxShape.circle : BoxShape.rectangle,
               borderRadius: accent ? null : BorderRadius.circular(12),
             ),
             alignment: Alignment.center,
             child: Icon(
               icon,
-              size: accent ? 28 : 24,
-              color: accent ? colors.accentPrimary : colors.inkPrimary,
+              size: accent ? 26 : 24,
+              color: accent ? Colors.white : colors.inkPrimary,
             ),
           ),
           const SizedBox(height: AppSpacing.sm),

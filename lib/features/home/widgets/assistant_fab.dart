@@ -16,14 +16,20 @@ import '../../../core/widgets/np_plate.dart';
 /// flutter-conventions.md's local-UI-state exception; the tap destination
 /// itself is the only business action, handled by `context.push`.
 ///
-/// The caller must wrap its body in a `Stack(fit: StackFit.expand, ...)`
-/// with this widget as a direct child — [LayoutBuilder] then reads the
-/// Stack's own resolved box as the drag bounds, so the FAB can never clamp
-/// itself past the visible content area (it previously used raw
-/// `MediaQuery.sizeOf`, which double-counts `NPScaffold`'s gutter padding
-/// and clipped the button off-screen).
+/// Must be a direct child of the caller's `Stack(fit: StackFit.expand)`, and
+/// [bounds] must be that Stack's own resolved size (read via a
+/// [LayoutBuilder] wrapping the Stack from outside — see `home_screen.dart`).
+/// This widget's `build()` returns [Positioned] directly for exactly that
+/// reason: nesting a [LayoutBuilder] *inside* this widget and returning
+/// [Positioned] from its builder breaks Stack's positioning (Stack only
+/// recognizes a widget as positioned when `Positioned` is its own direct
+/// child — one that got the FAB stuck top-start-aligned, ignoring drags).
 class AssistantFab extends StatefulWidget {
-  const AssistantFab({super.key});
+  const AssistantFab({required this.bounds, super.key});
+
+  /// The Stack's own box size — see class doc for why this must be passed
+  /// in rather than measured internally.
+  final Size bounds;
 
   @override
   State<AssistantFab> createState() => _AssistantFabState();
@@ -32,6 +38,7 @@ class AssistantFab extends StatefulWidget {
 class _AssistantFabState extends State<AssistantFab>
     with TickerProviderStateMixin {
   static const _size = 56.0;
+  static const _bottomMargin = AppSpacing.xl; // clearance above the nav bar
 
   Offset? _position;
   late final AnimationController _wobbleController;
@@ -101,88 +108,84 @@ class _AssistantFabState extends State<AssistantFab>
     final colors = Theme.of(context).extension<AppColors>()!;
     final reduceMotion = MediaQuery.of(context).disableAnimations;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final bounds = widget.bounds;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final bounds = constraints.biggest;
-        _position ??= Offset(
-          isRtl ? AppSpacing.gutter : bounds.width - _size - AppSpacing.gutter,
-          bounds.height * 0.62,
-        );
-        final position = _clamp(_position!, bounds);
+    // Default spawn: bottom-end corner (flips with RTL), just above where
+    // the nav bar sits — `bounds` is already the Home body's own box, which
+    // Scaffold has already shrunk to exclude AppShell's bottom bar.
+    _position ??= Offset(
+      isRtl ? AppSpacing.gutter : bounds.width - _size - AppSpacing.gutter,
+      bounds.height - _size - _bottomMargin,
+    );
+    final position = _clamp(_position!, bounds);
 
-        return Positioned(
-          left: position.dx,
-          top: position.dy,
-          child: Semantics(
-            label: l10n.chatFabSemanticLabel,
-            button: true,
-            child: GestureDetector(
-              onPanStart: (_) => unawaited(HapticFeedback.selectionClick()),
-              onPanUpdate: (details) => _onPanUpdate(details, bounds),
-              onPanEnd: (_) => _onPanEnd(bounds),
-              onTap: () {
-                unawaited(HapticFeedback.selectionClick());
-                unawaited(context.push(Routes.assistant));
-              },
-              child: AnimatedBuilder(
-                animation: Listenable.merge([
-                  _wobbleController,
-                  _pulseController,
-                ]),
-                builder: (context, child) {
-                  final wobble = reduceMotion ? 0.0 : _wobbleController.value;
-                  final pulse = reduceMotion ? 0.0 : _pulseController.value;
-                  final scale = 1.0 + 0.06 * wobble;
-                  return SizedBox(
-                    width: _size + 24,
-                    height: _size + 24,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Opacity(
-                          opacity: 0.4 * pulse,
-                          child: Container(
-                            width: _size + 20 * pulse,
-                            height: _size + 20 * pulse,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: colors.accentPrimary,
-                            ),
-                          ),
+    return Positioned(
+      left: position.dx,
+      top: position.dy,
+      child: Semantics(
+        label: l10n.chatFabSemanticLabel,
+        button: true,
+        child: GestureDetector(
+          onPanStart: (_) => unawaited(HapticFeedback.selectionClick()),
+          onPanUpdate: (details) => _onPanUpdate(details, bounds),
+          onPanEnd: (_) => _onPanEnd(bounds),
+          onTap: () {
+            unawaited(HapticFeedback.selectionClick());
+            unawaited(context.push(Routes.assistant));
+          },
+          child: AnimatedBuilder(
+            animation: Listenable.merge([_wobbleController, _pulseController]),
+            builder: (context, child) {
+              final wobble = reduceMotion ? 0.0 : _wobbleController.value;
+              final pulse = reduceMotion ? 0.0 : _pulseController.value;
+              final scale = 1.0 + 0.06 * wobble;
+              return SizedBox(
+                width: _size + 24,
+                height: _size + 24,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Opacity(
+                      opacity: 0.4 * pulse,
+                      child: Container(
+                        width: _size + 20 * pulse,
+                        height: _size + 20 * pulse,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: colors.accentPrimary,
                         ),
-                        Transform(
-                          alignment: Alignment.center,
-                          transform: Matrix4.identity()
-                            ..setEntry(0, 1, 0.05 * wobble)
-                            ..scaleByDouble(scale, scale, 1, 1),
-                          child: SizedBox(
-                            width: _size,
-                            height: _size,
-                            child: NPPlate(
-                              color: colors.accentPrimary,
-                              shadowColor: colors.accentDeep,
-                              borderRadius: _size / 2,
-                              padding: EdgeInsets.zero,
-                              child: const Center(
-                                child: Icon(
-                                  Icons.smart_toy_outlined,
-                                  color: Colors.white,
-                                  size: 24,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  );
-                },
-              ),
-            ),
+                    Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.identity()
+                        ..setEntry(0, 1, 0.05 * wobble)
+                        ..scaleByDouble(scale, scale, 1, 1),
+                      child: SizedBox(
+                        width: _size,
+                        height: _size,
+                        child: NPPlate(
+                          color: colors.accentPrimary,
+                          shadowColor: colors.accentDeep,
+                          borderRadius: _size / 2,
+                          padding: EdgeInsets.zero,
+                          child: const Center(
+                            child: Icon(
+                              Icons.smart_toy_outlined,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }
