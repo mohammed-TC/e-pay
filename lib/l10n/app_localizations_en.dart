@@ -680,4 +680,138 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get walletQrShareCopied => 'QR code link copied';
+
+  @override
+  String get billCategoriesTitle => 'Bills & Recharges';
+
+  @override
+  String get billCategoryElectricity => 'Electricity';
+
+  @override
+  String get billCategoryWater => 'Water';
+
+  @override
+  String get billCategoryTelecom => 'Telecom';
+
+  @override
+  String get billCategoryInternet => 'Internet';
+
+  @override
+  String get billCategoryTvEntertainment => 'TV & Entertainment';
+
+  @override
+  String get billSmartMeterEntry => 'Smart Meter Recharge';
+
+  @override
+  String get billerSelectTitle => 'Select Provider';
+
+  @override
+  String get billerSelectEmptyTitle => 'No providers yet';
+
+  @override
+  String get billerSelectEmptyBody =>
+      'There are no providers in this category right now.';
+
+  @override
+  String get accountEntryTitle => 'Add Account';
+
+  @override
+  String get accountEntryFetchByMobileLabel => 'Fetch by mobile number';
+
+  @override
+  String get accountEntryMobileLabel => 'Mobile number';
+
+  @override
+  String get accountEntryMobileHint => 'e.g. 9XXXXXXX';
+
+  @override
+  String get accountEntryAccountNumberLabel => 'Account number';
+
+  @override
+  String get accountEntryAccountNumberHint => 'Enter account number';
+
+  @override
+  String get accountEntrySaveToggleLabel => 'Save this account';
+
+  @override
+  String get accountEntryNicknameLabel => 'Nickname';
+
+  @override
+  String get accountEntryNicknameHint => 'e.g. Home Electricity';
+
+  @override
+  String get accountEntryFetchBillCta => 'Fetch Bill';
+
+  @override
+  String get savedAccountsEmptyTitle => 'No saved accounts';
+
+  @override
+  String get savedAccountsEmptyBody =>
+      'Add an account to fetch and pay its bill.';
+
+  @override
+  String get savedAccountsAddCta => 'Add Account';
+
+  @override
+  String get billDetailTitle => 'Bill Detail';
+
+  @override
+  String get billDetailAmountDueLabel => 'Amount due';
+
+  @override
+  String get billDetailDueDateLabel => 'Due';
+
+  @override
+  String get billDetailViewPdfCta => 'View PDF';
+
+  @override
+  String get billDetailPayCta => 'Pay Bill';
+
+  @override
+  String get paymentMethodSectionTitle => 'Payment method';
+
+  @override
+  String get paymentMethodWallet => 'Wallet balance';
+
+  @override
+  String get paymentMethodApplePay => 'Apple Pay';
+
+  @override
+  String get paymentMethodAddCard => 'Add new card';
+
+  @override
+  String get rechargeTitle => 'Prepaid Recharge';
+
+  @override
+  String get rechargeProviderLabel => 'Select provider';
+
+  @override
+  String get rechargeCustomAmountLabel => 'Or enter a custom amount';
+
+  @override
+  String get rechargeAmountLabel => 'Recharge amount';
+
+  @override
+  String get rechargeVatLabel => 'VAT (15%)';
+
+  @override
+  String get rechargePayCta => 'Recharge Now';
+
+  @override
+  String get smartMeterTitle => 'Smart Meter Recharge';
+
+  @override
+  String get smartMeterNumberLabel => 'Meter number';
+
+  @override
+  String get smartMeterNumberHint => 'Enter meter number';
+
+  @override
+  String get smartMeterFetchCta => 'Fetch Charge';
+
+  @override
+  String get smartMeterTotalLabel => 'Total';
+
+  @override
+  String get smartMeterPayCta => 'Pay Now';
 }

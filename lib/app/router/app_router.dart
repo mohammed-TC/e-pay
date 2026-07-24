@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/models/biller.dart';
+import '../../core/models/biller_account.dart';
+import '../../core/models/biller_category.dart';
 import '../../core/models/txn.dart';
 import '../../core/widgets/np_background.dart';
 import '../../features/_gallery/screens/widget_gallery_screen.dart';
+import '../../features/bills/screens/account_entry_screen.dart';
+import '../../features/bills/screens/bill_categories_screen.dart';
+import '../../features/bills/screens/bill_detail_screen.dart';
+import '../../features/bills/screens/biller_select_screen.dart';
+import '../../features/bills/screens/prepaid_recharge_screen.dart';
+import '../../features/bills/screens/saved_accounts_screen.dart';
+import '../../features/bills/screens/smart_meter_screen.dart';
 import '../../features/history/screens/history_screen.dart';
 import '../../features/history/screens/transaction_detail_screen.dart';
 import '../../features/home/screens/home_screen.dart';
@@ -120,6 +130,38 @@ List<RouteBase> get appRoutes => [
         builder: (context, state) => const MyQrScreen(),
       ),
       GoRoute(
+        path: Routes.bills,
+        builder: (context, state) => const BillCategoriesScreen(),
+      ),
+      GoRoute(
+        path: Routes.billsBiller,
+        builder: (context, state) =>
+            BillerSelectScreen(category: state.extra! as BillerCategory),
+      ),
+      GoRoute(
+        path: Routes.billsSavedAccounts,
+        builder: (context, state) =>
+            SavedAccountsScreen(biller: state.extra! as Biller),
+      ),
+      GoRoute(
+        path: Routes.billsAccountEntry,
+        builder: (context, state) =>
+            AccountEntryScreen(biller: state.extra! as Biller),
+      ),
+      GoRoute(
+        path: Routes.billsDetail,
+        builder: (context, state) =>
+            BillDetailScreen(account: state.extra! as BillerAccount),
+      ),
+      GoRoute(
+        path: Routes.billsRecharge,
+        builder: (context, state) => const PrepaidRechargeScreen(),
+      ),
+      GoRoute(
+        path: Routes.billsSmartMeter,
+        builder: (context, state) => const SmartMeterScreen(),
+      ),
+      GoRoute(
         path: _devGalleryRoute,
         builder: (context, state) => const WidgetGalleryScreen(),
       ),
@@ -181,13 +223,6 @@ const _placeholderRoutes = [
   Routes.remitAddBeneficiary,
   Routes.remitSend,
   Routes.remitTracker,
-  Routes.bills,
-  Routes.billsBiller,
-  Routes.billsAccountEntry,
-  Routes.billsSavedAccounts,
-  Routes.billsDetail,
-  Routes.billsRecharge,
-  Routes.billsSmartMeter,
   Routes.gov,
   Routes.govFines,
   Routes.govRenewal,

@@ -19,7 +19,17 @@ void main() {
     final rewards = await RewardsRepository().fetchRewards();
     expect(rewards.points, 320);
 
-    final billers = await BillsRepository().fetchBillers();
+    final billsRepository = BillsRepository();
+    final billers = await billsRepository.fetchBillers();
     expect(billers.length, 12);
+
+    final accounts = await billsRepository.fetchAccounts();
+    expect(accounts.length, 6);
+
+    final plans = await billsRepository.fetchRechargePlans('b5');
+    expect(plans.length, 3);
+
+    final meterCharge = await billsRepository.fetchMeterCharge('MTR123456');
+    expect(meterCharge.amountDue.amount, greaterThan(0));
   });
 }

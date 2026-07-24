@@ -678,4 +678,136 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get walletQrShareCopied => 'تم نسخ رابط رمز QR';
+
+  @override
+  String get billCategoriesTitle => 'الفواتير والشحن';
+
+  @override
+  String get billCategoryElectricity => 'الكهرباء';
+
+  @override
+  String get billCategoryWater => 'المياه';
+
+  @override
+  String get billCategoryTelecom => 'الاتصالات';
+
+  @override
+  String get billCategoryInternet => 'الإنترنت';
+
+  @override
+  String get billCategoryTvEntertainment => 'التلفزيون والترفيه';
+
+  @override
+  String get billSmartMeterEntry => 'شحن العداد الذكي';
+
+  @override
+  String get billerSelectTitle => 'اختر المزوّد';
+
+  @override
+  String get billerSelectEmptyTitle => 'لا يوجد مزوّدون';
+
+  @override
+  String get billerSelectEmptyBody => 'لا يوجد مزوّدون في هذه الفئة حاليًا.';
+
+  @override
+  String get accountEntryTitle => 'إضافة حساب';
+
+  @override
+  String get accountEntryFetchByMobileLabel => 'الجلب برقم الهاتف';
+
+  @override
+  String get accountEntryMobileLabel => 'رقم الهاتف';
+
+  @override
+  String get accountEntryMobileHint => 'مثال: 9XXXXXXX';
+
+  @override
+  String get accountEntryAccountNumberLabel => 'رقم الحساب';
+
+  @override
+  String get accountEntryAccountNumberHint => 'أدخل رقم الحساب';
+
+  @override
+  String get accountEntrySaveToggleLabel => 'حفظ هذا الحساب';
+
+  @override
+  String get accountEntryNicknameLabel => 'الاسم المستعار';
+
+  @override
+  String get accountEntryNicknameHint => 'مثال: كهرباء المنزل';
+
+  @override
+  String get accountEntryFetchBillCta => 'جلب الفاتورة';
+
+  @override
+  String get savedAccountsEmptyTitle => 'لا توجد حسابات محفوظة';
+
+  @override
+  String get savedAccountsEmptyBody => 'أضف حسابًا لجلب فاتورته ودفعها.';
+
+  @override
+  String get savedAccountsAddCta => 'إضافة حساب';
+
+  @override
+  String get billDetailTitle => 'تفاصيل الفاتورة';
+
+  @override
+  String get billDetailAmountDueLabel => 'المبلغ المستحق';
+
+  @override
+  String get billDetailDueDateLabel => 'الاستحقاق';
+
+  @override
+  String get billDetailViewPdfCta => 'عرض PDF';
+
+  @override
+  String get billDetailPayCta => 'دفع الفاتورة';
+
+  @override
+  String get paymentMethodSectionTitle => 'طريقة الدفع';
+
+  @override
+  String get paymentMethodWallet => 'رصيد المحفظة';
+
+  @override
+  String get paymentMethodApplePay => 'Apple Pay';
+
+  @override
+  String get paymentMethodAddCard => 'إضافة بطاقة جديدة';
+
+  @override
+  String get rechargeTitle => 'شحن مسبق الدفع';
+
+  @override
+  String get rechargeProviderLabel => 'اختر المزوّد';
+
+  @override
+  String get rechargeCustomAmountLabel => 'أو أدخل مبلغًا مخصصًا';
+
+  @override
+  String get rechargeAmountLabel => 'مبلغ الشحن';
+
+  @override
+  String get rechargeVatLabel => 'ضريبة القيمة المضافة (15%)';
+
+  @override
+  String get rechargePayCta => 'اشحن الآن';
+
+  @override
+  String get smartMeterTitle => 'شحن العداد الذكي';
+
+  @override
+  String get smartMeterNumberLabel => 'رقم العداد';
+
+  @override
+  String get smartMeterNumberHint => 'أدخل رقم العداد';
+
+  @override
+  String get smartMeterFetchCta => 'جلب المبلغ';
+
+  @override
+  String get smartMeterTotalLabel => 'الإجمالي';
+
+  @override
+  String get smartMeterPayCta => 'ادفع الآن';
 }

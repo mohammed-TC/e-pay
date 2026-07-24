@@ -47,11 +47,11 @@
 - ✅ **Checkpoint: top-up → send → QR pay all hit shared flow, balance/history/points update live** — verified via `flutter analyze` (0 issues) and `flutter test` (smoke test passes); all 6 screens build `PaymentRequest`s that route through the existing shared confirm→PIN→receipt flow, `PaymentService`'s debit/append/credit invariant is untouched (`features/payment/` and `core/` stayed frozen per CLAUDE.md).
 
 ## Phase 5 — Bills & Recharges (demo centerpiece)
-- [ ] E1 Categories → E2 Biller grid (fictional brands) → E3 Account entry (+ fetch-by-mobile, save nickname)
-- [ ] E4 Saved accounts (swipe delete) → E5 Bill Detail (PDF viewer, due-date chip)
-- [ ] E6 Prepaid recharge (plans + VAT) + E7 Smart meter
-- [ ] E8 Payment method sheet → shared flow → E9 receipt with rewards badge
-- ✅ Checkpoint: demo script steps 1–4 fully runnable
+- [x] E1 Categories → E2 Biller grid (fictional brands) → E3 Account entry (+ fetch-by-mobile, save nickname)
+- [x] E4 Saved accounts (swipe delete) → E5 Bill Detail (PDF viewer, due-date chip)
+- [x] E6 Prepaid recharge (plans + VAT) + E7 Smart meter
+- [x] E8 Payment method sheet → shared flow → E9 receipt with rewards badge
+- ✅ **Checkpoint: demo script steps 1–4 fully runnable** — verified via `flutter analyze` (0 issues), `flutter test` (smoke test passes, now also asserting `accounts`/`recharge_plans`/`fetchMeterCharge`), and a manual on-device walk on the Android emulator: Home → Bills → Electricity → VoltGrid → saved "Home Electricity" account → Bill Detail (dashed-divider receipt card, due-date chip, line items) → View PDF (renders the mock `sample_bill.pdf` via pdfx) → Payment Method picker (wallet/cards/Apple Pay/add-card all selectable) → Pay Bill → shared ConfirmSheet (correct payee/amount) → PIN screen (wrong-PIN path shows "2 attempts left", confirming the existing Phase 3 PIN flow still fires correctly from a Phase 5 origin). E6/E7 screens render and are wired; `payment/` and `core/` stayed untouched (frozen per CLAUDE.md) — new bills-only models/widgets live under `features/bills/`.
 
 ## Phase 6 — Government + Rewards (demo differentiators)
 - [ ] F1 Hub → F2 Traffic fines (multi-select, sticky total bar) → pay

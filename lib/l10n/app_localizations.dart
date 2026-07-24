@@ -1411,6 +1411,270 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'QR code link copied'**
   String get walletQrShareCopied;
+
+  /// No description provided for @billCategoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bills & Recharges'**
+  String get billCategoriesTitle;
+
+  /// No description provided for @billCategoryElectricity.
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity'**
+  String get billCategoryElectricity;
+
+  /// No description provided for @billCategoryWater.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get billCategoryWater;
+
+  /// No description provided for @billCategoryTelecom.
+  ///
+  /// In en, this message translates to:
+  /// **'Telecom'**
+  String get billCategoryTelecom;
+
+  /// No description provided for @billCategoryInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet'**
+  String get billCategoryInternet;
+
+  /// No description provided for @billCategoryTvEntertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'TV & Entertainment'**
+  String get billCategoryTvEntertainment;
+
+  /// No description provided for @billSmartMeterEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Meter Recharge'**
+  String get billSmartMeterEntry;
+
+  /// No description provided for @billerSelectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Provider'**
+  String get billerSelectTitle;
+
+  /// No description provided for @billerSelectEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No providers yet'**
+  String get billerSelectEmptyTitle;
+
+  /// No description provided for @billerSelectEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no providers in this category right now.'**
+  String get billerSelectEmptyBody;
+
+  /// No description provided for @accountEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Account'**
+  String get accountEntryTitle;
+
+  /// No description provided for @accountEntryFetchByMobileLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch by mobile number'**
+  String get accountEntryFetchByMobileLabel;
+
+  /// No description provided for @accountEntryMobileLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile number'**
+  String get accountEntryMobileLabel;
+
+  /// No description provided for @accountEntryMobileHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 9XXXXXXX'**
+  String get accountEntryMobileHint;
+
+  /// No description provided for @accountEntryAccountNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Account number'**
+  String get accountEntryAccountNumberLabel;
+
+  /// No description provided for @accountEntryAccountNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter account number'**
+  String get accountEntryAccountNumberHint;
+
+  /// No description provided for @accountEntrySaveToggleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Save this account'**
+  String get accountEntrySaveToggleLabel;
+
+  /// No description provided for @accountEntryNicknameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname'**
+  String get accountEntryNicknameLabel;
+
+  /// No description provided for @accountEntryNicknameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Home Electricity'**
+  String get accountEntryNicknameHint;
+
+  /// No description provided for @accountEntryFetchBillCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch Bill'**
+  String get accountEntryFetchBillCta;
+
+  /// No description provided for @savedAccountsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved accounts'**
+  String get savedAccountsEmptyTitle;
+
+  /// No description provided for @savedAccountsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an account to fetch and pay its bill.'**
+  String get savedAccountsEmptyBody;
+
+  /// No description provided for @savedAccountsAddCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Account'**
+  String get savedAccountsAddCta;
+
+  /// No description provided for @billDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bill Detail'**
+  String get billDetailTitle;
+
+  /// No description provided for @billDetailAmountDueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount due'**
+  String get billDetailAmountDueLabel;
+
+  /// No description provided for @billDetailDueDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Due'**
+  String get billDetailDueDateLabel;
+
+  /// No description provided for @billDetailViewPdfCta.
+  ///
+  /// In en, this message translates to:
+  /// **'View PDF'**
+  String get billDetailViewPdfCta;
+
+  /// No description provided for @billDetailPayCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Bill'**
+  String get billDetailPayCta;
+
+  /// No description provided for @paymentMethodSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment method'**
+  String get paymentMethodSectionTitle;
+
+  /// No description provided for @paymentMethodWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet balance'**
+  String get paymentMethodWallet;
+
+  /// No description provided for @paymentMethodApplePay.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Pay'**
+  String get paymentMethodApplePay;
+
+  /// No description provided for @paymentMethodAddCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new card'**
+  String get paymentMethodAddCard;
+
+  /// No description provided for @rechargeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepaid Recharge'**
+  String get rechargeTitle;
+
+  /// No description provided for @rechargeProviderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Select provider'**
+  String get rechargeProviderLabel;
+
+  /// No description provided for @rechargeCustomAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Or enter a custom amount'**
+  String get rechargeCustomAmountLabel;
+
+  /// No description provided for @rechargeAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge amount'**
+  String get rechargeAmountLabel;
+
+  /// No description provided for @rechargeVatLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'VAT (15%)'**
+  String get rechargeVatLabel;
+
+  /// No description provided for @rechargePayCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge Now'**
+  String get rechargePayCta;
+
+  /// No description provided for @smartMeterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart Meter Recharge'**
+  String get smartMeterTitle;
+
+  /// No description provided for @smartMeterNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Meter number'**
+  String get smartMeterNumberLabel;
+
+  /// No description provided for @smartMeterNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter meter number'**
+  String get smartMeterNumberHint;
+
+  /// No description provided for @smartMeterFetchCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch Charge'**
+  String get smartMeterFetchCta;
+
+  /// No description provided for @smartMeterTotalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get smartMeterTotalLabel;
+
+  /// No description provided for @smartMeterPayCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Now'**
+  String get smartMeterPayCta;
 }
 
 class _AppLocalizationsDelegate
