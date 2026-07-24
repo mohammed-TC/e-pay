@@ -24,6 +24,7 @@ import '../../payment/models/payment_request.dart';
 import '../../payment/models/payment_result.dart';
 import '../../rewards/providers/rewards_provider.dart';
 import '../../wallet/providers/wallet_provider.dart';
+import '../widgets/promo_carousel.dart';
 
 /// Screen B1 — Home Dashboard
 ///
@@ -73,7 +74,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           const SizedBox(height: AppSpacing.sectionGap),
           const _ServicesGrid(),
           const SizedBox(height: AppSpacing.sectionGap),
-          const _PromoCarousel(),
+          const PromoCarousel(),
           const SizedBox(height: AppSpacing.sectionGap),
           const _RecentTransactionsSection(),
           const SizedBox(height: AppSpacing.xl),
@@ -97,11 +98,16 @@ class _BalanceSection extends ConsumerWidget {
     final l10n = context.l10n;
 
     return walletAsync.when(
-      data: (wallet) => NPBalanceCard(
-        balance: wallet.balance,
-        label: l10n.homeAvailableBalance,
-        hidden: hidden,
-        onToggleHidden: onToggleHidden,
+      // Tapping the card (outside the eye toggle's own opaque hit area)
+      // opens C1 Wallet Home — otherwise nothing on B1 links there.
+      data: (wallet) => GestureDetector(
+        onTap: () => context.push(Routes.wallet),
+        child: NPBalanceCard(
+          balance: wallet.balance,
+          label: l10n.homeAvailableBalance,
+          hidden: hidden,
+          onToggleHidden: onToggleHidden,
+        ),
       ),
       loading: () => const NPShimmer.card(height: 168),
       error: (error, stackTrace) => NPErrorState(
@@ -122,44 +128,51 @@ class _QuickActionsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Row(
-      children: [
-        Expanded(
-          child: _ActionTile(
-            icon: Icons.add_circle_outline,
-            label: l10n.homeQuickActionTopUp,
-            onTap: () => context.push(Routes.walletTopUp),
-            accent: true,
+    // Trailing inset reserves room for the last tile's hard NeoPop shadow
+    // (design.md §4 offset 4,4) — ListView's default Clip.hardEdge chops it
+    // off flush against the viewport edge otherwise, unlike the other three
+    // tiles whose shadows bleed harmlessly into the inter-tile gaps.
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
+      child: Row(
+        children: [
+          Expanded(
+            child: _ActionTile(
+              icon: Icons.add_circle_outline,
+              label: l10n.homeQuickActionTopUp,
+              onTap: () => context.push(Routes.walletTopUp),
+              accent: true,
+            ),
           ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _ActionTile(
-            icon: Icons.send_outlined,
-            label: l10n.homeQuickActionSend,
-            onTap: () => context.push(Routes.walletSend),
-            accent: true,
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _ActionTile(
+              icon: Icons.send_outlined,
+              label: l10n.homeQuickActionSend,
+              onTap: () => context.push(Routes.walletSend),
+              accent: true,
+            ),
           ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _ActionTile(
-            icon: Icons.qr_code_scanner_outlined,
-            label: l10n.homeQuickActionScan,
-            onTap: () => context.push(Routes.scan),
-            accent: true,
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _ActionTile(
+              icon: Icons.qr_code_scanner_outlined,
+              label: l10n.homeQuickActionScan,
+              onTap: () => context.push(Routes.scan),
+              accent: true,
+            ),
           ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _ActionTile(
-            icon: Icons.call_received,
-            label: l10n.homeQuickActionRequest,
-            onTap: () => context.push(Routes.walletRequest),
-            accent: true,
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _ActionTile(
+              icon: Icons.call_received,
+              label: l10n.homeQuickActionRequest,
+              onTap: () => context.push(Routes.walletRequest),
+              accent: true,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -197,21 +210,37 @@ class _ActionTile extends StatelessWidget {
         vertical: AppSpacing.md,
         horizontal: AppSpacing.xs,
       ),
+      // Grid cells hand this card a *tight* height (GridView.count forces
+      // every child to its childAspectRatio-derived box), so the inner
+      // Column — despite mainAxisSize.min — still stretches to fill it.
+      // Centering the run instead of the default MainAxisAlignment.start
+      // is what actually removes the dead strip beneath the label; "min"
+      // size alone only stops the Column from *reporting* extra height —
+      // it doesn't stop the incoming tight constraint from stretching it,
+      // so the slack always lands below the last child.
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Accent tiles: no flat fill — a soft circular accent glow behind a
+          // colored glyph, so the icon itself carries the highlight instead
+          // of sitting inside an opaque green chip (design-tokens.md's
+          // restraint rule: accent reads as a moment, not a background).
           Container(
-            width: 40,
-            height: 40,
+            width: accent ? 48 : 46,
+            height: accent ? 48 : 46,
             decoration: BoxDecoration(
-              color: accent ? colors.accentTint : colors.surfaceSunken,
-              borderRadius: BorderRadius.circular(12),
+              color: accent
+                  ? colors.accentPrimary.withValues(alpha: 0.10)
+                  : colors.surfaceSunken,
+              shape: accent ? BoxShape.circle : BoxShape.rectangle,
+              borderRadius: accent ? null : BorderRadius.circular(12),
             ),
             alignment: Alignment.center,
             child: Icon(
               icon,
-              size: 20,
-              color: accent ? colors.accentDeep : colors.inkPrimary,
+              size: accent ? 28 : 24,
+              color: accent ? colors.accentPrimary : colors.inkPrimary,
             ),
           ),
           const SizedBox(height: AppSpacing.sm),
@@ -220,7 +249,10 @@ class _ActionTile extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: textTheme.bodySmall,
+            style: textTheme.bodySmall?.copyWith(
+              color: colors.inkSecondary,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
@@ -253,19 +285,25 @@ class _DebugPaymentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>()!;
-    return NPCard(
-      onTap: () => unawaited(_trigger(context)),
-      child: Row(
-        children: [
-          Icon(Icons.science_outlined, size: 20, color: colors.semanticInfo),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Text(
-              context.l10n.homeDebugTestPayment,
-              style: Theme.of(context).textTheme.labelLarge,
+    // Same outer-ListView Clip.hardEdge shadow clip as the quick-actions row
+    // and services grid — this tile is full-width, so its own right edge
+    // sits flush on the viewport boundary.
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
+      child: NPCard(
+        onTap: () => unawaited(_trigger(context)),
+        child: Row(
+          children: [
+            Icon(Icons.science_outlined, size: 20, color: colors.semanticInfo),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Text(
+                context.l10n.homeDebugTestPayment,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -324,89 +362,44 @@ class _ServicesGrid extends StatelessWidget {
       ),
     ];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          l10n.homeServicesSectionTitle,
-          style: textTheme.labelLarge?.copyWith(
-            color: colors.inkTertiary,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.4,
-          ),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        GridView.count(
-          crossAxisCount: 4,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          mainAxisSpacing: AppSpacing.sm,
-          crossAxisSpacing: AppSpacing.sm,
-          childAspectRatio: 0.85,
-          children: [
-            for (final item in items)
-              _ActionTile(
-                icon: item.icon,
-                label: item.label,
-                onTap: item.onTap,
-              ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-/// Feature-local static promo data — not one of the 9 domain repositories,
-/// just 2-3 hardcoded entries whose copy comes from new l10n keys.
-class _PromoCarousel extends StatelessWidget {
-  const _PromoCarousel();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final colors = Theme.of(context).extension<AppColors>()!;
-    final textTheme = Theme.of(context).textTheme;
-    final promos = <({String title, String body})>[
-      (title: l10n.homePromoTitle1, body: l10n.homePromoBody1),
-      (title: l10n.homePromoTitle2, body: l10n.homePromoBody2),
-      (title: l10n.homePromoTitle3, body: l10n.homePromoBody3),
-    ];
-
-    return SizedBox(
-      height: 128,
-      child: PageView.builder(
-        controller: PageController(viewportFraction: 0.88),
-        itemCount: promos.length,
-        itemBuilder: (context, index) {
-          final promo = promos[index];
-          return Padding(
-            padding: const EdgeInsetsDirectional.only(end: AppSpacing.md),
-            child: NPCard(
-              interactive: false,
-              color: colors.accentTint,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    promo.title,
-                    style: textTheme.titleLarge?.copyWith(
-                      color: colors.accentDeep,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.xs),
-                  Text(
-                    promo.body,
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: colors.accentDeep,
-                    ),
-                  ),
-                ],
-              ),
+    return Padding(
+      // Clip.none on the GridView below only stops the grid clipping its own
+      // box — the screen's outer ListView (home_screen.dart) still defaults
+      // to Clip.hardEdge at its viewport edge, which is exactly where the
+      // last column ("Insurance"/"More") sits, so their NPPlate hard shadow
+      // (offset 4,4) still got sliced off. Same fix as _QuickActionsRow:
+      // reserve the shadow's own width at the trailing edge.
+      padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.homeServicesSectionTitle,
+            style: textTheme.labelLarge?.copyWith(
+              color: colors.inkTertiary,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.4,
             ),
-          );
-        },
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          GridView.count(
+            crossAxisCount: 4,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            clipBehavior: Clip.none,
+            mainAxisSpacing: AppSpacing.sm,
+            crossAxisSpacing: AppSpacing.sm,
+            childAspectRatio: 0.85,
+            children: [
+              for (final item in items)
+                _ActionTile(
+                  icon: item.icon,
+                  label: item.label,
+                  onTap: item.onTap,
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -501,28 +494,86 @@ class _RewardsSection extends ConsumerWidget {
     final colors = Theme.of(context).extension<AppColors>()!;
     final l10n = context.l10n;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final chevron = isRtl
+        ? Icons.chevron_left_rounded
+        : Icons.chevron_right_rounded;
 
     return rewardsAsync.when(
-      data: (rewards) => NPListTile(
+      data: (rewards) => _RewardsTile(
         onTap: () => context.go(Routes.rewards),
-        leading: Icon(Icons.star_rounded, size: 20, color: colors.accentDeep),
-        title: l10n.homeServiceRewards,
         subtitle: '${rewards.points} ${l10n.homeRewardsPointsSuffix}',
-        trailingWidget: Icon(
-          isRtl ? Icons.chevron_left_rounded : Icons.chevron_right_rounded,
-          color: colors.inkTertiary,
-        ),
+        iconColor: colors.accentPrimary,
+        chevron: chevron,
       ),
-      loading: () => const NPShimmer(height: 56),
-      error: (error, stackTrace) => NPListTile(
+      loading: () => const NPShimmer(height: 72),
+      error: (error, stackTrace) => _RewardsTile(
         onTap: () => ref.invalidate(appRewardsProvider),
-        leading: Icon(
-          Icons.star_rounded,
-          size: 20,
-          color: colors.inkTertiary,
-        ),
-        title: l10n.homeServiceRewards,
         subtitle: l10n.homeErrorRetry,
+        iconColor: colors.inkTertiary,
+        chevron: chevron,
+      ),
+    );
+  }
+}
+
+/// Bespoke rewards row — not [NPListTile], which is shared with
+/// History/Gallery and out of scope for a home-only visual change. Mirrors
+/// [_ActionTile]'s circular accent-glow icon and reserves the same trailing
+/// shadow-clip inset as the other full-width home tiles.
+class _RewardsTile extends StatelessWidget {
+  const _RewardsTile({
+    required this.onTap,
+    required this.subtitle,
+    required this.iconColor,
+    required this.chevron,
+  });
+
+  final VoidCallback onTap;
+  final String subtitle;
+  final Color iconColor;
+  final IconData chevron;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).extension<AppColors>()!;
+    final l10n = context.l10n;
+    final textTheme = Theme.of(context).textTheme;
+
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
+      child: NPCard(
+        onTap: onTap,
+        child: Row(
+          children: [
+            Container(
+              width: 48,
+              height: 48,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: iconColor.withValues(alpha: 0.10),
+              ),
+              alignment: Alignment.center,
+              child: Icon(Icons.star_rounded, size: 26, color: iconColor),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(l10n.homeServiceRewards, style: textTheme.titleLarge),
+                  Text(
+                    subtitle,
+                    style: textTheme.bodySmall,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Icon(chevron, color: colors.inkTertiary),
+          ],
+        ),
       ),
     );
   }

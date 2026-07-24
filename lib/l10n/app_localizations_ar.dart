@@ -527,4 +527,155 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get txnDetailRedownloadReceipt => 'إعادة تحميل الإيصال';
+
+  @override
+  String get walletHomeTitle => 'المحفظة';
+
+  @override
+  String get walletHomeBalanceLabel => 'رصيد المحفظة';
+
+  @override
+  String get walletActionMyQr => 'رمز QR الخاص بي';
+
+  @override
+  String get walletMiniStatementTitle => 'كشف حساب مختصر';
+
+  @override
+  String get walletViewAll => 'عرض الكل';
+
+  @override
+  String get walletStatementEmptyTitle => 'لا توجد معاملات بعد';
+
+  @override
+  String get walletStatementEmptyBody => 'سيظهر نشاط محفظتك هنا.';
+
+  @override
+  String get walletTopUpTitle => 'تعبئة الرصيد';
+
+  @override
+  String get walletTopUpAmountLabel => 'مبلغ التعبئة';
+
+  @override
+  String get walletTopUpSourceLabel => 'الدفع من';
+
+  @override
+  String get walletTopUpApplePay => 'Apple Pay';
+
+  @override
+  String get walletTopUpCta => 'تعبئة';
+
+  @override
+  String get walletSendTitle => 'إرسال أموال';
+
+  @override
+  String get walletSendTabMobile => 'إلى رقم الجوال';
+
+  @override
+  String get walletSendTabWallet => 'إلى المحفظة';
+
+  @override
+  String get walletSendTabBank => 'إلى البنك';
+
+  @override
+  String get walletSendAmountLabel => 'المبلغ';
+
+  @override
+  String get walletSendNoteLabel => 'ملاحظة';
+
+  @override
+  String get walletSendNoteHint => 'ما سبب هذا التحويل؟ (اختياري)';
+
+  @override
+  String get walletSendBankAccountNameLabel => 'اسم صاحب الحساب';
+
+  @override
+  String get walletSendBankAccountNameHint => 'أدخل اسم صاحب الحساب';
+
+  @override
+  String get walletSendBankIbanLabel => 'رقم الآيبان';
+
+  @override
+  String get walletSendBankIbanHint => 'أدخل رقم الآيبان';
+
+  @override
+  String get walletSendCta => 'إرسال';
+
+  @override
+  String get walletRequestTitle => 'طلب أموال';
+
+  @override
+  String get walletRequestPayerPlaceholder => 'اختر جهة اتصال';
+
+  @override
+  String get walletRequestNoteLabel => 'ملاحظة';
+
+  @override
+  String get walletRequestNoteHint => 'ما سبب هذا الطلب؟ (اختياري)';
+
+  @override
+  String get walletRequestSendCta => 'إرسال الطلب';
+
+  @override
+  String get walletRequestPendingTitle => 'الطلبات المعلقة';
+
+  @override
+  String get walletRequestEmptyTitle => 'لا توجد طلبات بعد';
+
+  @override
+  String get walletRequestEmptyBody =>
+      'ستظهر هنا الطلبات التي ترسلها أو تستلمها.';
+
+  @override
+  String get walletRequestAccept => 'قبول';
+
+  @override
+  String get walletRequestDecline => 'رفض';
+
+  @override
+  String get walletRequestStatusPending => 'معلق';
+
+  @override
+  String get walletRequestStatusAccepted => 'مقبول';
+
+  @override
+  String get walletRequestStatusDeclined => 'مرفوض';
+
+  @override
+  String get scanTitle => 'مسح ودفع';
+
+  @override
+  String get scanCameraCta => 'امسح رمز QR';
+
+  @override
+  String get scanManualLabel => 'أو أدخل رمز التاجر';
+
+  @override
+  String get scanManualHint => 'أدخل رمز التاجر';
+
+  @override
+  String get scanManualCta => 'بحث';
+
+  @override
+  String get scanCancelCamera => 'إلغاء';
+
+  @override
+  String get scanPayCta => 'ادفع';
+
+  @override
+  String get scanTryAnother => 'جرّب رمزًا آخر';
+
+  @override
+  String get scanUnknownMerchantName => 'تاجر غير معروف';
+
+  @override
+  String get walletQrTitle => 'رمز QR الخاص بي';
+
+  @override
+  String get walletQrSubtitle => 'امسح للدفع أو إرسال الأموال لي';
+
+  @override
+  String get walletQrShareCta => 'مشاركة';
+
+  @override
+  String get walletQrShareCopied => 'تم نسخ رابط رمز QR';
 }

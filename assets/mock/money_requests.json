@@ -1,0 +1,42 @@
+[
+  {
+    "id": "req1",
+    "direction": "incoming",
+    "counterpartyName": "Omar Al Balushi",
+    "counterpartyContactId": "ct2",
+    "amount": { "minorUnits": 15000, "currencyCode": "OMR" },
+    "note": "Dinner split",
+    "status": "pending",
+    "date": "2026-07-20T18:30:00.000Z"
+  },
+  {
+    "id": "req2",
+    "direction": "incoming",
+    "counterpartyName": "Noor Al Amri",
+    "counterpartyContactId": "ct7",
+    "amount": { "minorUnits": 8000, "currencyCode": "OMR" },
+    "note": "Movie tickets",
+    "status": "pending",
+    "date": "2026-07-19T12:00:00.000Z"
+  },
+  {
+    "id": "req3",
+    "direction": "outgoing",
+    "counterpartyName": "Fatima Al Habsi",
+    "counterpartyContactId": "ct3",
+    "amount": { "minorUnits": 25000, "currencyCode": "OMR" },
+    "note": "Rent share",
+    "status": "pending",
+    "date": "2026-07-17T09:15:00.000Z"
+  },
+  {
+    "id": "req4",
+    "direction": "outgoing",
+    "counterpartyName": "Khalid Al Rashdi",
+    "counterpartyContactId": "ct6",
+    "amount": { "minorUnits": 5000, "currencyCode": "OMR" },
+    "note": "Coffee",
+    "status": "accepted",
+    "date": "2026-07-10T16:45:00.000Z"
+  }
+]

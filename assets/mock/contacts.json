@@ -1,0 +1,9 @@
+[
+  { "id": "ct1", "name": "Layla Al Farsi", "mobileNumber": "+968 9123 4567", "walletId": "layla.farsi", "avatarInitial": "L" },
+  { "id": "ct2", "name": "Omar Al Balushi", "mobileNumber": "+968 9234 5678", "walletId": "omar.balushi", "avatarInitial": "O" },
+  { "id": "ct3", "name": "Fatima Al Habsi", "mobileNumber": "+968 9345 6789", "walletId": "fatima.habsi", "avatarInitial": "F" },
+  { "id": "ct4", "name": "Yousuf Al Kindi", "mobileNumber": "+968 9456 7890", "walletId": "yousuf.kindi", "avatarInitial": "Y" },
+  { "id": "ct5", "name": "Maryam Al Saadi", "mobileNumber": "+968 9567 8901", "walletId": "maryam.saadi", "avatarInitial": "M" },
+  { "id": "ct6", "name": "Khalid Al Rashdi", "mobileNumber": "+968 9678 9012", "walletId": "khalid.rashdi", "avatarInitial": "K" },
+  { "id": "ct7", "name": "Noor Al Amri", "mobileNumber": "+968 9789 0123", "walletId": "noor.amri", "avatarInitial": "N" }
+]

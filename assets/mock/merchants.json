@@ -1,0 +1,7 @@
+[
+  { "id": "m1", "name": "Bayt Al Qahwa Cafe", "category": "Food & Drink", "qrCode": "EMRALPAY:MERCHANT:m1" },
+  { "id": "m2", "name": "SkyNet Mobile Store", "category": "Electronics", "qrCode": "EMRALPAY:MERCHANT:m2" },
+  { "id": "m3", "name": "Marina Fuel Station", "category": "Fuel", "qrCode": "EMRALPAY:MERCHANT:m3", "fixedAmount": { "minorUnits": 10000, "currencyCode": "OMR" } },
+  { "id": "m4", "name": "Green Basket Grocers", "category": "Groceries", "qrCode": "EMRALPAY:MERCHANT:m4" },
+  { "id": "m5", "name": "Al Waha Parking", "category": "Parking", "qrCode": "EMRALPAY:MERCHANT:m5", "fixedAmount": { "minorUnits": 2500, "currencyCode": "OMR" } }
+]

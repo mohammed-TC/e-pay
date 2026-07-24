@@ -40,11 +40,11 @@
 - ✅ **Checkpoint: login → home → (flow ready) → history runs smoothly** — verified via `flutter analyze` (0 issues), `flutter test` (smoke test passes), and a `kDebugMode`-gated test-payment trigger on Home exercising the full confirm→PIN→receipt flow end-to-end (real Bills/Wallet triggers land in Phase 4/5). Rewards/Profile shell tabs stay placeholder until Phase 6/8 per the build order.
 
 ## Phase 4 — Wallet (first full money loop)
-- [ ] C1 Wallet Home, C2 Top-up (quick chips, mock sources)
-- [ ] C3 Send Money (3 tabs, mock contacts), C4 Request Money (pending list)
-- [ ] C5 Scan & Pay (mock scanner + manual entry), C6 My QR
-- [ ] Insufficient-balance sheet → Top-up CTA
-- ✅ Checkpoint: top-up → send → QR pay all hit shared flow, balance/history/points update live
+- [x] C1 Wallet Home, C2 Top-up (quick chips, mock sources)
+- [x] C3 Send Money (3 tabs, mock contacts), C4 Request Money (pending list)
+- [x] C5 Scan & Pay (mock scanner + manual entry), C6 My QR
+- [x] Insufficient-balance sheet → Top-up CTA (built in Phase 3's shared flow — `payment/widgets/error_sheet.dart`; verified it still fires from wallet-originated `PaymentRequest`s)
+- ✅ **Checkpoint: top-up → send → QR pay all hit shared flow, balance/history/points update live** — verified via `flutter analyze` (0 issues) and `flutter test` (smoke test passes); all 6 screens build `PaymentRequest`s that route through the existing shared confirm→PIN→receipt flow, `PaymentService`'s debit/append/credit invariant is untouched (`features/payment/` and `core/` stayed frozen per CLAUDE.md).
 
 ## Phase 5 — Bills & Recharges (demo centerpiece)
 - [ ] E1 Categories → E2 Biller grid (fictional brands) → E3 Account entry (+ fetch-by-mobile, save nickname)

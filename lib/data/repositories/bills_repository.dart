@@ -8,6 +8,7 @@ import '../../core/models/biller.dart';
 import '../../core/models/biller_account.dart';
 import '../../core/models/money.dart';
 import '../../core/utils/mock_latency.dart';
+import '../../features/bills/models/recharge_plan.dart';
 
 part 'bills_repository.g.dart';
 
@@ -18,6 +19,7 @@ part 'bills_repository.g.dart';
 class BillsRepository {
   List<Biller>? _billers;
   List<BillerAccount>? _accounts;
+  List<RechargePlan>? _rechargePlans;
 
   Future<List<Biller>> fetchBillers() async {
     await simulateLatency();
@@ -45,13 +47,24 @@ class BillsRepository {
 
   Future<Bill> fetchBill(BillerAccount account) async {
     await simulateLatency();
-    final seed = account.accountNumber.codeUnits.fold<int>(
-      0,
-      (sum, c) => sum + c,
+    return _generateBill(
+      referenceId: account.id,
+      seedKey: account.accountNumber,
     );
+  }
+
+  /// Smart meter has no saved account — product.md E7 fetches a bill
+  /// straight off the meter number, same deterministic shape as [fetchBill].
+  Future<Bill> fetchMeterCharge(String meterNumber) async {
+    await simulateLatency();
+    return _generateBill(referenceId: meterNumber, seedKey: meterNumber);
+  }
+
+  Bill _generateBill({required String referenceId, required String seedKey}) {
+    final seed = seedKey.codeUnits.fold<int>(0, (sum, c) => sum + c);
     final amount = 10 + (seed % 40) + (seed % 100) / 100;
     return Bill(
-      billerAccountId: account.id,
+      billerAccountId: referenceId,
       amountDue: Money.fromAmount(amount),
       dueDate: DateTime.now().add(const Duration(days: 14)),
       lineItems: [
@@ -62,6 +75,36 @@ class BillsRepository {
         BillLineItem(label: 'VAT', amount: Money.fromAmount(amount * 0.15)),
       ],
     );
+  }
+
+  /// Mutates the cached in-memory list — mirrors
+  /// `WalletRepository.addMoneyRequest`'s "session feels live" pattern.
+  Future<void> addAccount(BillerAccount account) async {
+    final current = await fetchAccounts();
+    _accounts = [account, ...current];
+  }
+
+  Future<void> deleteAccount(String id) async {
+    final current = await fetchAccounts();
+    _accounts = [
+      for (final account in current)
+        if (account.id != id) account,
+    ];
+  }
+
+  Future<List<RechargePlan>> fetchRechargePlans(String billerId) async {
+    await simulateLatency();
+    var all = _rechargePlans;
+    if (all == null) {
+      final raw = await rootBundle.loadString(
+        'assets/mock/recharge_plans.json',
+      );
+      all = (jsonDecode(raw) as List<dynamic>)
+          .map((e) => RechargePlan.fromJson(e as Map<String, dynamic>))
+          .toList();
+      _rechargePlans = all;
+    }
+    return all.where((plan) => plan.billerId == billerId).toList();
   }
 }
 

@@ -49,3 +49,8 @@ flutter:
     - assets/mock/institutions.json
     - assets/mock/cards.json
     - assets/mock/quotes.json
+    - assets/mock/contacts.json
+    - assets/mock/money_requests.json
+    - assets/mock/merchants.json
+    - assets/mock/recharge_plans.json
+    - assets/mock/sample_bill.pdf

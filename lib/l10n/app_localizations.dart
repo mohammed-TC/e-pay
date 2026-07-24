@@ -1111,6 +1111,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Re-download receipt'**
   String get txnDetailRedownloadReceipt;
+
+  /// No description provided for @walletHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get walletHomeTitle;
+
+  /// No description provided for @walletHomeBalanceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet balance'**
+  String get walletHomeBalanceLabel;
+
+  /// No description provided for @walletActionMyQr.
+  ///
+  /// In en, this message translates to:
+  /// **'My QR'**
+  String get walletActionMyQr;
+
+  /// No description provided for @walletMiniStatementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mini statement'**
+  String get walletMiniStatementTitle;
+
+  /// No description provided for @walletViewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get walletViewAll;
+
+  /// No description provided for @walletStatementEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No transactions yet'**
+  String get walletStatementEmptyTitle;
+
+  /// No description provided for @walletStatementEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wallet activity will show up here.'**
+  String get walletStatementEmptyBody;
+
+  /// No description provided for @walletTopUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Top-up'**
+  String get walletTopUpTitle;
+
+  /// No description provided for @walletTopUpAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Top-up amount'**
+  String get walletTopUpAmountLabel;
+
+  /// No description provided for @walletTopUpSourceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay from'**
+  String get walletTopUpSourceLabel;
+
+  /// No description provided for @walletTopUpApplePay.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Pay'**
+  String get walletTopUpApplePay;
+
+  /// No description provided for @walletTopUpCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Top up'**
+  String get walletTopUpCta;
+
+  /// No description provided for @walletSendTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Money'**
+  String get walletSendTitle;
+
+  /// No description provided for @walletSendTabMobile.
+  ///
+  /// In en, this message translates to:
+  /// **'To Mobile'**
+  String get walletSendTabMobile;
+
+  /// No description provided for @walletSendTabWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'To Wallet'**
+  String get walletSendTabWallet;
+
+  /// No description provided for @walletSendTabBank.
+  ///
+  /// In en, this message translates to:
+  /// **'To Bank'**
+  String get walletSendTabBank;
+
+  /// No description provided for @walletSendAmountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get walletSendAmountLabel;
+
+  /// No description provided for @walletSendNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get walletSendNoteLabel;
+
+  /// No description provided for @walletSendNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s this for? (optional)'**
+  String get walletSendNoteHint;
+
+  /// No description provided for @walletSendBankAccountNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Account holder name'**
+  String get walletSendBankAccountNameLabel;
+
+  /// No description provided for @walletSendBankAccountNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter account holder name'**
+  String get walletSendBankAccountNameHint;
+
+  /// No description provided for @walletSendBankIbanLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'IBAN'**
+  String get walletSendBankIbanLabel;
+
+  /// No description provided for @walletSendBankIbanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter IBAN'**
+  String get walletSendBankIbanHint;
+
+  /// No description provided for @walletSendCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get walletSendCta;
+
+  /// No description provided for @walletRequestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Money'**
+  String get walletRequestTitle;
+
+  /// No description provided for @walletRequestPayerPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a contact'**
+  String get walletRequestPayerPlaceholder;
+
+  /// No description provided for @walletRequestNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get walletRequestNoteLabel;
+
+  /// No description provided for @walletRequestNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s this for? (optional)'**
+  String get walletRequestNoteHint;
+
+  /// No description provided for @walletRequestSendCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get walletRequestSendCta;
+
+  /// No description provided for @walletRequestPendingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending requests'**
+  String get walletRequestPendingTitle;
+
+  /// No description provided for @walletRequestEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get walletRequestEmptyTitle;
+
+  /// No description provided for @walletRequestEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests you send or receive will show up here.'**
+  String get walletRequestEmptyBody;
+
+  /// No description provided for @walletRequestAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get walletRequestAccept;
+
+  /// No description provided for @walletRequestDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get walletRequestDecline;
+
+  /// No description provided for @walletRequestStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get walletRequestStatusPending;
+
+  /// No description provided for @walletRequestStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get walletRequestStatusAccepted;
+
+  /// No description provided for @walletRequestStatusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get walletRequestStatusDeclined;
+
+  /// No description provided for @scanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan & Pay'**
+  String get scanTitle;
+
+  /// No description provided for @scanCameraCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan a QR code'**
+  String get scanCameraCta;
+
+  /// No description provided for @scanManualLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Or enter a merchant code'**
+  String get scanManualLabel;
+
+  /// No description provided for @scanManualHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter merchant code'**
+  String get scanManualHint;
+
+  /// No description provided for @scanManualCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Look up'**
+  String get scanManualCta;
+
+  /// No description provided for @scanCancelCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get scanCancelCamera;
+
+  /// No description provided for @scanPayCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get scanPayCta;
+
+  /// No description provided for @scanTryAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another code'**
+  String get scanTryAnother;
+
+  /// No description provided for @scanUnknownMerchantName.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown merchant'**
+  String get scanUnknownMerchantName;
+
+  /// No description provided for @walletQrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My QR'**
+  String get walletQrTitle;
+
+  /// No description provided for @walletQrSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan to pay or send money to me'**
+  String get walletQrSubtitle;
+
+  /// No description provided for @walletQrShareCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get walletQrShareCta;
+
+  /// No description provided for @walletQrShareCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code link copied'**
+  String get walletQrShareCopied;
 }
 
 class _AppLocalizationsDelegate

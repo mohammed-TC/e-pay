@@ -16,7 +16,6 @@ import '../../../core/widgets/np_empty_state.dart';
 import '../../../core/widgets/np_error_state.dart';
 import '../../../core/widgets/np_list_tile.dart';
 import '../../../core/widgets/np_scaffold.dart';
-import '../../../core/widgets/np_segmented_tabs.dart';
 import '../../../core/widgets/np_shimmer.dart';
 import '../providers/history_filter_provider.dart';
 import '../providers/transactions_provider.dart';
@@ -86,7 +85,11 @@ class HistoryScreen extends ConsumerWidget {
   }
 }
 
-/// J1 type-category segmented row — wired to [HistoryFilter.setCategory].
+/// J1 type-category filter row — wired to [HistoryFilter.setCategory].
+/// Horizontally-scrolling [NPChip] row rather than a fixed-width segmented
+/// control: 6 categories with icon+label never fit one line on a phone
+/// viewport (esp. with longer AR strings), so a scoped-width control would
+/// either truncate labels or overflow — a scroll row has no such ceiling.
 class _CategoryFilterRow extends StatelessWidget {
   const _CategoryFilterRow({required this.filter, required this.onChanged});
 
@@ -96,36 +99,38 @@ class _CategoryFilterRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final segments = <NPSegment>[
-      (label: l10n.historyFilterAll, icon: Icons.apps),
-      (
-        label: l10n.historyFilterBills,
-        icon: _categoryIcons[HistoryTypeCategory.bills],
-      ),
-      (
-        label: l10n.historyFilterRecharge,
-        icon: _categoryIcons[HistoryTypeCategory.recharge],
-      ),
-      (
-        label: l10n.historyFilterGovernment,
-        icon: _categoryIcons[HistoryTypeCategory.government],
-      ),
-      (
-        label: l10n.historyFilterWallet,
-        icon: _categoryIcons[HistoryTypeCategory.wallet],
-      ),
-      (
-        label: l10n.historyFilterRemittance,
-        icon: _categoryIcons[HistoryTypeCategory.remittance],
-      ),
-    ];
+    final selectedIndex = selectedHistoryCategoryIndex(filter);
+    final labels = <HistoryTypeCategory, String>{
+      HistoryTypeCategory.bills: l10n.historyFilterBills,
+      HistoryTypeCategory.recharge: l10n.historyFilterRecharge,
+      HistoryTypeCategory.government: l10n.historyFilterGovernment,
+      HistoryTypeCategory.wallet: l10n.historyFilterWallet,
+      HistoryTypeCategory.remittance: l10n.historyFilterRemittance,
+    };
+    const categories = HistoryTypeCategory.values;
 
-    return NPSegmentedTabs(
-      segments: segments,
-      selectedIndex: selectedHistoryCategoryIndex(filter),
-      onChanged: (index) {
-        onChanged(index == 0 ? null : HistoryTypeCategory.values[index - 1]);
-      },
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
+      child: Row(
+        children: [
+          NPChip(
+            label: l10n.historyFilterAll,
+            icon: Icons.apps,
+            selected: selectedIndex == 0,
+            onTap: () => onChanged(null),
+          ),
+          for (var i = 0; i < categories.length; i++) ...[
+            const SizedBox(width: AppSpacing.sm),
+            NPChip(
+              label: labels[categories[i]]!,
+              icon: _categoryIcons[categories[i]],
+              selected: selectedIndex == i + 1,
+              onTap: () => onChanged(categories[i]),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }
@@ -203,6 +208,16 @@ class _HistoryBody extends StatelessWidget {
       );
     }
     return ListView.builder(
+      // `end` reserves the NPCard hard shadow's own offset width (design.md
+      // §4 offset 4,4) — ListView's default Clip.hardEdge chops it off flush
+      // against the viewport's cross-axis edge otherwise, same fix as
+      // _QuickActionsRow/_ServicesGrid in home_screen.dart. `bottom` clears
+      // the AppShell's centerDocked scan FAB (Scaffold doesn't reserve space
+      // for it) — matches home_screen.dart's B4 shell notes.
+      padding: const EdgeInsetsDirectional.only(
+        end: AppSpacing.xs,
+        bottom: AppSpacing.xxxl + AppSpacing.xxl,
+      ),
       itemCount: grouped.length,
       itemBuilder: (context, index) => _MonthSection(group: grouped[index]),
     );
@@ -261,6 +276,9 @@ class _ShimmerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: const EdgeInsets.only(
+        bottom: AppSpacing.xxxl + AppSpacing.xxl,
+      ),
       itemCount: 6,
       separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.sm),
       itemBuilder: (context, _) => const _ShimmerRow(),

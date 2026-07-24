@@ -19,8 +19,11 @@ import 'np_card.dart';
 ///   [balance] over 600ms with [Curves.easeOutCubic].
 /// - Hide/show: 3D flip (rotateX) between the animated number and a masked
 ///   value over ~400ms.
-/// - Respects `MediaQuery.disableAnimations` — both animations jump straight
-///   to their end state when reduced motion is requested.
+/// - Ambient background: faint emerald glow blobs drift slowly behind the
+///   content plus a hairline glass-edge highlight — design.md §10's single
+///   sheen exception for this card, kept subtle (never full-emerald).
+/// - Respects `MediaQuery.disableAnimations` — all three animations jump
+///   straight to their end state when reduced motion is requested.
 class NPBalanceCard extends StatefulWidget {
   const NPBalanceCard({
     required this.balance,
@@ -123,55 +126,227 @@ class _NPBalanceCardState extends State<NPBalanceCard>
     return NPCard(
       interactive: false,
       color: colors.inkPrimary,
-      padding: const EdgeInsets.all(AppSpacing.xl),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _LabelChip(
-                label: widget.label,
-                colors: colors,
-                textTheme: textTheme,
+      borderRadius: AppRadius.card,
+      padding: EdgeInsets.zero,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppRadius.card),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: _GlassAmbientBackground(
+                base: colors.inkPrimary,
+                accent: colors.accentPrimary,
               ),
-              _EyeToggle(hidden: widget.hidden, onTap: widget.onToggleHidden),
-            ],
-          ),
-          const SizedBox(height: AppSpacing.lg),
-          AnimatedBuilder(
-            animation: Listenable.merge([_countCurve, _flipController]),
-            builder: (context, _) {
-              final reduceMotion = MediaQuery.of(context).disableAnimations;
-              final flipT = reduceMotion ? 1.0 : _flipController.value;
-              final showingOld = flipT < 0.5;
-              final displayHidden = showingOld
-                  ? _flipFromHidden
-                  : widget.hidden;
-              final angle = reduceMotion
-                  ? 0.0
-                  : (showingOld ? flipT * math.pi : (flipT - 1) * math.pi);
-
-              return Transform(
-                alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..rotateX(angle),
-                child: displayHidden
-                    ? _MaskedAmount(
-                        currencyCode: widget.balance.currencyCode,
-                        textTheme: textTheme,
-                      )
-                    : _AnimatedAmount(
-                        value: _amountTween.evaluate(_countCurve),
-                        currencyCode: widget.balance.currencyCode,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(AppSpacing.xl),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _LabelChip(
+                        label: widget.label,
+                        colors: colors,
                         textTheme: textTheme,
                       ),
-              );
-            },
-          ),
-        ],
+                      _EyeToggle(
+                        hidden: widget.hidden,
+                        onTap: widget.onToggleHidden,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+                  AnimatedBuilder(
+                    animation: Listenable.merge([
+                      _countCurve,
+                      _flipController,
+                    ]),
+                    builder: (context, _) {
+                      final reduceMotion = MediaQuery.of(
+                        context,
+                      ).disableAnimations;
+                      final flipT = reduceMotion ? 1.0 : _flipController.value;
+                      final showingOld = flipT < 0.5;
+                      final displayHidden = showingOld
+                          ? _flipFromHidden
+                          : widget.hidden;
+                      final angle = reduceMotion
+                          ? 0.0
+                          : (showingOld
+                                ? flipT * math.pi
+                                : (flipT - 1) * math.pi);
+
+                      return Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()
+                          ..setEntry(3, 2, 0.001)
+                          ..rotateX(angle),
+                        child: displayHidden
+                            ? _MaskedAmount(
+                                currencyCode: widget.balance.currencyCode,
+                                textTheme: textTheme,
+                              )
+                            : _AnimatedAmount(
+                                value: _amountTween.evaluate(_countCurve),
+                                currencyCode: widget.balance.currencyCode,
+                                textTheme: textTheme,
+                              ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Ambient glass shade behind the balance card's content: two soft emerald
+/// glow blobs drift on a slow reverse loop, layered with a diagonal glass
+/// sheen and a hairline edge highlight. Deliberately low-opacity — this is
+/// design.md §10's one permitted sheen exception, not a themeable effect.
+class _GlassAmbientBackground extends StatefulWidget {
+  const _GlassAmbientBackground({required this.base, required this.accent});
+
+  final Color base;
+  final Color accent;
+
+  @override
+  State<_GlassAmbientBackground> createState() =>
+      _GlassAmbientBackgroundState();
+}
+
+class _GlassAmbientBackgroundState extends State<_GlassAmbientBackground>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _drift;
+  bool _didInit = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _drift = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 9),
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_didInit) return;
+    _didInit = true;
+    if (MediaQuery.of(context).disableAnimations) {
+      _drift.value = 0.5;
+    } else {
+      unawaited(_drift.repeat(reverse: true));
+    }
+  }
+
+  @override
+  void dispose() {
+    _drift.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _drift,
+      builder: (context, _) {
+        final t = Curves.easeInOut.transform(_drift.value);
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            ColoredBox(color: widget.base),
+            Align(
+              alignment: Alignment.lerp(
+                const Alignment(-1.3, -1.15),
+                const Alignment(-0.55, -0.7),
+                t,
+              )!,
+              child: _GlowBlob(color: widget.accent, size: 200, opacity: 0.16),
+            ),
+            Align(
+              alignment: Alignment.lerp(
+                const Alignment(1.4, 1.3),
+                const Alignment(0.7, 0.85),
+                t,
+              )!,
+              child: _GlowBlob(color: widget.accent, size: 260, opacity: 0.10),
+            ),
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.lerp(
+                      Alignment.topLeft,
+                      const Alignment(-0.4, -1),
+                      t,
+                    )!,
+                    end: Alignment.lerp(
+                      const Alignment(0.4, 1),
+                      Alignment.bottomRight,
+                      t,
+                    )!,
+                    colors: [
+                      Colors.transparent,
+                      Colors.white.withValues(alpha: 0.05),
+                      Colors.transparent,
+                    ],
+                    stops: const [0.35, 0.5, 0.65],
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.08),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Single soft-edged radial glow — no [ImageFilter] blur, the gradient
+/// falloff alone reads as diffuse light at this size/opacity and is far
+/// cheaper to animate every frame.
+class _GlowBlob extends StatelessWidget {
+  const _GlowBlob({
+    required this.color,
+    required this.size,
+    required this.opacity,
+  });
+
+  final Color color;
+  final double size;
+  final double opacity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: RadialGradient(
+          colors: [
+            color.withValues(alpha: opacity),
+            color.withValues(alpha: 0),
+          ],
+        ),
       ),
     );
   }
@@ -227,7 +402,9 @@ class _EyeToggle extends StatelessWidget {
         onTap();
       },
       child: Padding(
-        padding: const EdgeInsets.all(AppSpacing.xs),
+        // md (12) + icon (20) = 44px tap target — WCAG 2.5.5 minimum.
+        // Was xs (4), a 28px target.
+        padding: const EdgeInsets.all(AppSpacing.md),
         child: Icon(
           hidden ? Icons.visibility_off_outlined : Icons.visibility_outlined,
           color: Colors.white,

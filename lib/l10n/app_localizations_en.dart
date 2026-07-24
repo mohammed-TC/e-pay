@@ -528,4 +528,156 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get txnDetailRedownloadReceipt => 'Re-download receipt';
+
+  @override
+  String get walletHomeTitle => 'Wallet';
+
+  @override
+  String get walletHomeBalanceLabel => 'Wallet balance';
+
+  @override
+  String get walletActionMyQr => 'My QR';
+
+  @override
+  String get walletMiniStatementTitle => 'Mini statement';
+
+  @override
+  String get walletViewAll => 'View all';
+
+  @override
+  String get walletStatementEmptyTitle => 'No transactions yet';
+
+  @override
+  String get walletStatementEmptyBody =>
+      'Your wallet activity will show up here.';
+
+  @override
+  String get walletTopUpTitle => 'Top-up';
+
+  @override
+  String get walletTopUpAmountLabel => 'Top-up amount';
+
+  @override
+  String get walletTopUpSourceLabel => 'Pay from';
+
+  @override
+  String get walletTopUpApplePay => 'Apple Pay';
+
+  @override
+  String get walletTopUpCta => 'Top up';
+
+  @override
+  String get walletSendTitle => 'Send Money';
+
+  @override
+  String get walletSendTabMobile => 'To Mobile';
+
+  @override
+  String get walletSendTabWallet => 'To Wallet';
+
+  @override
+  String get walletSendTabBank => 'To Bank';
+
+  @override
+  String get walletSendAmountLabel => 'Amount';
+
+  @override
+  String get walletSendNoteLabel => 'Note';
+
+  @override
+  String get walletSendNoteHint => 'What\'s this for? (optional)';
+
+  @override
+  String get walletSendBankAccountNameLabel => 'Account holder name';
+
+  @override
+  String get walletSendBankAccountNameHint => 'Enter account holder name';
+
+  @override
+  String get walletSendBankIbanLabel => 'IBAN';
+
+  @override
+  String get walletSendBankIbanHint => 'Enter IBAN';
+
+  @override
+  String get walletSendCta => 'Send';
+
+  @override
+  String get walletRequestTitle => 'Request Money';
+
+  @override
+  String get walletRequestPayerPlaceholder => 'Select a contact';
+
+  @override
+  String get walletRequestNoteLabel => 'Note';
+
+  @override
+  String get walletRequestNoteHint => 'What\'s this for? (optional)';
+
+  @override
+  String get walletRequestSendCta => 'Send request';
+
+  @override
+  String get walletRequestPendingTitle => 'Pending requests';
+
+  @override
+  String get walletRequestEmptyTitle => 'No requests yet';
+
+  @override
+  String get walletRequestEmptyBody =>
+      'Requests you send or receive will show up here.';
+
+  @override
+  String get walletRequestAccept => 'Accept';
+
+  @override
+  String get walletRequestDecline => 'Decline';
+
+  @override
+  String get walletRequestStatusPending => 'Pending';
+
+  @override
+  String get walletRequestStatusAccepted => 'Accepted';
+
+  @override
+  String get walletRequestStatusDeclined => 'Declined';
+
+  @override
+  String get scanTitle => 'Scan & Pay';
+
+  @override
+  String get scanCameraCta => 'Scan a QR code';
+
+  @override
+  String get scanManualLabel => 'Or enter a merchant code';
+
+  @override
+  String get scanManualHint => 'Enter merchant code';
+
+  @override
+  String get scanManualCta => 'Look up';
+
+  @override
+  String get scanCancelCamera => 'Cancel';
+
+  @override
+  String get scanPayCta => 'Pay';
+
+  @override
+  String get scanTryAnother => 'Try another code';
+
+  @override
+  String get scanUnknownMerchantName => 'Unknown merchant';
+
+  @override
+  String get walletQrTitle => 'My QR';
+
+  @override
+  String get walletQrSubtitle => 'Scan to pay or send money to me';
+
+  @override
+  String get walletQrShareCta => 'Share';
+
+  @override
+  String get walletQrShareCopied => 'QR code link copied';
 }

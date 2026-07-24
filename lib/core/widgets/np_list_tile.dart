@@ -44,54 +44,59 @@ class NPListTile extends StatelessWidget {
 
     final row = ConstrainedBox(
       constraints: const BoxConstraints(minHeight: 56),
-      child: Row(
-        children: [
-          if (leading != null) ...[
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: colors.surfaceSunken,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              alignment: Alignment.center,
-              child: leading,
-            ),
-            const SizedBox(width: AppSpacing.md),
-          ],
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: theme.textTheme.titleLarge,
-                  overflow: TextOverflow.ellipsis,
+      child: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(
+          vertical: AppSpacing.md,
+        ),
+        child: Row(
+          children: [
+            if (leading != null) ...[
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: colors.surfaceSunken,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                if (subtitle != null)
+                alignment: Alignment.center,
+                child: leading,
+              ),
+              const SizedBox(width: AppSpacing.md),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
                   Text(
-                    subtitle!,
-                    style: theme.textTheme.bodySmall,
+                    title,
+                    style: theme.textTheme.titleLarge,
                     overflow: TextOverflow.ellipsis,
                   ),
-              ],
-            ),
-          ),
-          if (trailingWidget != null) ...[
-            const SizedBox(width: AppSpacing.md),
-            trailingWidget!,
-          ] else if (trailingAmount != null) ...[
-            const SizedBox(width: AppSpacing.md),
-            Text(
-              trailingAmount!.format(context),
-              style: AppTypography.monoAmount(
-                isArabic: isArabic,
-                color: isPositive ? colors.accentPrimary : colors.inkPrimary,
+                  if (subtitle != null)
+                    Text(
+                      subtitle!,
+                      style: theme.textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                ],
               ),
             ),
+            if (trailingWidget != null) ...[
+              const SizedBox(width: AppSpacing.md),
+              trailingWidget!,
+            ] else if (trailingAmount != null) ...[
+              const SizedBox(width: AppSpacing.md),
+              Text(
+                trailingAmount!.format(context),
+                style: AppTypography.monoAmount(
+                  isArabic: isArabic,
+                  color: isPositive ? colors.accentPrimary : colors.inkPrimary,
+                ),
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
 

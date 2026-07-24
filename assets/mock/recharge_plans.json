@@ -1,0 +1,11 @@
+[
+  { "id": "rp1", "billerId": "b5", "label": "5 OMR Top-up", "description": "1GB data + 100 min", "price": { "minorUnits": 5000 }, "isPopular": false },
+  { "id": "rp2", "billerId": "b5", "label": "10 OMR Bundle", "description": "5GB data + 300 min", "price": { "minorUnits": 10000 }, "isPopular": true },
+  { "id": "rp3", "billerId": "b5", "label": "20 OMR Bundle", "description": "15GB data + unlimited min", "price": { "minorUnits": 20000 }, "isPopular": false },
+  { "id": "rp4", "billerId": "b6", "label": "5 OMR Top-up", "description": "1.5GB data + 100 min", "price": { "minorUnits": 5000 }, "isPopular": false },
+  { "id": "rp5", "billerId": "b6", "label": "10 OMR Bundle", "description": "6GB data + 300 min", "price": { "minorUnits": 10000 }, "isPopular": true },
+  { "id": "rp6", "billerId": "b6", "label": "25 OMR Bundle", "description": "20GB data + unlimited min", "price": { "minorUnits": 25000 }, "isPopular": false },
+  { "id": "rp7", "billerId": "b7", "label": "5 OMR Top-up", "description": "1GB data + 50 min", "price": { "minorUnits": 5000 }, "isPopular": false },
+  { "id": "rp8", "billerId": "b7", "label": "15 OMR Bundle", "description": "10GB data + 200 min", "price": { "minorUnits": 15000 }, "isPopular": true },
+  { "id": "rp9", "billerId": "b7", "label": "30 OMR Bundle", "description": "25GB data + unlimited min", "price": { "minorUnits": 30000 }, "isPopular": false }
+]

@@ -19,6 +19,12 @@ import '../../features/onboarding/screens/splash_screen.dart';
 import '../../features/payment/models/payment_request.dart';
 import '../../features/payment/screens/payment_confirm_screen.dart';
 import '../../features/payment/screens/payment_receipt_screen.dart';
+import '../../features/wallet/screens/my_qr_screen.dart';
+import '../../features/wallet/screens/request_money_screen.dart';
+import '../../features/wallet/screens/scan_pay_screen.dart';
+import '../../features/wallet/screens/send_money_screen.dart';
+import '../../features/wallet/screens/wallet_home_screen.dart';
+import '../../features/wallet/screens/wallet_top_up_screen.dart';
 import 'routes.dart';
 
 /// Dev-only route for the Phase 2 widget gallery — not part of the product
@@ -90,6 +96,30 @@ List<RouteBase> get appRoutes => [
             TransactionDetailScreen(txn: state.extra! as Txn),
       ),
       GoRoute(
+        path: Routes.scan,
+        builder: (context, state) => const ScanPayScreen(),
+      ),
+      GoRoute(
+        path: Routes.wallet,
+        builder: (context, state) => const WalletHomeScreen(),
+      ),
+      GoRoute(
+        path: Routes.walletTopUp,
+        builder: (context, state) => const WalletTopUpScreen(),
+      ),
+      GoRoute(
+        path: Routes.walletSend,
+        builder: (context, state) => const SendMoneyScreen(),
+      ),
+      GoRoute(
+        path: Routes.walletRequest,
+        builder: (context, state) => const RequestMoneyScreen(),
+      ),
+      GoRoute(
+        path: Routes.walletQr,
+        builder: (context, state) => const MyQrScreen(),
+      ),
+      GoRoute(
         path: _devGalleryRoute,
         builder: (context, state) => const WidgetGalleryScreen(),
       ),
@@ -146,12 +176,6 @@ List<RouteBase> get appRoutes => [
 ];
 
 const _placeholderRoutes = [
-  Routes.scan,
-  Routes.wallet,
-  Routes.walletTopUp,
-  Routes.walletSend,
-  Routes.walletRequest,
-  Routes.walletQr,
   Routes.remit,
   Routes.remitBeneficiaries,
   Routes.remitAddBeneficiary,
