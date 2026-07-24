@@ -239,6 +239,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Photo upload isn\'t available in this demo';
 
   @override
+  String get profileSetupAvatarUploadLabel => 'Add profile photo';
+
+  @override
   String get profileSetupNameLabel => 'Full name';
 
   @override

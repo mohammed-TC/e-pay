@@ -84,6 +84,7 @@
   "profileSetupTitle": "Set up your profile",
   "profileSetupSubtitle": "Tell us a bit about yourself",
   "profileSetupAvatarDemoMessage": "Photo upload isn't available in this demo",
+  "profileSetupAvatarUploadLabel": "Add profile photo",
   "profileSetupNameLabel": "Full name",
   "profileSetupNameHint": "e.g. Ahmed Al Balushi",
   "profileSetupNameError": "Enter your full name",

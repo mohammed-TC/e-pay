@@ -548,6 +548,12 @@ abstract class AppLocalizations {
   /// **'Photo upload isn\'t available in this demo'**
   String get profileSetupAvatarDemoMessage;
 
+  /// No description provided for @profileSetupAvatarUploadLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Add profile photo'**
+  String get profileSetupAvatarUploadLabel;
+
   /// No description provided for @profileSetupNameLabel.
   ///
   /// In en, this message translates to:

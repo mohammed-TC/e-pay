@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../app/theme/app_colors.dart';
 import '../../app/theme/app_spacing.dart';
 
 /// architecture.md §5 `NPScaffold` — themed scaffold with safe-area and
@@ -27,9 +26,12 @@ class NPScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
-      backgroundColor: backgroundColor ?? colors.surfacePage,
+      // Defaults transparent, not `surfacePage`: NPBackground (behind
+      // every routed screen except Splash, via app_router.dart's
+      // ShellRoute) already paints the page fill + dot grid. Callers can
+      // still force an explicit opaque `backgroundColor` when needed.
+      backgroundColor: backgroundColor ?? Colors.transparent,
       appBar: appBar,
       floatingActionButton: floatingActionButton,
       bottomNavigationBar: bottomNavigationBar,

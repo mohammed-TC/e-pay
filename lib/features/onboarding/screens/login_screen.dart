@@ -46,40 +46,81 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>()!;
     final textTheme = Theme.of(context).textTheme;
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
+    final keyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
+    final motionDuration = reduceMotion
+        ? Duration.zero
+        : const Duration(milliseconds: 240);
 
     return NPScaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: AppSpacing.xxxl),
-          Text(context.l10n.loginTitle, style: textTheme.displayMedium),
-          const SizedBox(height: AppSpacing.sm),
-          Text(
-            context.l10n.loginSubtitle,
-            style: textTheme.bodyLarge?.copyWith(color: colors.inkSecondary),
-          ),
-          const SizedBox(height: AppSpacing.xxl),
-          Text(context.l10n.loginMobileLabel, style: textTheme.labelLarge),
-          const SizedBox(height: AppSpacing.xs),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const _CountryCodeChip(),
-              const SizedBox(width: AppSpacing.sm),
-              Expanded(
-                child: NPTextField(
-                  hint: context.l10n.loginMobileHint,
-                  controller: _controller,
-                  keyboardType: TextInputType.phone,
-                  errorText: _error,
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: AppSpacing.xxxl),
+            AnimatedSize(
+              duration: motionDuration,
+              curve: Curves.easeOutCubic,
+              alignment: AlignmentDirectional.bottomStart,
+              child: SizedBox(
+                height: keyboardOpen ? 0 : 56 + AppSpacing.lg,
+                child: AnimatedOpacity(
+                  duration: motionDuration,
+                  curve: Curves.easeOutCubic,
+                  opacity: keyboardOpen ? 0 : 1,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 56,
+                    height: 56,
+                    alignment: AlignmentDirectional.topStart,
+                    excludeFromSemantics: true,
+                  ),
                 ),
               ),
-            ],
-          ),
-          const Spacer(),
-          NPButton(label: context.l10n.loginContinue, onPressed: _submit),
-          const SizedBox(height: AppSpacing.lg),
-        ],
+            ),
+            Text(context.l10n.loginTitle, style: textTheme.displayMedium),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              context.l10n.loginSubtitle,
+              style: textTheme.bodyLarge?.copyWith(
+                color: colors.inkSecondary,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.xxl),
+            MergeSemantics(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.l10n.loginMobileLabel,
+                    style: textTheme.labelLarge,
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const _CountryCodeChip(),
+                      const SizedBox(width: AppSpacing.sm),
+                      Expanded(
+                        child: NPTextField(
+                          hint: context.l10n.loginMobileHint,
+                          controller: _controller,
+                          keyboardType: TextInputType.phone,
+                          errorText: _error,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: AppSpacing.xxxl),
+            NPButton(label: context.l10n.loginContinue, onPressed: _submit),
+            const SizedBox(height: AppSpacing.xxl),
+          ],
+        ),
       ),
     );
   }

@@ -88,39 +88,43 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     final textTheme = Theme.of(context).textTheme;
 
     return NPScaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: AppSpacing.xxxl),
-          Text(context.l10n.otpTitle, style: textTheme.displayMedium),
-          const SizedBox(height: AppSpacing.sm),
-          Text(
-            '${context.l10n.otpSentToPrefix} $_maskedMobile',
-            style: textTheme.bodyLarge?.copyWith(color: colors.inkSecondary),
-          ),
-          const SizedBox(height: AppSpacing.xxl),
-          IgnorePointer(
-            ignoring: _verifying,
-            child: Opacity(
-              opacity: _verifying ? 0.5 : 1,
-              child: NPOtpField(
-                key: ValueKey(_fieldResetKey),
-                onCompleted: _handleSubmit,
-              ),
-            ),
-          ),
-          if (_error != null) ...[
-            const SizedBox(height: AppSpacing.md),
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: AppSpacing.xxxl),
+            Text(context.l10n.otpTitle, style: textTheme.displayMedium),
+            const SizedBox(height: AppSpacing.sm),
             Text(
-              _error!,
-              style: textTheme.bodySmall?.copyWith(
-                color: colors.semanticDanger,
+              '${context.l10n.otpSentToPrefix} $_maskedMobile',
+              style: textTheme.bodyLarge?.copyWith(color: colors.inkSecondary),
+            ),
+            const SizedBox(height: AppSpacing.xxl),
+            IgnorePointer(
+              ignoring: _verifying,
+              child: Opacity(
+                opacity: _verifying ? 0.5 : 1,
+                child: NPOtpField(
+                  key: ValueKey(_fieldResetKey),
+                  onCompleted: _handleSubmit,
+                ),
               ),
             ),
+            if (_error != null) ...[
+              const SizedBox(height: AppSpacing.md),
+              Text(
+                _error!,
+                style: textTheme.bodySmall?.copyWith(
+                  color: colors.semanticDanger,
+                ),
+              ),
+            ],
+            const SizedBox(height: AppSpacing.xl),
+            _ResendRow(secondsLeft: _secondsLeft, onResend: _startTimer),
           ],
-          const SizedBox(height: AppSpacing.xl),
-          _ResendRow(secondsLeft: _secondsLeft, onResend: _startTimer),
-        ],
+        ),
       ),
     );
   }
@@ -142,7 +146,7 @@ class _ResendRow extends StatelessWidget {
       return Text(
         '${context.l10n.otpResendCountdownLabel} '
         '$secondsLeft${context.l10n.otpResendSecondsSuffix}',
-        style: textTheme.bodySmall?.copyWith(color: colors.inkTertiary),
+        style: textTheme.bodySmall?.copyWith(color: colors.inkSecondary),
       );
     }
     return TextButton(

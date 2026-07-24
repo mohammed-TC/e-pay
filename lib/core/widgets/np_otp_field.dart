@@ -91,73 +91,148 @@ class _NPOtpFieldState extends State<NPOtpField> {
       color: colors.inkPrimary,
     ).copyWith(fontSize: 20, fontWeight: FontWeight.w700);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        for (var i = 0; i < widget.length; i++)
-          _OtpBox(
-            controller: _controllers[i],
-            focusNode: _focusNodes[i],
-            hasValue: _controllers[i].text.isNotEmpty,
-            reduceMotion: reduceMotion,
-            textStyle: digitStyle,
-            fillColor: colors.surfaceSunken,
-            onChanged: (value) => _handleChanged(i, value),
-          ),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final idealSize =
+            (constraints.maxWidth - AppSpacing.md * (widget.length - 1)) /
+            widget.length;
+        final boxSize = idealSize.clamp(48.0, 56.0);
+        final totalBoxWidth = boxSize * widget.length;
+        final rawGap =
+            (constraints.maxWidth - totalBoxWidth) / (widget.length - 1);
+        final gap = rawGap.clamp(AppSpacing.sm, AppSpacing.xl);
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var i = 0; i < widget.length; i++) ...[
+              if (i > 0) SizedBox(width: gap),
+              _OtpBox(
+                size: boxSize,
+                controller: _controllers[i],
+                focusNode: _focusNodes[i],
+                hasValue: _controllers[i].text.isNotEmpty,
+                reduceMotion: reduceMotion,
+                textStyle: digitStyle,
+                fillColor: colors.surfaceSunken,
+                borderColor: colors.inkPrimary.withValues(alpha: 0.08),
+                focusColor: colors.accentPrimary,
+                onChanged: (value) => _handleChanged(i, value),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 }
 
-class _OtpBox extends StatelessWidget {
+class _OtpBox extends StatefulWidget {
   const _OtpBox({
+    required this.size,
     required this.controller,
     required this.focusNode,
     required this.hasValue,
     required this.reduceMotion,
     required this.textStyle,
     required this.fillColor,
+    required this.borderColor,
+    required this.focusColor,
     required this.onChanged,
   });
 
+  final double size;
   final TextEditingController controller;
   final FocusNode focusNode;
   final bool hasValue;
   final bool reduceMotion;
   final TextStyle textStyle;
   final Color fillColor;
+  final Color borderColor;
+  final Color focusColor;
   final ValueChanged<String> onChanged;
 
   @override
+  State<_OtpBox> createState() => _OtpBoxState();
+}
+
+class _OtpBoxState extends State<_OtpBox> {
+  @override
+  void initState() {
+    super.initState();
+    widget.focusNode.addListener(_handleFocusChange);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode.removeListener(_handleFocusChange);
+    super.dispose();
+  }
+
+  void _handleFocusChange() => setState(() {});
+
+  @override
   Widget build(BuildContext context) {
+    final isFocused = widget.focusNode.hasFocus;
+    final radius = BorderRadius.circular(AppRadius.input);
     return SizedBox(
-      width: 44,
-      height: 44,
+      width: widget.size,
+      height: widget.size,
       child: AnimatedScale(
-        scale: hasValue ? 1 : 0.85,
-        duration: reduceMotion
+        scale: widget.hasValue ? 1 : 0.85,
+        duration: widget.reduceMotion
             ? Duration.zero
             : const Duration(milliseconds: 150),
         curve: Curves.easeOutBack,
-        child: DecoratedBox(
+        // Fill lives in `decoration` (painted first, behind the field);
+        // the border lives in `foregroundDecoration` (painted last, on top
+        // of the field) so nothing the TextField renders — its own square
+        // hit-test/paint bounds — can notch the rounded corners.
+        child: AnimatedContainer(
+          duration: widget.reduceMotion
+              ? Duration.zero
+              : const Duration(milliseconds: 120),
+          curve: Curves.easeOutCubic,
           decoration: BoxDecoration(
-            color: fillColor,
-            borderRadius: BorderRadius.circular(AppRadius.input),
+            color: widget.fillColor,
+            borderRadius: radius,
           ),
-          child: TextField(
-            controller: controller,
-            focusNode: focusNode,
-            onChanged: onChanged,
-            textAlign: TextAlign.center,
-            maxLength: 1,
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            style: textStyle,
-            decoration: const InputDecoration(
-              counterText: '',
-              border: InputBorder.none,
-              isCollapsed: true,
-              contentPadding: EdgeInsetsDirectional.only(top: AppSpacing.lg),
+          foregroundDecoration: BoxDecoration(
+            borderRadius: radius,
+            border: Border.all(
+              color: isFocused ? widget.focusColor : widget.borderColor,
+              width: isFocused ? 2 : 1,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: radius,
+            child: Center(
+              child: TextField(
+                controller: widget.controller,
+                focusNode: widget.focusNode,
+                onChanged: widget.onChanged,
+                textAlign: TextAlign.center,
+                textAlignVertical: TextAlignVertical.center,
+                maxLength: 1,
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                style: widget.textStyle,
+                cursorColor: widget.focusColor,
+                // Pin the line box to the font size so the caret tracks the
+                // digit's visual height instead of the type scale's 24/18
+                // line-height ratio, which otherwise leaves the caret
+                // floating above the glyph's optical center.
+                strutStyle: StrutStyle(
+                  fontSize: widget.textStyle.fontSize,
+                  height: 1,
+                  forceStrutHeight: true,
+                ),
+                cursorHeight: widget.textStyle.fontSize,
+                decoration: const InputDecoration(
+                  counterText: '',
+                  border: InputBorder.none,
+                  isCollapsed: true,
+                ),
+              ),
             ),
           ),
         ),

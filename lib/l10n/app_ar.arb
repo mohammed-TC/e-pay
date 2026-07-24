@@ -75,6 +75,7 @@
   "profileSetupTitle": "أنشئ ملفك الشخصي",
   "profileSetupSubtitle": "أخبرنا قليلاً عن نفسك",
   "profileSetupAvatarDemoMessage": "تحميل الصور غير متاح في هذا العرض التجريبي",
+  "profileSetupAvatarUploadLabel": "إضافة صورة الملف الشخصي",
   "profileSetupNameLabel": "الاسم الكامل",
   "profileSetupNameHint": "مثال: أحمد البلوشي",
   "profileSetupNameError": "أدخل اسمك الكامل",

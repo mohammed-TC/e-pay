@@ -7,15 +7,23 @@ import 'app_typography.dart';
 /// Builds light/dark [ThemeData] from design.md §2–§4 tokens.
 /// [isArabic] swaps the type scale to IBM Plex Sans Arabic (design.md §3).
 abstract final class AppTheme {
-  static ThemeData light({required bool isArabic}) => _build(AppColors.light, Brightness.light, isArabic);
+  static ThemeData light({required bool isArabic}) =>
+      _build(AppColors.light, Brightness.light, isArabic);
 
-  static ThemeData dark({required bool isArabic}) => _build(AppColors.dark, Brightness.dark, isArabic);
+  static ThemeData dark({required bool isArabic}) =>
+      _build(AppColors.dark, Brightness.dark, isArabic);
 
-  static ThemeData _build(AppColors colors, Brightness brightness, bool isArabic) {
+  static ThemeData _build(
+    AppColors colors,
+    Brightness brightness,
+    bool isArabic,
+  ) {
     final colorScheme = ColorScheme(
       brightness: brightness,
       primary: colors.accentPrimary,
-      onPrimary: brightness == Brightness.light ? Colors.white : colors.inkPrimary,
+      onPrimary: brightness == Brightness.light
+          ? Colors.white
+          : colors.inkPrimary,
       secondary: colors.accentDeep,
       onSecondary: Colors.white,
       error: colors.semanticDanger,
@@ -35,7 +43,12 @@ abstract final class AppTheme {
       useMaterial3: true,
       brightness: brightness,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: colors.surfacePage,
+      // Transparent, not `surfacePage`: NPBackground (behind every routed
+      // screen via app_router.dart's ShellRoute) paints the actual page
+      // fill + dot grid. An opaque Scaffold background here would paint
+      // over it. Splash sits outside that shell and sets its own opaque
+      // background explicitly.
+      scaffoldBackgroundColor: Colors.transparent,
       textTheme: textTheme,
       // NeoPop Plate physics replace Material ripple/elevation everywhere (design.md §10).
       splashFactory: NoSplash.splashFactory,
@@ -44,7 +57,9 @@ abstract final class AppTheme {
       cardTheme: CardThemeData(
         color: colors.surfaceCard,
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.card)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.card),
+        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -55,6 +70,22 @@ abstract final class AppTheme {
         ),
       ),
       dividerColor: colors.inkPrimary.withValues(alpha: 0.08),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: colors.inkPrimary,
+        contentTextStyle: textTheme.bodyMedium?.copyWith(
+          color: colors.surfacePage,
+        ),
+        actionTextColor: colors.accentPrimary,
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.button),
+        ),
+        insetPadding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.gutter,
+          vertical: AppSpacing.lg,
+        ),
+      ),
       extensions: [colors],
     );
   }

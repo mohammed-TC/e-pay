@@ -239,6 +239,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'تحميل الصور غير متاح في هذا العرض التجريبي';
 
   @override
+  String get profileSetupAvatarUploadLabel => 'إضافة صورة الملف الشخصي';
+
+  @override
   String get profileSetupNameLabel => 'الاسم الكامل';
 
   @override

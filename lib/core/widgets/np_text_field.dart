@@ -16,6 +16,8 @@ class NPTextField extends StatefulWidget {
     this.keyboardType,
     this.errorText,
     this.enabled = true,
+    this.textInputAction,
+    this.onSubmitted,
   });
 
   final String? label;
@@ -26,6 +28,8 @@ class NPTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final String? errorText;
   final bool enabled;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onSubmitted;
 
   @override
   State<NPTextField> createState() => _NPTextFieldState();
@@ -82,6 +86,8 @@ class _NPTextFieldState extends State<NPTextField> {
                   obscureText: widget.obscureText,
                   keyboardType: widget.keyboardType,
                   enabled: widget.enabled,
+                  textInputAction: widget.textInputAction,
+                  onSubmitted: widget.onSubmitted,
                   style: textTheme.bodyLarge?.copyWith(
                     color: colors.inkPrimary,
                   ),
@@ -89,7 +95,7 @@ class _NPTextFieldState extends State<NPTextField> {
                   decoration: InputDecoration(
                     hintText: widget.hint,
                     hintStyle: textTheme.bodyLarge?.copyWith(
-                      color: colors.inkTertiary,
+                      color: colors.inkSecondary,
                     ),
                     filled: false,
                     border: InputBorder.none,
@@ -122,13 +128,26 @@ class _NPTextFieldState extends State<NPTextField> {
             ),
           ),
         ),
-        if (hasError) ...[
-          const SizedBox(height: AppSpacing.xs),
-          Text(
-            widget.errorText!,
-            style: textTheme.bodySmall?.copyWith(color: colors.semanticDanger),
-          ),
-        ],
+        AnimatedSize(
+          duration: reduceMotion
+              ? Duration.zero
+              : const Duration(milliseconds: 120),
+          curve: Curves.easeOutCubic,
+          alignment: AlignmentDirectional.topStart,
+          child: hasError
+              ? Padding(
+                  padding: const EdgeInsetsDirectional.only(
+                    top: AppSpacing.xs,
+                  ),
+                  child: Text(
+                    widget.errorText!,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: colors.semanticDanger,
+                    ),
+                  ),
+                )
+              : const SizedBox(width: double.infinity),
+        ),
       ],
     );
   }
