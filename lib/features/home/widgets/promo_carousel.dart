@@ -123,11 +123,11 @@ class _PromoCard extends StatelessWidget {
     final colors = Theme.of(context).extension<AppColors>()!;
     final textTheme = Theme.of(context).textTheme;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
-    final lineColor = colors.inkPrimary.withValues(alpha: 0.10);
+    final lineColor = Colors.white.withValues(alpha: 0.14);
 
     return NPCard(
       interactive: false,
-      color: colors.accentTint,
+      color: colors.accentPrimary,
       padding: EdgeInsets.zero,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -145,7 +145,7 @@ class _PromoCard extends StatelessWidget {
                   painter: _painterFor(
                     item.motif,
                     lineColor: lineColor,
-                    accentColor: colors.accentPrimary,
+                    accentColor: colors.accentTint,
                   ),
                 ),
               ),
@@ -160,15 +160,11 @@ class _PromoCard extends StatelessWidget {
                       width: 44,
                       height: 44,
                       decoration: BoxDecoration(
-                        color: colors.accentPrimary.withValues(alpha: 0.14),
+                        color: Colors.white.withValues(alpha: 0.16),
                         shape: BoxShape.circle,
                       ),
                       alignment: Alignment.center,
-                      child: Icon(
-                        item.icon,
-                        size: 22,
-                        color: colors.accentDeep,
-                      ),
+                      child: Icon(item.icon, size: 22, color: Colors.white),
                     ),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
@@ -181,7 +177,7 @@ class _PromoCard extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.titleLarge?.copyWith(
-                              color: colors.accentDeep,
+                              color: Colors.white,
                             ),
                           ),
                           const SizedBox(height: AppSpacing.xs),
@@ -190,7 +186,7 @@ class _PromoCard extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.bodyMedium?.copyWith(
-                              color: colors.accentDeep,
+                              color: Colors.white.withValues(alpha: 0.85),
                             ),
                           ),
                         ],

@@ -270,7 +270,7 @@ class _GlassAmbientBackgroundState extends State<_GlassAmbientBackground>
                 const Alignment(-0.55, -0.7),
                 t,
               )!,
-              child: _GlowBlob(color: widget.accent, size: 200, opacity: 0.16),
+              child: _GlowBlob(color: widget.accent, size: 200, opacity: 0.26),
             ),
             Align(
               alignment: Alignment.lerp(
@@ -278,7 +278,7 @@ class _GlassAmbientBackgroundState extends State<_GlassAmbientBackground>
                 const Alignment(0.7, 0.85),
                 t,
               )!,
-              child: _GlowBlob(color: widget.accent, size: 260, opacity: 0.10),
+              child: _GlowBlob(color: widget.accent, size: 260, opacity: 0.18),
             ),
             Positioned.fill(
               child: DecoratedBox(
@@ -296,7 +296,7 @@ class _GlassAmbientBackgroundState extends State<_GlassAmbientBackground>
                     )!,
                     colors: [
                       Colors.transparent,
-                      Colors.white.withValues(alpha: 0.05),
+                      Colors.white.withValues(alpha: 0.08),
                       Colors.transparent,
                     ],
                     stops: const [0.35, 0.5, 0.65],
@@ -308,7 +308,7 @@ class _GlassAmbientBackgroundState extends State<_GlassAmbientBackground>
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: widget.accent.withValues(alpha: 0.22),
                   ),
                 ),
               ),
