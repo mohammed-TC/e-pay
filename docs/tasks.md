@@ -76,6 +76,7 @@
 - [ ] Rich cards: bill reminder, wallet summary, rewards, payment shortcut (preview-only, never inline-confirms)
 - [ ] Home entry points: draggable circular blob FAB (wobble + highlight pulse, snap-to-edge) + services-grid tile
 - [ ] `/assistant` route wired; ARB keys (canned replies included) both locales
+- [ ] Proactive follow-up after a chat-originated bill payment: cross-sell nudge (vehicle registration renewal), mock "maybe later" reminder, AutoPay opt-in offer on the paid account — multi-turn yes/no/later dialogue via `PendingOffer` state, no LLM
 
 ## Phase 10 — Polish & Demo Hardening
 - [ ] Motion pass: entrance staggers, pull-to-refresh, tab morphs, reduced-motion fallback

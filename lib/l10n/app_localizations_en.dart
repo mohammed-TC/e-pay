@@ -940,4 +940,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String chatRewardsThresholdLabel(int threshold) {
     return '$threshold points to redeem';
   }
+
+  @override
+  String chatPaymentCompletedAck(String payeeName) {
+    return 'Payment successful. Your $payeeName bill has been paid.';
+  }
+
+  @override
+  String get chatAnythingElsePrompt =>
+      'Is there anything else you\'d like to pay today? Bills, wallet transfers, or rewards?';
+
+  @override
+  String chatVehicleRenewalNudge(String plateNumber, String expiryDate) {
+    return 'I noticed your vehicle registration ($plateNumber) expires on $expiryDate. Renewing now can help you avoid a lapse. Would you like to see the renewal now?';
+  }
+
+  @override
+  String get chatVehicleRenewalReminderSet =>
+      'No problem. I\'ve set a reminder for next week.';
+
+  @override
+  String chatVehicleRenewalOfferAccept(String plateNumber) {
+    return 'Sure — here\'s the renewal for $plateNumber:';
+  }
+
+  @override
+  String chatVehicleRenewalCardTitle(String plateNumber) {
+    return 'Renew registration — $plateNumber';
+  }
+
+  @override
+  String get chatVehicleRenewalCardSubtitle => 'Vehicle registration renewal';
+
+  @override
+  String get chatVehicleRenewalFeeLabel => 'Renewal fee';
+
+  @override
+  String get chatAutoPayPitchIntro =>
+      'Before you go, would you like to enrol in AutoPay for future bills on this account? It helps avoid late payment charges.';
+
+  @override
+  String get chatAutoPayExplain =>
+      'AutoPay automatically pays this bill on the due date using your wallet balance. You stay in control and can cancel anytime. Would you like to enable it?';
+
+  @override
+  String get chatAutoPayEnabled => 'Done! AutoPay is now active.';
+
+  @override
+  String get chatAutoPayDeclined => 'No problem, AutoPay stays off for now.';
 }

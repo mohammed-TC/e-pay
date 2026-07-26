@@ -1879,6 +1879,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{threshold} points to redeem'**
   String chatRewardsThresholdLabel(int threshold);
+
+  /// No description provided for @chatPaymentCompletedAck.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful. Your {payeeName} bill has been paid.'**
+  String chatPaymentCompletedAck(String payeeName);
+
+  /// No description provided for @chatAnythingElsePrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Is there anything else you\'d like to pay today? Bills, wallet transfers, or rewards?'**
+  String get chatAnythingElsePrompt;
+
+  /// No description provided for @chatVehicleRenewalNudge.
+  ///
+  /// In en, this message translates to:
+  /// **'I noticed your vehicle registration ({plateNumber}) expires on {expiryDate}. Renewing now can help you avoid a lapse. Would you like to see the renewal now?'**
+  String chatVehicleRenewalNudge(String plateNumber, String expiryDate);
+
+  /// No description provided for @chatVehicleRenewalReminderSet.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem. I\'ve set a reminder for next week.'**
+  String get chatVehicleRenewalReminderSet;
+
+  /// No description provided for @chatVehicleRenewalOfferAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Sure — here\'s the renewal for {plateNumber}:'**
+  String chatVehicleRenewalOfferAccept(String plateNumber);
+
+  /// No description provided for @chatVehicleRenewalCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Renew registration — {plateNumber}'**
+  String chatVehicleRenewalCardTitle(String plateNumber);
+
+  /// No description provided for @chatVehicleRenewalCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle registration renewal'**
+  String get chatVehicleRenewalCardSubtitle;
+
+  /// No description provided for @chatVehicleRenewalFeeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Renewal fee'**
+  String get chatVehicleRenewalFeeLabel;
+
+  /// No description provided for @chatAutoPayPitchIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Before you go, would you like to enrol in AutoPay for future bills on this account? It helps avoid late payment charges.'**
+  String get chatAutoPayPitchIntro;
+
+  /// No description provided for @chatAutoPayExplain.
+  ///
+  /// In en, this message translates to:
+  /// **'AutoPay automatically pays this bill on the due date using your wallet balance. You stay in control and can cancel anytime. Would you like to enable it?'**
+  String get chatAutoPayExplain;
+
+  /// No description provided for @chatAutoPayEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Done! AutoPay is now active.'**
+  String get chatAutoPayEnabled;
+
+  /// No description provided for @chatAutoPayDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem, AutoPay stays off for now.'**
+  String get chatAutoPayDeclined;
 }
 
 class _AppLocalizationsDelegate

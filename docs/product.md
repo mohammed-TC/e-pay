@@ -169,7 +169,7 @@
 
 | ID | Screen | Requirements |
 |----|--------|--------------|
-| K1 | Assistant Chat ("Ask Emral") | Conversation UI: assistant/user bubbles, quick-reply chips, typing indicator. Rule-based (offline, no LLM/network) intent engine answers from existing mock data: wallet balance, bills due (saved accounts), rewards status, recent transactions. Rich cards (bill reminder, wallet summary, rewards, payment shortcut) render inline. Any pay/send intent builds a `PaymentRequest` and hands off to the shared payment flow (never an inline confirm) — payment-flow.md |
+| K1 | Assistant Chat ("Ask Emral") | Conversation UI: assistant/user bubbles, quick-reply chips, typing indicator. Rule-based (offline, no LLM/network) intent engine answers from existing mock data: wallet balance, bills due (saved accounts), rewards status, recent transactions. Rich cards (bill reminder, wallet summary, rewards, payment shortcut) render inline. Any pay/send intent builds a `PaymentRequest` and hands off to the shared payment flow (never an inline confirm) — payment-flow.md. **Proactive follow-up**: after a successful chat-originated bill payment, the assistant offers one relevant next action — a vehicle registration renewal nudge (from saved vehicle mock data) if expiry is within range, "maybe later" sets a mock reminder (no real backend), and either branch leads into an AutoPay opt-in offer for the account just paid. Resolved via a simple multi-turn yes/no/later dialogue state, not a keyword query — still rule-based, still offline. |
 
 **Entry points:** draggable circular "blob" FAB on Home Dashboard (B1) — see design.md §11 — plus a static tile in the B1 services grid for discoverability.
 

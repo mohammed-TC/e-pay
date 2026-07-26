@@ -13,6 +13,7 @@ _BillerAccount _$BillerAccountFromJson(Map<String, dynamic> json) =>
       accountNumber: json['accountNumber'] as String,
       nickname: json['nickname'] as String,
       savedAt: DateTime.parse(json['savedAt'] as String),
+      autoPayEnabled: json['autoPayEnabled'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$BillerAccountToJson(_BillerAccount instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$BillerAccountToJson(_BillerAccount instance) =>
       'accountNumber': instance.accountNumber,
       'nickname': instance.nickname,
       'savedAt': instance.savedAt.toIso8601String(),
+      'autoPayEnabled': instance.autoPayEnabled,
     };

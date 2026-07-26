@@ -370,5 +370,38 @@
     "placeholders": {
       "threshold": {"type": "int"}
     }
-  }
+  },
+  "chatPaymentCompletedAck": "Payment successful. Your {payeeName} bill has been paid.",
+  "@chatPaymentCompletedAck": {
+    "placeholders": {
+      "payeeName": {"type": "String"}
+    }
+  },
+  "chatAnythingElsePrompt": "Is there anything else you'd like to pay today? Bills, wallet transfers, or rewards?",
+  "chatVehicleRenewalNudge": "I noticed your vehicle registration ({plateNumber}) expires on {expiryDate}. Renewing now can help you avoid a lapse. Would you like to see the renewal now?",
+  "@chatVehicleRenewalNudge": {
+    "placeholders": {
+      "plateNumber": {"type": "String"},
+      "expiryDate": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalReminderSet": "No problem. I've set a reminder for next week.",
+  "chatVehicleRenewalOfferAccept": "Sure — here's the renewal for {plateNumber}:",
+  "@chatVehicleRenewalOfferAccept": {
+    "placeholders": {
+      "plateNumber": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalCardTitle": "Renew registration — {plateNumber}",
+  "@chatVehicleRenewalCardTitle": {
+    "placeholders": {
+      "plateNumber": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalCardSubtitle": "Vehicle registration renewal",
+  "chatVehicleRenewalFeeLabel": "Renewal fee",
+  "chatAutoPayPitchIntro": "Before you go, would you like to enrol in AutoPay for future bills on this account? It helps avoid late payment charges.",
+  "chatAutoPayExplain": "AutoPay automatically pays this bill on the due date using your wallet balance. You stay in control and can cancel anytime. Would you like to enable it?",
+  "chatAutoPayEnabled": "Done! AutoPay is now active.",
+  "chatAutoPayDeclined": "No problem, AutoPay stays off for now."
 }

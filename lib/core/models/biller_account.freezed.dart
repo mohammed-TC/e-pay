@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$BillerAccount {
 
- String get id; String get billerId; String get accountNumber; String get nickname; DateTime get savedAt;
+ String get id; String get billerId; String get accountNumber; String get nickname; DateTime get savedAt; bool get autoPayEnabled;
 /// Create a copy of BillerAccount
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $BillerAccountCopyWith<BillerAccount> get copyWith => _$BillerAccountCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillerAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.billerId, billerId) || other.billerId == billerId)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.savedAt, savedAt) || other.savedAt == savedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BillerAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.billerId, billerId) || other.billerId == billerId)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.savedAt, savedAt) || other.savedAt == savedAt)&&(identical(other.autoPayEnabled, autoPayEnabled) || other.autoPayEnabled == autoPayEnabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,billerId,accountNumber,nickname,savedAt);
+int get hashCode => Object.hash(runtimeType,id,billerId,accountNumber,nickname,savedAt,autoPayEnabled);
 
 @override
 String toString() {
-  return 'BillerAccount(id: $id, billerId: $billerId, accountNumber: $accountNumber, nickname: $nickname, savedAt: $savedAt)';
+  return 'BillerAccount(id: $id, billerId: $billerId, accountNumber: $accountNumber, nickname: $nickname, savedAt: $savedAt, autoPayEnabled: $autoPayEnabled)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $BillerAccountCopyWith<$Res>  {
   factory $BillerAccountCopyWith(BillerAccount value, $Res Function(BillerAccount) _then) = _$BillerAccountCopyWithImpl;
 @useResult
 $Res call({
- String id, String billerId, String accountNumber, String nickname, DateTime savedAt
+ String id, String billerId, String accountNumber, String nickname, DateTime savedAt, bool autoPayEnabled
 });
 
 
@@ -65,14 +65,15 @@ class _$BillerAccountCopyWithImpl<$Res>
 
 /// Create a copy of BillerAccount
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? billerId = null,Object? accountNumber = null,Object? nickname = null,Object? savedAt = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? billerId = null,Object? accountNumber = null,Object? nickname = null,Object? savedAt = null,Object? autoPayEnabled = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,billerId: null == billerId ? _self.billerId : billerId // ignore: cast_nullable_to_non_nullable
 as String,accountNumber: null == accountNumber ? _self.accountNumber : accountNumber // ignore: cast_nullable_to_non_nullable
 as String,nickname: null == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
 as String,savedAt: null == savedAt ? _self.savedAt : savedAt // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as DateTime,autoPayEnabled: null == autoPayEnabled ? _self.autoPayEnabled : autoPayEnabled // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -157,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt,  bool autoPayEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _BillerAccount() when $default != null:
-return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt);case _:
+return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt,_that.autoPayEnabled);case _:
   return orElse();
 
 }
@@ -178,10 +179,10 @@ return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt,  bool autoPayEnabled)  $default,) {final _that = this;
 switch (_that) {
 case _BillerAccount():
-return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt);case _:
+return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt,_that.autoPayEnabled);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +199,10 @@ return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String billerId,  String accountNumber,  String nickname,  DateTime savedAt,  bool autoPayEnabled)?  $default,) {final _that = this;
 switch (_that) {
 case _BillerAccount() when $default != null:
-return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt);case _:
+return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that.savedAt,_that.autoPayEnabled);case _:
   return null;
 
 }
@@ -213,7 +214,7 @@ return $default(_that.id,_that.billerId,_that.accountNumber,_that.nickname,_that
 @JsonSerializable()
 
 class _BillerAccount implements BillerAccount {
-  const _BillerAccount({required this.id, required this.billerId, required this.accountNumber, required this.nickname, required this.savedAt});
+  const _BillerAccount({required this.id, required this.billerId, required this.accountNumber, required this.nickname, required this.savedAt, this.autoPayEnabled = false});
   factory _BillerAccount.fromJson(Map<String, dynamic> json) => _$BillerAccountFromJson(json);
 
 @override final  String id;
@@ -221,6 +222,7 @@ class _BillerAccount implements BillerAccount {
 @override final  String accountNumber;
 @override final  String nickname;
 @override final  DateTime savedAt;
+@override@JsonKey() final  bool autoPayEnabled;
 
 /// Create a copy of BillerAccount
 /// with the given fields replaced by the non-null parameter values.
@@ -235,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillerAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.billerId, billerId) || other.billerId == billerId)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.savedAt, savedAt) || other.savedAt == savedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BillerAccount&&(identical(other.id, id) || other.id == id)&&(identical(other.billerId, billerId) || other.billerId == billerId)&&(identical(other.accountNumber, accountNumber) || other.accountNumber == accountNumber)&&(identical(other.nickname, nickname) || other.nickname == nickname)&&(identical(other.savedAt, savedAt) || other.savedAt == savedAt)&&(identical(other.autoPayEnabled, autoPayEnabled) || other.autoPayEnabled == autoPayEnabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,billerId,accountNumber,nickname,savedAt);
+int get hashCode => Object.hash(runtimeType,id,billerId,accountNumber,nickname,savedAt,autoPayEnabled);
 
 @override
 String toString() {
-  return 'BillerAccount(id: $id, billerId: $billerId, accountNumber: $accountNumber, nickname: $nickname, savedAt: $savedAt)';
+  return 'BillerAccount(id: $id, billerId: $billerId, accountNumber: $accountNumber, nickname: $nickname, savedAt: $savedAt, autoPayEnabled: $autoPayEnabled)';
 }
 
 
@@ -255,7 +257,7 @@ abstract mixin class _$BillerAccountCopyWith<$Res> implements $BillerAccountCopy
   factory _$BillerAccountCopyWith(_BillerAccount value, $Res Function(_BillerAccount) _then) = __$BillerAccountCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String billerId, String accountNumber, String nickname, DateTime savedAt
+ String id, String billerId, String accountNumber, String nickname, DateTime savedAt, bool autoPayEnabled
 });
 
 
@@ -272,14 +274,15 @@ class __$BillerAccountCopyWithImpl<$Res>
 
 /// Create a copy of BillerAccount
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? billerId = null,Object? accountNumber = null,Object? nickname = null,Object? savedAt = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? billerId = null,Object? accountNumber = null,Object? nickname = null,Object? savedAt = null,Object? autoPayEnabled = null,}) {
   return _then(_BillerAccount(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,billerId: null == billerId ? _self.billerId : billerId // ignore: cast_nullable_to_non_nullable
 as String,accountNumber: null == accountNumber ? _self.accountNumber : accountNumber // ignore: cast_nullable_to_non_nullable
 as String,nickname: null == nickname ? _self.nickname : nickname // ignore: cast_nullable_to_non_nullable
 as String,savedAt: null == savedAt ? _self.savedAt : savedAt // ignore: cast_nullable_to_non_nullable
-as DateTime,
+as DateTime,autoPayEnabled: null == autoPayEnabled ? _self.autoPayEnabled : autoPayEnabled // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

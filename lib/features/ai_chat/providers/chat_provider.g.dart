@@ -10,19 +10,28 @@ part of 'chat_provider.dart';
 // ignore_for_file: type=lint, type=warning
 /// "Ask Emral" conversation state — architecture.md §3 `chatProvider`.
 /// Session-only: resets on app restart, same as every other in-memory mock
-/// store (architecture.md §8).
+/// store (architecture.md §8). Also holds the current [PendingOffer]
+/// dialogue context (product.md K1 proactive nudges) — private notifier
+/// fields, not provider state, since nothing outside `send`/
+/// `onPaymentCompleted` needs to watch it.
 
 @ProviderFor(Chat)
 final chatProvider = ChatProvider._();
 
 /// "Ask Emral" conversation state — architecture.md §3 `chatProvider`.
 /// Session-only: resets on app restart, same as every other in-memory mock
-/// store (architecture.md §8).
+/// store (architecture.md §8). Also holds the current [PendingOffer]
+/// dialogue context (product.md K1 proactive nudges) — private notifier
+/// fields, not provider state, since nothing outside `send`/
+/// `onPaymentCompleted` needs to watch it.
 final class ChatProvider
     extends $AsyncNotifierProvider<Chat, List<ChatMessage>> {
   /// "Ask Emral" conversation state — architecture.md §3 `chatProvider`.
   /// Session-only: resets on app restart, same as every other in-memory mock
-  /// store (architecture.md §8).
+  /// store (architecture.md §8). Also holds the current [PendingOffer]
+  /// dialogue context (product.md K1 proactive nudges) — private notifier
+  /// fields, not provider state, since nothing outside `send`/
+  /// `onPaymentCompleted` needs to watch it.
   ChatProvider._()
     : super(
         from: null,
@@ -42,11 +51,14 @@ final class ChatProvider
   Chat create() => Chat();
 }
 
-String _$chatHash() => r'a0e2829f14ca69e2eaeeabc3f734b742179c2cce';
+String _$chatHash() => r'157186f91d9207db3f992dab4abb7702adb880f8';
 
 /// "Ask Emral" conversation state — architecture.md §3 `chatProvider`.
 /// Session-only: resets on app restart, same as every other in-memory mock
-/// store (architecture.md §8).
+/// store (architecture.md §8). Also holds the current [PendingOffer]
+/// dialogue context (product.md K1 proactive nudges) — private notifier
+/// fields, not provider state, since nothing outside `send`/
+/// `onPaymentCompleted` needs to watch it.
 
 abstract class _$Chat extends $AsyncNotifier<List<ChatMessage>> {
   FutureOr<List<ChatMessage>> build();

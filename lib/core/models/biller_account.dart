@@ -12,6 +12,7 @@ abstract class BillerAccount with _$BillerAccount {
     required String accountNumber,
     required String nickname,
     required DateTime savedAt,
+    @Default(false) bool autoPayEnabled,
   }) = _BillerAccount;
 
   factory BillerAccount.fromJson(Map<String, dynamic> json) =>

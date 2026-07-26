@@ -92,6 +92,14 @@ class BillsRepository {
     ];
   }
 
+  Future<void> updateAccount(BillerAccount account) async {
+    final current = await fetchAccounts();
+    _accounts = [
+      for (final existing in current)
+        if (existing.id == account.id) account else existing,
+    ];
+  }
+
   Future<List<RechargePlan>> fetchRechargePlans(String billerId) async {
     await simulateLatency();
     var all = _rechargePlans;

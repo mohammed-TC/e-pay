@@ -42,7 +42,7 @@ final class SavedAccountsProvider
   SavedAccounts create() => SavedAccounts();
 }
 
-String _$savedAccountsHash() => r'8d25205661884cb6fd600166ea3c0bdc4ca601d2';
+String _$savedAccountsHash() => r'25510cc31c7b26bfc714c7905bcb0bb0e949b5cb';
 
 /// Saved biller accounts — product.md E3/E4. `add`/`delete` mutate the
 /// repository's in-memory list then refresh, mirroring `MoneyRequests`

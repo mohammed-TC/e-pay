@@ -350,5 +350,38 @@
     "placeholders": {
       "threshold": {"type": "int"}
     }
-  }
+  },
+  "chatPaymentCompletedAck": "تم الدفع بنجاح. تم دفع فاتورة {payeeName}.",
+  "@chatPaymentCompletedAck": {
+    "placeholders": {
+      "payeeName": {"type": "String"}
+    }
+  },
+  "chatAnythingElsePrompt": "هل هناك شيء آخر تريد دفعه اليوم؟ فواتير، تحويلات محفظة، أو مكافآت؟",
+  "chatVehicleRenewalNudge": "لاحظت أن تسجيل مركبتك ({plateNumber}) ينتهي في {expiryDate}. تجديده الآن يساعدك على تجنب انقطاع التغطية. هل تريد رؤية التجديد الآن؟",
+  "@chatVehicleRenewalNudge": {
+    "placeholders": {
+      "plateNumber": {"type": "String"},
+      "expiryDate": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalReminderSet": "لا مشكلة. لقد قمت بضبط تذكير للأسبوع القادم.",
+  "chatVehicleRenewalOfferAccept": "بالتأكيد — إليك تجديد {plateNumber}:",
+  "@chatVehicleRenewalOfferAccept": {
+    "placeholders": {
+      "plateNumber": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalCardTitle": "تجديد التسجيل — {plateNumber}",
+  "@chatVehicleRenewalCardTitle": {
+    "placeholders": {
+      "plateNumber": {"type": "String"}
+    }
+  },
+  "chatVehicleRenewalCardSubtitle": "تجديد تسجيل المركبة",
+  "chatVehicleRenewalFeeLabel": "رسوم التجديد",
+  "chatAutoPayPitchIntro": "قبل أن تذهب، هل ترغب بالاشتراك في الدفع التلقائي لفواتيرك القادمة على هذا الحساب؟ يساعد ذلك على تجنب رسوم التأخير.",
+  "chatAutoPayExplain": "يقوم الدفع التلقائي بدفع هذه الفاتورة تلقائيًا في تاريخ الاستحقاق باستخدام رصيد محفظتك. تبقى أنت المتحكم ويمكنك الإلغاء في أي وقت. هل تريد تفعيله؟",
+  "chatAutoPayEnabled": "تم! الدفع التلقائي مفعّل الآن.",
+  "chatAutoPayDeclined": "لا مشكلة، سيبقى الدفع التلقائي غير مفعّل حاليًا."
 }

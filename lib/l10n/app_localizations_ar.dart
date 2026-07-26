@@ -936,4 +936,53 @@ class AppLocalizationsAr extends AppLocalizations {
   String chatRewardsThresholdLabel(int threshold) {
     return '$threshold نقطة للاسترداد';
   }
+
+  @override
+  String chatPaymentCompletedAck(String payeeName) {
+    return 'تم الدفع بنجاح. تم دفع فاتورة $payeeName.';
+  }
+
+  @override
+  String get chatAnythingElsePrompt =>
+      'هل هناك شيء آخر تريد دفعه اليوم؟ فواتير، تحويلات محفظة، أو مكافآت؟';
+
+  @override
+  String chatVehicleRenewalNudge(String plateNumber, String expiryDate) {
+    return 'لاحظت أن تسجيل مركبتك ($plateNumber) ينتهي في $expiryDate. تجديده الآن يساعدك على تجنب انقطاع التغطية. هل تريد رؤية التجديد الآن؟';
+  }
+
+  @override
+  String get chatVehicleRenewalReminderSet =>
+      'لا مشكلة. لقد قمت بضبط تذكير للأسبوع القادم.';
+
+  @override
+  String chatVehicleRenewalOfferAccept(String plateNumber) {
+    return 'بالتأكيد — إليك تجديد $plateNumber:';
+  }
+
+  @override
+  String chatVehicleRenewalCardTitle(String plateNumber) {
+    return 'تجديد التسجيل — $plateNumber';
+  }
+
+  @override
+  String get chatVehicleRenewalCardSubtitle => 'تجديد تسجيل المركبة';
+
+  @override
+  String get chatVehicleRenewalFeeLabel => 'رسوم التجديد';
+
+  @override
+  String get chatAutoPayPitchIntro =>
+      'قبل أن تذهب، هل ترغب بالاشتراك في الدفع التلقائي لفواتيرك القادمة على هذا الحساب؟ يساعد ذلك على تجنب رسوم التأخير.';
+
+  @override
+  String get chatAutoPayExplain =>
+      'يقوم الدفع التلقائي بدفع هذه الفاتورة تلقائيًا في تاريخ الاستحقاق باستخدام رصيد محفظتك. تبقى أنت المتحكم ويمكنك الإلغاء في أي وقت. هل تريد تفعيله؟';
+
+  @override
+  String get chatAutoPayEnabled => 'تم! الدفع التلقائي مفعّل الآن.';
+
+  @override
+  String get chatAutoPayDeclined =>
+      'لا مشكلة، سيبقى الدفع التلقائي غير مفعّل حاليًا.';
 }
