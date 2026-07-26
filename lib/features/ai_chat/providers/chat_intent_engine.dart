@@ -33,6 +33,7 @@ enum ChatIntent {
   recentTxns,
   payBill,
   sendMoney,
+  rentalBooking,
   fallback,
 }
 
@@ -41,6 +42,9 @@ enum ChatIntent {
 /// with ("pay my electricity **bill**" must win over generic `billsDue`).
 ChatIntent detectIntent(String input) {
   final q = input.toLowerCase();
+  if (q.contains('rent') && (q.contains('car') || q.contains('vehicle'))) {
+    return ChatIntent.rentalBooking;
+  }
   if (q.contains('pay')) return ChatIntent.payBill;
   if (q.contains('send') || q.contains('transfer')) return ChatIntent.sendMoney;
   if (q.contains('bill')) return ChatIntent.billsDue;
@@ -111,6 +115,12 @@ Future<List<ChatMessage>> buildAssistantReply({
       return _payBillReply(ref, l10n, rawInput);
     case ChatIntent.sendMoney:
       return _sendMoneyReply(ref, l10n, rawInput);
+    case ChatIntent.rentalBooking:
+      // The stateful greeting + `RentalChatContext` setup lives in
+      // `chat_provider.dart` (`send()` special-cases this intent before
+      // reaching here) — `chat_rental_flow.dart`'s `startRentalBooking`.
+      // This arm only exists to keep the switch exhaustive.
+      return [_text(l10n.chatRentalLocationPrompt)];
     case ChatIntent.fallback:
       return [_text(l10n.chatReplyFallback)];
   }

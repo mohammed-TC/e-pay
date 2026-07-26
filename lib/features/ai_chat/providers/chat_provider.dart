@@ -1,14 +1,33 @@
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../app/locale_provider.dart';
+import '../../../core/models/money.dart';
+import '../../../core/models/txn_type.dart';
 import '../../../core/utils/mock_latency.dart';
+import '../../../data/repositories/rewards_repository.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../payment/models/payment_request.dart';
 import '../../payment/models/payment_result.dart';
+import '../../rental/models/rental_booking.dart';
+import '../../rental/providers/rental_bookings_provider.dart';
+import '../../rewards/providers/rewards_provider.dart';
 import '../models/chat_message.dart';
 import 'chat_intent_engine.dart';
+import 'chat_rental_flow.dart';
 
 part 'chat_provider.g.dart';
+
+/// Mirrors `Money.format(context)` without a `BuildContext` — same
+/// workaround as `chat_intent_engine.dart`'s `_formatMoney`.
+String _formatMoney(Money money, Locale locale) {
+  final formatter = NumberFormat.decimalPatternDigits(
+    locale: locale.toString(),
+    decimalDigits: 3,
+  );
+  return '${formatter.format(money.amount)} ${money.currencyCode}';
+}
 
 /// "Ask Emral" conversation state — architecture.md §3 `chatProvider`.
 /// Session-only: resets on app restart, same as every other in-memory mock
@@ -23,11 +42,22 @@ class Chat extends _$Chat {
   String? _pendingVehicleId;
   bool _autoPayExplained = false;
 
+  /// Scenario 2 (product.md K1, Module L) dialogue-in-progress — set by
+  /// `send()` when `ChatIntent.rentalBooking` fires, cleared once the
+  /// booking's payment succeeds (`onPaymentCompleted`). Kept separate from
+  /// [_pendingOffer] since it carries far more state (location, dates,
+  /// running totals) than a plain yes/no/later offer.
+  RentalChatContext? _rentalContext;
+
   void _clearPending() {
     _pendingOffer = PendingOffer.none;
     _pendingAccountId = null;
     _pendingVehicleId = null;
     _autoPayExplained = false;
+    // A forced quick-reply (or a fresh keyword intent) while Scenario 2 is
+    // mid-dialogue means the user went off-script — abandon it rather than
+    // silently resuming stale context on their next free-text turn.
+    _rentalContext = null;
   }
 
   @override
@@ -63,7 +93,18 @@ class Chat extends _$Chat {
     final locale = ref.read(appLocaleProvider);
 
     List<ChatMessage> reply;
-    if (forcedIntent == null && _pendingOffer != PendingOffer.none) {
+    if (forcedIntent == null && _rentalContext != null) {
+      final l10n = await AppLocalizations.delegate.load(locale);
+      final result = await stepRentalFlow(
+        ref: ref,
+        l10n: l10n,
+        locale: locale,
+        context: _rentalContext!,
+        input: text,
+      );
+      _rentalContext = result.context;
+      reply = result.messages;
+    } else if (forcedIntent == null && _pendingOffer != PendingOffer.none) {
       final l10n = await AppLocalizations.delegate.load(locale);
       final resolution = resolveAffirmation(text);
       final result = await resolvePendingOffer(
@@ -82,12 +123,20 @@ class Chat extends _$Chat {
       reply = result.messages;
     } else {
       _clearPending();
-      reply = await buildAssistantReply(
-        ref: ref,
-        locale: locale,
-        rawInput: text,
-        forcedIntent: forcedIntent,
-      );
+      final intent = forcedIntent ?? detectIntent(text);
+      if (intent == ChatIntent.rentalBooking) {
+        final l10n = await AppLocalizations.delegate.load(locale);
+        final started = startRentalBooking(l10n: l10n);
+        _rentalContext = started.context;
+        reply = started.messages;
+      } else {
+        reply = await buildAssistantReply(
+          ref: ref,
+          locale: locale,
+          rawInput: text,
+          forcedIntent: intent,
+        );
+      }
     }
     ref.read(chatTypingProvider.notifier).isTyping = false;
 
@@ -104,6 +153,11 @@ class Chat extends _$Chat {
     PaymentRequest request,
   ) async {
     if (result is! PaymentSuccess) return;
+
+    if (request.type == TxnType.carRental) {
+      await _completeRentalBooking(result, request);
+      return;
+    }
 
     final locale = ref.read(appLocaleProvider);
     final l10n = await AppLocalizations.delegate.load(locale);
@@ -134,6 +188,85 @@ class Chat extends _$Chat {
 
     final afterAck = state.value ?? const <ChatMessage>[];
     state = AsyncData([...afterAck, ...nudge.messages]);
+  }
+
+  /// Scenario 2's terminal step — the summary/receipt text only appears
+  /// after the shared payment flow actually succeeds (payment-flow.md:
+  /// never simulate this inline). Credits the loyalty-multiplier bonus on
+  /// top of `PaymentService`'s already-credited base 1 pt/OMR, and saves a
+  /// [RentalBooking] so it shows up in L5 My Rentals — the same record
+  /// Module L's own booking-review screen would save.
+  Future<void> _completeRentalBooking(
+    PaymentSuccess result,
+    PaymentRequest request,
+  ) async {
+    final rentalContext = _rentalContext;
+    _rentalContext = null;
+    if (rentalContext == null) return;
+
+    final locale = ref.read(appLocaleProvider);
+    final l10n = await AppLocalizations.delegate.load(locale);
+
+    final bonusPoints = request.meta['rentalBonusPoints'] as int? ?? 0;
+    if (bonusPoints > 0) {
+      ref.read(rewardsRepositoryProvider).credit(bonusPoints);
+      await ref.read(appRewardsProvider.notifier).refresh();
+    }
+    final totalEarned = result.txn.rewardPointsEarned + bonusPoints;
+
+    await ref
+        .read(rentalBookingsProvider.notifier)
+        .add(
+          RentalBooking(
+            id: result.txn.id,
+            locationId: rentalContext.locationId ?? '',
+            locationName: rentalContext.locationName ?? '',
+            vehicleClassId: rentalContext.vehicleClassId ?? '',
+            vehicleClassName: rentalContext.vehicleClassName ?? '',
+            pickupDate: rentalContext.pickupDate ?? DateTime.now(),
+            returnDate: rentalContext.returnDate ?? DateTime.now(),
+            days: rentalContext.days,
+            baseCost: rentalContext.subtotal,
+            addonNames: rentalContext.addonNames,
+            addonsCost: rentalContext.addonsCost,
+            pointsRedeemed: rentalContext.pointsRedeemed,
+            pointsDiscount: rentalContext.pointsDiscount,
+            total: rentalContext.total,
+            pointsEarned: totalEarned,
+            bookedAt: DateTime.now(),
+          ),
+        );
+
+    final insuranceLabel = rentalContext.addonSelected
+        ? l10n.chatRentalSummaryInsuranceIncluded
+        : l10n.chatRentalSummaryInsuranceNotIncluded;
+
+    final current = state.value ?? const <ChatMessage>[];
+    final now = DateTime.now();
+    state = AsyncData([
+      ...current,
+      ChatMessage.assistantText(
+        id: '${now.microsecondsSinceEpoch}_summary',
+        text: l10n.chatRentalSummaryTitle(
+          rentalContext.vehicleClassName ?? '',
+          _formatMoney(rentalContext.subtotal, locale),
+          _formatMoney(rentalContext.pointsDiscount, locale),
+          insuranceLabel,
+          _formatMoney(rentalContext.total, locale),
+        ),
+        sentAt: now,
+      ),
+      ChatMessage.assistantText(
+        id: '${now.microsecondsSinceEpoch}_earned',
+        text: l10n.chatRentalSummaryEarned(totalEarned),
+        sentAt: now,
+      ),
+      ChatMessage.assistantText(
+        id: '${now.microsecondsSinceEpoch}_receipt',
+        text: l10n.chatRentalSummaryReceiptSent,
+        sentAt: now,
+      ),
+    ]);
   }
 }
 

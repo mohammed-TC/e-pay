@@ -858,6 +858,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chatQuickReplyTxns => 'Recent transactions';
 
   @override
+  String get chatQuickReplyRentalCar => 'Rent a car';
+
+  @override
   String get chatErrorTitle => 'Couldn\'t load chat';
 
   @override
@@ -1112,4 +1115,117 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rentalMyRentalsEmptyCta => 'Rent a car';
+
+  @override
+  String get chatRentalLocationPrompt =>
+      'Happy to help. Where will you be collecting the vehicle?';
+
+  @override
+  String get chatRentalLocationNotFound =>
+      'I couldn\'t find that pickup location. Could you try naming an airport or branch, like Muscat International Airport?';
+
+  @override
+  String get chatRentalDatesPrompt =>
+      'Great. What are your pick-up and return dates?';
+
+  @override
+  String get chatRentalDatesNotUnderstood =>
+      'I couldn\'t quite work out those dates. Try something like \"Friday morning until Monday evening.\"';
+
+  @override
+  String chatRentalOptionsIntro(String options) {
+    return 'I\'ve found several options.\n\n$options';
+  }
+
+  @override
+  String chatRentalPointsOffer(int points, String value) {
+    return 'I also noticed you have $points PayHub Rewards Points, worth $value towards this booking.\n\nWould you like to use your points to reduce the cost?';
+  }
+
+  @override
+  String chatRentalPointsApplied(
+    String vehicleClass,
+    String total,
+    int points,
+  ) {
+    return 'Done.\n\nYour $vehicleClass will now cost $total after applying your rewards.\n\nYou will also earn approximately $points new points on this booking.';
+  }
+
+  @override
+  String get chatRentalPointsSkipped =>
+      'No problem, we\'ll keep your rewards points for next time.';
+
+  @override
+  String get chatRentalAddonAcceptedTitle =>
+      'Done.\n\nYour booking now includes:\n✓ Full Damage Protection\n✓ Double reward points';
+
+  @override
+  String chatRentalAddonAcceptedPoints(int points) {
+    return 'Estimated points earned:\n$points points';
+  }
+
+  @override
+  String get chatRentalAddonDeclined =>
+      'No problem, we won\'t add Full Damage Protection.';
+
+  @override
+  String get chatRentalLicenceNudge =>
+      'I also noticed your driving licence expires in three months. Would you like me to remind you before it expires?';
+
+  @override
+  String get chatRentalLicenceReminderSet => 'Reminder scheduled.';
+
+  @override
+  String get chatRentalLicenceReminderSkipped => 'No problem.';
+
+  @override
+  String chatRentalRoadsideOffer(String location, String price) {
+    return 'Since you\'re collecting the vehicle at $location, many customers also purchase Roadside Assistance Plus.\n\nBenefits include:\n\n• 24/7 breakdown assistance\n• Flat tyre cover\n• Lost key assistance\n\nIt costs $price for your trip.\n\nWould you like to add it?';
+  }
+
+  @override
+  String get chatRentalRoadsideAccepted =>
+      'Great, I\'ve added Roadside Assistance Plus.';
+
+  @override
+  String get chatRentalRoadsideDeclined => 'No problem.';
+
+  @override
+  String get chatRentalBookingReadyIntro =>
+      'Your booking is ready. Tap below to review and confirm.';
+
+  @override
+  String chatRentalCardSubtitle(String location, int days) {
+    return '$location · $days-day trip';
+  }
+
+  @override
+  String get chatRentalAwaitingPayment =>
+      'Please tap the booking card above to complete your payment.';
+
+  @override
+  String chatRentalSummaryTitle(
+    String vehicleClass,
+    String cost,
+    String discount,
+    String insurance,
+    String total,
+  ) {
+    return 'Here\'s your summary:\n\nRental Vehicle:\n$vehicleClass\n\nRental Cost:\n$cost\n\nRewards Discount:\n-$discount\n\nInsurance:\n$insurance\n\nTotal:\n$total';
+  }
+
+  @override
+  String get chatRentalSummaryInsuranceIncluded => 'Included';
+
+  @override
+  String get chatRentalSummaryInsuranceNotIncluded => 'Not included';
+
+  @override
+  String chatRentalSummaryEarned(int points) {
+    return 'You\'ll earn:\n\n• $points PayHub Rewards Points';
+  }
+
+  @override
+  String get chatRentalSummaryReceiptSent =>
+      'Your e-receipt has been sent.\n\nSafe travels!';
 }

@@ -305,6 +305,7 @@
   "chatQuickReplyBalance": "Wallet balance",
   "chatQuickReplyRewards": "My rewards",
   "chatQuickReplyTxns": "Recent transactions",
+  "chatQuickReplyRentalCar": "Rent a car",
   "chatErrorTitle": "Couldn't load chat",
   "chatErrorBody": "Something went wrong loading Ask Emral.",
   "chatErrorRetry": "Retry",
@@ -471,5 +472,79 @@
   "rentalMyRentalsTitle": "My Rentals",
   "rentalMyRentalsEmptyTitle": "No rentals yet",
   "rentalMyRentalsEmptyBody": "Book a car to see it here.",
-  "rentalMyRentalsEmptyCta": "Rent a car"
+  "rentalMyRentalsEmptyCta": "Rent a car",
+  "chatRentalLocationPrompt": "Happy to help. Where will you be collecting the vehicle?",
+  "chatRentalLocationNotFound": "I couldn't find that pickup location. Could you try naming an airport or branch, like Muscat International Airport?",
+  "chatRentalDatesPrompt": "Great. What are your pick-up and return dates?",
+  "chatRentalDatesNotUnderstood": "I couldn't quite work out those dates. Try something like \"Friday morning until Monday evening.\"",
+  "chatRentalOptionsIntro": "I've found several options.\n\n{options}",
+  "@chatRentalOptionsIntro": {
+    "placeholders": {
+      "options": {"type": "String"}
+    }
+  },
+  "chatRentalPointsOffer": "I also noticed you have {points} PayHub Rewards Points, worth {value} towards this booking.\n\nWould you like to use your points to reduce the cost?",
+  "@chatRentalPointsOffer": {
+    "placeholders": {
+      "points": {"type": "int"},
+      "value": {"type": "String"}
+    }
+  },
+  "chatRentalPointsApplied": "Done.\n\nYour {vehicleClass} will now cost {total} after applying your rewards.\n\nYou will also earn approximately {points} new points on this booking.",
+  "@chatRentalPointsApplied": {
+    "placeholders": {
+      "vehicleClass": {"type": "String"},
+      "total": {"type": "String"},
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalPointsSkipped": "No problem, we'll keep your rewards points for next time.",
+  "chatRentalAddonAcceptedTitle": "Done.\n\nYour booking now includes:\n✓ Full Damage Protection\n✓ Double reward points",
+  "chatRentalAddonAcceptedPoints": "Estimated points earned:\n{points} points",
+  "@chatRentalAddonAcceptedPoints": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalAddonDeclined": "No problem, we won't add Full Damage Protection.",
+  "chatRentalLicenceNudge": "I also noticed your driving licence expires in three months. Would you like me to remind you before it expires?",
+  "chatRentalLicenceReminderSet": "Reminder scheduled.",
+  "chatRentalLicenceReminderSkipped": "No problem.",
+  "chatRentalRoadsideOffer": "Since you're collecting the vehicle at {location}, many customers also purchase Roadside Assistance Plus.\n\nBenefits include:\n\n• 24/7 breakdown assistance\n• Flat tyre cover\n• Lost key assistance\n\nIt costs {price} for your trip.\n\nWould you like to add it?",
+  "@chatRentalRoadsideOffer": {
+    "placeholders": {
+      "location": {"type": "String"},
+      "price": {"type": "String"}
+    }
+  },
+  "chatRentalRoadsideAccepted": "Great, I've added Roadside Assistance Plus.",
+  "chatRentalRoadsideDeclined": "No problem.",
+  "chatRentalBookingReadyIntro": "Your booking is ready. Tap below to review and confirm.",
+  "chatRentalCardSubtitle": "{location} · {days}-day trip",
+  "@chatRentalCardSubtitle": {
+    "placeholders": {
+      "location": {"type": "String"},
+      "days": {"type": "int"}
+    }
+  },
+  "chatRentalAwaitingPayment": "Please tap the booking card above to complete your payment.",
+  "chatRentalSummaryTitle": "Here's your summary:\n\nRental Vehicle:\n{vehicleClass}\n\nRental Cost:\n{cost}\n\nRewards Discount:\n-{discount}\n\nInsurance:\n{insurance}\n\nTotal:\n{total}",
+  "@chatRentalSummaryTitle": {
+    "placeholders": {
+      "vehicleClass": {"type": "String"},
+      "cost": {"type": "String"},
+      "discount": {"type": "String"},
+      "insurance": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "chatRentalSummaryInsuranceIncluded": "Included",
+  "chatRentalSummaryInsuranceNotIncluded": "Not included",
+  "chatRentalSummaryEarned": "You'll earn:\n\n• {points} PayHub Rewards Points",
+  "@chatRentalSummaryEarned": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalSummaryReceiptSent": "Your e-receipt has been sent.\n\nSafe travels!"
 }

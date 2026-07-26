@@ -285,6 +285,7 @@
   "chatQuickReplyBalance": "رصيد المحفظة",
   "chatQuickReplyRewards": "مكافآتي",
   "chatQuickReplyTxns": "المعاملات الأخيرة",
+  "chatQuickReplyRentalCar": "استئجار سيارة",
   "chatErrorTitle": "تعذّر تحميل المحادثة",
   "chatErrorBody": "حدث خطأ أثناء تحميل اسأل إمرال.",
   "chatErrorRetry": "إعادة المحاولة",
@@ -451,5 +452,79 @@
   "rentalMyRentalsTitle": "تأجيراتي",
   "rentalMyRentalsEmptyTitle": "لا توجد تأجيرات حتى الآن",
   "rentalMyRentalsEmptyBody": "استأجر سيارة لتظهر هنا.",
-  "rentalMyRentalsEmptyCta": "استأجر سيارة"
+  "rentalMyRentalsEmptyCta": "استأجر سيارة",
+  "chatRentalLocationPrompt": "بكل سرور. من أين ستستلم المركبة؟",
+  "chatRentalLocationNotFound": "لم أتمكن من العثور على موقع الاستلام هذا. جرّب ذكر مطار أو فرع، مثل مطار مسقط الدولي.",
+  "chatRentalDatesPrompt": "رائع. ما هي تواريخ الاستلام والتسليم؟",
+  "chatRentalDatesNotUnderstood": "لم أتمكن من فهم هذه التواريخ بدقة. جرّب شيئًا مثل \"الجمعة صباحًا حتى الاثنين مساءً\".",
+  "chatRentalOptionsIntro": "وجدت عدة خيارات.\n\n{options}",
+  "@chatRentalOptionsIntro": {
+    "placeholders": {
+      "options": {"type": "String"}
+    }
+  },
+  "chatRentalPointsOffer": "لاحظت أيضًا أن لديك {points} نقطة من نقاط PayHub، بقيمة {value} لهذا الحجز.\n\nهل ترغب باستخدام نقاطك لتقليل التكلفة؟",
+  "@chatRentalPointsOffer": {
+    "placeholders": {
+      "points": {"type": "int"},
+      "value": {"type": "String"}
+    }
+  },
+  "chatRentalPointsApplied": "تم.\n\nستكلفك {vehicleClass} الآن {total} بعد تطبيق مكافآتك.\n\nستكسب أيضًا حوالي {points} نقطة جديدة على هذا الحجز.",
+  "@chatRentalPointsApplied": {
+    "placeholders": {
+      "vehicleClass": {"type": "String"},
+      "total": {"type": "String"},
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalPointsSkipped": "لا مشكلة، سنحتفظ بنقاط مكافآتك للمرة القادمة.",
+  "chatRentalAddonAcceptedTitle": "تم.\n\nيتضمن حجزك الآن:\n✓ حماية شاملة من التلف\n✓ نقاط مكافآت مضاعفة",
+  "chatRentalAddonAcceptedPoints": "النقاط المقدّرة المكتسبة:\n{points} نقطة",
+  "@chatRentalAddonAcceptedPoints": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalAddonDeclined": "لا مشكلة، لن نضيف الحماية الشاملة من التلف.",
+  "chatRentalLicenceNudge": "لاحظت أيضًا أن رخصة قيادتك تنتهي بعد ثلاثة أشهر. هل ترغب أن أذكّرك قبل انتهائها؟",
+  "chatRentalLicenceReminderSet": "تم جدولة التذكير.",
+  "chatRentalLicenceReminderSkipped": "لا مشكلة.",
+  "chatRentalRoadsideOffer": "بما أنك ستستلم المركبة من {location}، يفضّل كثير من العملاء أيضًا شراء خدمة المساعدة على الطريق بلس.\n\nتشمل المزايا:\n\n• مساعدة على الطريق على مدار الساعة\n• تغطية انفجار الإطارات\n• مساعدة فقدان المفاتيح\n\nتكلفتها {price} لرحلتك.\n\nهل ترغب بإضافتها؟",
+  "@chatRentalRoadsideOffer": {
+    "placeholders": {
+      "location": {"type": "String"},
+      "price": {"type": "String"}
+    }
+  },
+  "chatRentalRoadsideAccepted": "تمام، لقد أضفت خدمة المساعدة على الطريق بلس.",
+  "chatRentalRoadsideDeclined": "لا مشكلة.",
+  "chatRentalBookingReadyIntro": "حجزك جاهز. اضغط أدناه للمراجعة والتأكيد.",
+  "chatRentalCardSubtitle": "{location} · رحلة {days} أيام",
+  "@chatRentalCardSubtitle": {
+    "placeholders": {
+      "location": {"type": "String"},
+      "days": {"type": "int"}
+    }
+  },
+  "chatRentalAwaitingPayment": "يرجى الضغط على بطاقة الحجز أعلاه لإتمام الدفع.",
+  "chatRentalSummaryTitle": "هذا ملخص حجزك:\n\nالمركبة المؤجرة:\n{vehicleClass}\n\nتكلفة التأجير:\n{cost}\n\nخصم المكافآت:\n-{discount}\n\nالتأمين:\n{insurance}\n\nالإجمالي:\n{total}",
+  "@chatRentalSummaryTitle": {
+    "placeholders": {
+      "vehicleClass": {"type": "String"},
+      "cost": {"type": "String"},
+      "discount": {"type": "String"},
+      "insurance": {"type": "String"},
+      "total": {"type": "String"}
+    }
+  },
+  "chatRentalSummaryInsuranceIncluded": "مشمول",
+  "chatRentalSummaryInsuranceNotIncluded": "غير مشمول",
+  "chatRentalSummaryEarned": "ستكسب:\n\n• {points} نقطة من نقاط PayHub",
+  "@chatRentalSummaryEarned": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "chatRentalSummaryReceiptSent": "لقد تم إرسال إيصالك الإلكتروني.\n\nرحلة سعيدة!"
 }

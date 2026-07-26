@@ -33,6 +33,11 @@ class ChatQuickReplyRow extends StatelessWidget {
         Icons.card_giftcard_outlined,
       ),
       (ChatIntent.recentTxns, l10n.chatQuickReplyTxns, Icons.history),
+      (
+        ChatIntent.rentalBooking,
+        l10n.chatQuickReplyRentalCar,
+        Icons.car_rental,
+      ),
     ];
 
     return SizedBox(

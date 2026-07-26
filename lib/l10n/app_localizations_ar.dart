@@ -854,6 +854,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get chatQuickReplyTxns => 'المعاملات الأخيرة';
 
   @override
+  String get chatQuickReplyRentalCar => 'استئجار سيارة';
+
+  @override
   String get chatErrorTitle => 'تعذّر تحميل المحادثة';
 
   @override
@@ -1108,4 +1111,115 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get rentalMyRentalsEmptyCta => 'استأجر سيارة';
+
+  @override
+  String get chatRentalLocationPrompt => 'بكل سرور. من أين ستستلم المركبة؟';
+
+  @override
+  String get chatRentalLocationNotFound =>
+      'لم أتمكن من العثور على موقع الاستلام هذا. جرّب ذكر مطار أو فرع، مثل مطار مسقط الدولي.';
+
+  @override
+  String get chatRentalDatesPrompt => 'رائع. ما هي تواريخ الاستلام والتسليم؟';
+
+  @override
+  String get chatRentalDatesNotUnderstood =>
+      'لم أتمكن من فهم هذه التواريخ بدقة. جرّب شيئًا مثل \"الجمعة صباحًا حتى الاثنين مساءً\".';
+
+  @override
+  String chatRentalOptionsIntro(String options) {
+    return 'وجدت عدة خيارات.\n\n$options';
+  }
+
+  @override
+  String chatRentalPointsOffer(int points, String value) {
+    return 'لاحظت أيضًا أن لديك $points نقطة من نقاط PayHub، بقيمة $value لهذا الحجز.\n\nهل ترغب باستخدام نقاطك لتقليل التكلفة؟';
+  }
+
+  @override
+  String chatRentalPointsApplied(
+    String vehicleClass,
+    String total,
+    int points,
+  ) {
+    return 'تم.\n\nستكلفك $vehicleClass الآن $total بعد تطبيق مكافآتك.\n\nستكسب أيضًا حوالي $points نقطة جديدة على هذا الحجز.';
+  }
+
+  @override
+  String get chatRentalPointsSkipped =>
+      'لا مشكلة، سنحتفظ بنقاط مكافآتك للمرة القادمة.';
+
+  @override
+  String get chatRentalAddonAcceptedTitle =>
+      'تم.\n\nيتضمن حجزك الآن:\n✓ حماية شاملة من التلف\n✓ نقاط مكافآت مضاعفة';
+
+  @override
+  String chatRentalAddonAcceptedPoints(int points) {
+    return 'النقاط المقدّرة المكتسبة:\n$points نقطة';
+  }
+
+  @override
+  String get chatRentalAddonDeclined =>
+      'لا مشكلة، لن نضيف الحماية الشاملة من التلف.';
+
+  @override
+  String get chatRentalLicenceNudge =>
+      'لاحظت أيضًا أن رخصة قيادتك تنتهي بعد ثلاثة أشهر. هل ترغب أن أذكّرك قبل انتهائها؟';
+
+  @override
+  String get chatRentalLicenceReminderSet => 'تم جدولة التذكير.';
+
+  @override
+  String get chatRentalLicenceReminderSkipped => 'لا مشكلة.';
+
+  @override
+  String chatRentalRoadsideOffer(String location, String price) {
+    return 'بما أنك ستستلم المركبة من $location، يفضّل كثير من العملاء أيضًا شراء خدمة المساعدة على الطريق بلس.\n\nتشمل المزايا:\n\n• مساعدة على الطريق على مدار الساعة\n• تغطية انفجار الإطارات\n• مساعدة فقدان المفاتيح\n\nتكلفتها $price لرحلتك.\n\nهل ترغب بإضافتها؟';
+  }
+
+  @override
+  String get chatRentalRoadsideAccepted =>
+      'تمام، لقد أضفت خدمة المساعدة على الطريق بلس.';
+
+  @override
+  String get chatRentalRoadsideDeclined => 'لا مشكلة.';
+
+  @override
+  String get chatRentalBookingReadyIntro =>
+      'حجزك جاهز. اضغط أدناه للمراجعة والتأكيد.';
+
+  @override
+  String chatRentalCardSubtitle(String location, int days) {
+    return '$location · رحلة $days أيام';
+  }
+
+  @override
+  String get chatRentalAwaitingPayment =>
+      'يرجى الضغط على بطاقة الحجز أعلاه لإتمام الدفع.';
+
+  @override
+  String chatRentalSummaryTitle(
+    String vehicleClass,
+    String cost,
+    String discount,
+    String insurance,
+    String total,
+  ) {
+    return 'هذا ملخص حجزك:\n\nالمركبة المؤجرة:\n$vehicleClass\n\nتكلفة التأجير:\n$cost\n\nخصم المكافآت:\n-$discount\n\nالتأمين:\n$insurance\n\nالإجمالي:\n$total';
+  }
+
+  @override
+  String get chatRentalSummaryInsuranceIncluded => 'مشمول';
+
+  @override
+  String get chatRentalSummaryInsuranceNotIncluded => 'غير مشمول';
+
+  @override
+  String chatRentalSummaryEarned(int points) {
+    return 'ستكسب:\n\n• $points نقطة من نقاط PayHub';
+  }
+
+  @override
+  String get chatRentalSummaryReceiptSent =>
+      'لقد تم إرسال إيصالك الإلكتروني.\n\nرحلة سعيدة!';
 }

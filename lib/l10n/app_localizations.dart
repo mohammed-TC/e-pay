@@ -1760,6 +1760,12 @@ abstract class AppLocalizations {
   /// **'Recent transactions'**
   String get chatQuickReplyTxns;
 
+  /// No description provided for @chatQuickReplyRentalCar.
+  ///
+  /// In en, this message translates to:
+  /// **'Rent a car'**
+  String get chatQuickReplyRentalCar;
+
   /// No description provided for @chatErrorTitle.
   ///
   /// In en, this message translates to:
@@ -2173,6 +2179,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rent a car'**
   String get rentalMyRentalsEmptyCta;
+
+  /// No description provided for @chatRentalLocationPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Happy to help. Where will you be collecting the vehicle?'**
+  String get chatRentalLocationPrompt;
+
+  /// No description provided for @chatRentalLocationNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'I couldn\'t find that pickup location. Could you try naming an airport or branch, like Muscat International Airport?'**
+  String get chatRentalLocationNotFound;
+
+  /// No description provided for @chatRentalDatesPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Great. What are your pick-up and return dates?'**
+  String get chatRentalDatesPrompt;
+
+  /// No description provided for @chatRentalDatesNotUnderstood.
+  ///
+  /// In en, this message translates to:
+  /// **'I couldn\'t quite work out those dates. Try something like \"Friday morning until Monday evening.\"'**
+  String get chatRentalDatesNotUnderstood;
+
+  /// No description provided for @chatRentalOptionsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ve found several options.\n\n{options}'**
+  String chatRentalOptionsIntro(String options);
+
+  /// No description provided for @chatRentalPointsOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'I also noticed you have {points} PayHub Rewards Points, worth {value} towards this booking.\n\nWould you like to use your points to reduce the cost?'**
+  String chatRentalPointsOffer(int points, String value);
+
+  /// No description provided for @chatRentalPointsApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Done.\n\nYour {vehicleClass} will now cost {total} after applying your rewards.\n\nYou will also earn approximately {points} new points on this booking.'**
+  String chatRentalPointsApplied(String vehicleClass, String total, int points);
+
+  /// No description provided for @chatRentalPointsSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem, we\'ll keep your rewards points for next time.'**
+  String get chatRentalPointsSkipped;
+
+  /// No description provided for @chatRentalAddonAcceptedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Done.\n\nYour booking now includes:\n✓ Full Damage Protection\n✓ Double reward points'**
+  String get chatRentalAddonAcceptedTitle;
+
+  /// No description provided for @chatRentalAddonAcceptedPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated points earned:\n{points} points'**
+  String chatRentalAddonAcceptedPoints(int points);
+
+  /// No description provided for @chatRentalAddonDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem, we won\'t add Full Damage Protection.'**
+  String get chatRentalAddonDeclined;
+
+  /// No description provided for @chatRentalLicenceNudge.
+  ///
+  /// In en, this message translates to:
+  /// **'I also noticed your driving licence expires in three months. Would you like me to remind you before it expires?'**
+  String get chatRentalLicenceNudge;
+
+  /// No description provided for @chatRentalLicenceReminderSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder scheduled.'**
+  String get chatRentalLicenceReminderSet;
+
+  /// No description provided for @chatRentalLicenceReminderSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem.'**
+  String get chatRentalLicenceReminderSkipped;
+
+  /// No description provided for @chatRentalRoadsideOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Since you\'re collecting the vehicle at {location}, many customers also purchase Roadside Assistance Plus.\n\nBenefits include:\n\n• 24/7 breakdown assistance\n• Flat tyre cover\n• Lost key assistance\n\nIt costs {price} for your trip.\n\nWould you like to add it?'**
+  String chatRentalRoadsideOffer(String location, String price);
+
+  /// No description provided for @chatRentalRoadsideAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Great, I\'ve added Roadside Assistance Plus.'**
+  String get chatRentalRoadsideAccepted;
+
+  /// No description provided for @chatRentalRoadsideDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'No problem.'**
+  String get chatRentalRoadsideDeclined;
+
+  /// No description provided for @chatRentalBookingReadyIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Your booking is ready. Tap below to review and confirm.'**
+  String get chatRentalBookingReadyIntro;
+
+  /// No description provided for @chatRentalCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{location} · {days}-day trip'**
+  String chatRentalCardSubtitle(String location, int days);
+
+  /// No description provided for @chatRentalAwaitingPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Please tap the booking card above to complete your payment.'**
+  String get chatRentalAwaitingPayment;
+
+  /// No description provided for @chatRentalSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Here\'s your summary:\n\nRental Vehicle:\n{vehicleClass}\n\nRental Cost:\n{cost}\n\nRewards Discount:\n-{discount}\n\nInsurance:\n{insurance}\n\nTotal:\n{total}'**
+  String chatRentalSummaryTitle(
+    String vehicleClass,
+    String cost,
+    String discount,
+    String insurance,
+    String total,
+  );
+
+  /// No description provided for @chatRentalSummaryInsuranceIncluded.
+  ///
+  /// In en, this message translates to:
+  /// **'Included'**
+  String get chatRentalSummaryInsuranceIncluded;
+
+  /// No description provided for @chatRentalSummaryInsuranceNotIncluded.
+  ///
+  /// In en, this message translates to:
+  /// **'Not included'**
+  String get chatRentalSummaryInsuranceNotIncluded;
+
+  /// No description provided for @chatRentalSummaryEarned.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll earn:\n\n• {points} PayHub Rewards Points'**
+  String chatRentalSummaryEarned(int points);
+
+  /// No description provided for @chatRentalSummaryReceiptSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Your e-receipt has been sent.\n\nSafe travels!'**
+  String get chatRentalSummaryReceiptSent;
 }
 
 class _AppLocalizationsDelegate
