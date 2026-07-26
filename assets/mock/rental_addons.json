@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ra1",
+    "name": "Full Damage Protection",
+    "description": "Waives your excess liability if the vehicle is damaged.",
+    "pricingBasis": "perDay",
+    "price": { "minorUnits": 14000, "currencyCode": "OMR" },
+    "loyaltyMultiplier": 2
+  },
+  {
+    "id": "ra2",
+    "name": "Roadside Assistance Plus",
+    "description": "24/7 breakdown assistance, flat tyre cover, lost key assistance.",
+    "pricingBasis": "flat",
+    "price": { "minorUnits": 8000, "currencyCode": "OMR" },
+    "loyaltyMultiplier": 1
+  },
+  {
+    "id": "ra3",
+    "name": "Unlimited Mileage",
+    "description": "Drive as far as you like with no excess-mileage fees.",
+    "pricingBasis": "flat",
+    "price": { "minorUnits": 12000, "currencyCode": "OMR" },
+    "loyaltyMultiplier": 1
+  },
+  {
+    "id": "ra4",
+    "name": "Fuel Package",
+    "description": "Return the vehicle on empty — no refuelling needed.",
+    "pricingBasis": "flat",
+    "price": { "minorUnits": 10000, "currencyCode": "OMR" },
+    "loyaltyMultiplier": 1
+  }
+]

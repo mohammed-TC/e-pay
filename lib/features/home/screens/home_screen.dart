@@ -375,6 +375,11 @@ class _ServicesGrid extends StatelessWidget {
         onTap: () => context.push(Routes.remit),
       ),
       (
+        icon: Icons.car_rental,
+        label: l10n.homeServiceCarRental,
+        onTap: () => context.push(Routes.rentalSearch),
+      ),
+      (
         icon: Icons.card_giftcard_outlined,
         label: l10n.homeServiceRewards,
         onTap: () => context.go(Routes.rewards),

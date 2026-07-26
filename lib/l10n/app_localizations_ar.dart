@@ -356,6 +356,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeServiceRemittance => 'التحويلات';
 
   @override
+  String get homeServiceCarRental => 'تأجير السيارات';
+
+  @override
   String get homeServiceRewards => 'المكافآت';
 
   @override
@@ -473,6 +476,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get historyFilterRemittance => 'التحويلات';
+
+  @override
+  String get historyFilterRental => 'التأجير';
 
   @override
   String get historyStatusAll => 'كل الحالات';
@@ -985,4 +991,121 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get chatAutoPayDeclined =>
       'لا مشكلة، سيبقى الدفع التلقائي غير مفعّل حاليًا.';
+
+  @override
+  String get rentalSearchTitle => 'بحث تأجير السيارات';
+
+  @override
+  String get rentalSearchLocationLabel => 'موقع الاستلام';
+
+  @override
+  String get rentalSearchLocationPlaceholder => 'اختر موقع الاستلام';
+
+  @override
+  String get rentalSearchPickupLabel => 'تاريخ الاستلام';
+
+  @override
+  String get rentalSearchReturnLabel => 'تاريخ التسليم';
+
+  @override
+  String get rentalSearchDatePlaceholder => 'اختر التاريخ';
+
+  @override
+  String get rentalSearchTimeMorning => 'صباحًا';
+
+  @override
+  String get rentalSearchTimeEvening => 'مساءً';
+
+  @override
+  String get rentalSearchCta => 'بحث';
+
+  @override
+  String get rentalResultsTitle => 'نتائج المركبات';
+
+  @override
+  String rentalResultsTripLabel(int days) {
+    return 'رحلة $days أيام';
+  }
+
+  @override
+  String get rentalResultsRewardsBannerTitle => 'استخدم مكافآتك';
+
+  @override
+  String rentalResultsRewardsBannerBody(int points, String value) {
+    return 'لديك $points نقطة من نقاط PayHub، بقيمة $value لهذا الحجز.';
+  }
+
+  @override
+  String get rentalResultsRewardsBadge => 'قابلة للاستبدال';
+
+  @override
+  String get rentalResultsEmptyTitle => 'لا توجد مركبات متاحة';
+
+  @override
+  String get rentalResultsEmptyBody => 'جرّب تواريخ مختلفة أو موقع استلام آخر.';
+
+  @override
+  String get rentalDetailTitle => 'المركبة والإضافات';
+
+  @override
+  String rentalDetailSpecsSeats(int count) {
+    return '$count مقاعد';
+  }
+
+  @override
+  String rentalDetailSpecsBags(int count) {
+    return '$count حقائب';
+  }
+
+  @override
+  String get rentalDetailRedeemPointsTitle => 'استبدال نقاط المكافآت';
+
+  @override
+  String rentalDetailRedeemPointsBody(int points) {
+    return '$points نقطة متاحة';
+  }
+
+  @override
+  String get rentalDetailAddonsTitle => 'الإضافات';
+
+  @override
+  String get rentalDetailContinueCta => 'متابعة';
+
+  @override
+  String get rentalAddonDoublePoints => 'نقاط مضاعفة';
+
+  @override
+  String get rentalReviewTitle => 'مراجعة الحجز';
+
+  @override
+  String get rentalReviewRentalCostLabel => 'تكلفة التأجير';
+
+  @override
+  String get rentalReviewAddonsCostLabel => 'الإضافات';
+
+  @override
+  String get rentalReviewPointsDiscountLabel => 'خصم المكافآت';
+
+  @override
+  String get rentalReviewEarnedPointsLabel => 'ستكسب';
+
+  @override
+  String rentalReviewEarnedPointsValue(int points) {
+    return '$points نقطة';
+  }
+
+  @override
+  String get rentalReviewConfirmCta => 'تأكيد والدفع';
+
+  @override
+  String get rentalMyRentalsTitle => 'تأجيراتي';
+
+  @override
+  String get rentalMyRentalsEmptyTitle => 'لا توجد تأجيرات حتى الآن';
+
+  @override
+  String get rentalMyRentalsEmptyBody => 'استأجر سيارة لتظهر هنا.';
+
+  @override
+  String get rentalMyRentalsEmptyCta => 'استأجر سيارة';
 }

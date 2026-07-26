@@ -30,6 +30,11 @@ import '../../features/onboarding/screens/splash_screen.dart';
 import '../../features/payment/models/payment_request.dart';
 import '../../features/payment/screens/payment_confirm_screen.dart';
 import '../../features/payment/screens/payment_receipt_screen.dart';
+import '../../features/rental/screens/my_rentals_screen.dart';
+import '../../features/rental/screens/rental_booking_review_screen.dart';
+import '../../features/rental/screens/rental_results_screen.dart';
+import '../../features/rental/screens/rental_search_screen.dart';
+import '../../features/rental/screens/rental_vehicle_detail_screen.dart';
 import '../../features/wallet/screens/my_qr_screen.dart';
 import '../../features/wallet/screens/request_money_screen.dart';
 import '../../features/wallet/screens/scan_pay_screen.dart';
@@ -169,6 +174,26 @@ List<RouteBase> get appRoutes => [
       GoRoute(
         path: Routes.assistant,
         builder: (context, state) => const ChatScreen(),
+      ),
+      GoRoute(
+        path: Routes.rentalSearch,
+        builder: (context, state) => const RentalSearchScreen(),
+      ),
+      GoRoute(
+        path: Routes.rentalResults,
+        builder: (context, state) => const RentalResultsScreen(),
+      ),
+      GoRoute(
+        path: Routes.rentalVehicleDetail,
+        builder: (context, state) => const RentalVehicleDetailScreen(),
+      ),
+      GoRoute(
+        path: Routes.rentalBookingReview,
+        builder: (context, state) => const RentalBookingReviewScreen(),
+      ),
+      GoRoute(
+        path: Routes.myRentals,
+        builder: (context, state) => const MyRentalsScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => AppShell(navigationShell: shell),

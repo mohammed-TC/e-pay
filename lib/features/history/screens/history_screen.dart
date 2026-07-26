@@ -27,6 +27,7 @@ const Map<HistoryTypeCategory, IconData> _categoryIcons = {
   HistoryTypeCategory.government: Icons.account_balance,
   HistoryTypeCategory.wallet: Icons.account_balance_wallet,
   HistoryTypeCategory.remittance: Icons.send,
+  HistoryTypeCategory.rental: Icons.car_rental,
 };
 
 IconData _iconForType(TxnType type) {
@@ -106,6 +107,7 @@ class _CategoryFilterRow extends StatelessWidget {
       HistoryTypeCategory.government: l10n.historyFilterGovernment,
       HistoryTypeCategory.wallet: l10n.historyFilterWallet,
       HistoryTypeCategory.remittance: l10n.historyFilterRemittance,
+      HistoryTypeCategory.rental: l10n.historyFilterRental,
     };
     const categories = HistoryTypeCategory.values;
 

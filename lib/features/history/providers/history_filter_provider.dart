@@ -10,10 +10,17 @@ part 'history_filter_provider.g.dart';
 /// One month-bucket of filtered transactions — the J1 list render unit.
 typedef HistoryMonthGroup = ({DateTime month, List<Txn> items});
 
-/// J1 filter categories — groups the 14 [TxnType] values into a small,
+/// J1 filter categories — groups the 15 [TxnType] values into a small,
 /// demo-realistic filter row (product.md J1 doesn't require 1:1 filtering
 /// against every enum value).
-enum HistoryTypeCategory { bills, recharge, government, wallet, remittance }
+enum HistoryTypeCategory {
+  bills,
+  recharge,
+  government,
+  wallet,
+  remittance,
+  rental,
+}
 
 /// Which [TxnType]s each [HistoryTypeCategory] covers. `bills` folds in
 /// insurance/education (recurring "bill-like" payments); `wallet` folds in
@@ -41,6 +48,7 @@ const Map<HistoryTypeCategory, Set<TxnType>> historyTypeCategories = {
     TxnType.qrPay,
   },
   HistoryTypeCategory.remittance: {TxnType.remittance},
+  HistoryTypeCategory.rental: {TxnType.carRental},
 };
 
 /// Selected-segment index (0 = "All", 1..n = [HistoryTypeCategory.values])

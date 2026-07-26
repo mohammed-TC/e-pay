@@ -15,4 +15,5 @@ enum TxnType {
   walletRequest,
   remittance,
   qrPay,
+  carRental,
 }

@@ -113,6 +113,7 @@
   "homeServiceInsurance": "التأمين",
   "homeServiceEducation": "التعليم",
   "homeServiceRemittance": "التحويلات",
+  "homeServiceCarRental": "تأجير السيارات",
   "homeServiceRewards": "المكافآت",
   "homeServiceAiAssistant": "اسأل إمرال",
   "homeServiceMore": "المزيد",
@@ -159,6 +160,7 @@
   "historyFilterGovernment": "الخدمات الحكومية",
   "historyFilterWallet": "المحفظة",
   "historyFilterRemittance": "التحويلات",
+  "historyFilterRental": "التأجير",
   "historyStatusAll": "كل الحالات",
   "historyStatusSuccess": "ناجحة",
   "historyStatusPending": "معلقة",
@@ -383,5 +385,71 @@
   "chatAutoPayPitchIntro": "قبل أن تذهب، هل ترغب بالاشتراك في الدفع التلقائي لفواتيرك القادمة على هذا الحساب؟ يساعد ذلك على تجنب رسوم التأخير.",
   "chatAutoPayExplain": "يقوم الدفع التلقائي بدفع هذه الفاتورة تلقائيًا في تاريخ الاستحقاق باستخدام رصيد محفظتك. تبقى أنت المتحكم ويمكنك الإلغاء في أي وقت. هل تريد تفعيله؟",
   "chatAutoPayEnabled": "تم! الدفع التلقائي مفعّل الآن.",
-  "chatAutoPayDeclined": "لا مشكلة، سيبقى الدفع التلقائي غير مفعّل حاليًا."
+  "chatAutoPayDeclined": "لا مشكلة، سيبقى الدفع التلقائي غير مفعّل حاليًا.",
+  "rentalSearchTitle": "بحث تأجير السيارات",
+  "rentalSearchLocationLabel": "موقع الاستلام",
+  "rentalSearchLocationPlaceholder": "اختر موقع الاستلام",
+  "rentalSearchPickupLabel": "تاريخ الاستلام",
+  "rentalSearchReturnLabel": "تاريخ التسليم",
+  "rentalSearchDatePlaceholder": "اختر التاريخ",
+  "rentalSearchTimeMorning": "صباحًا",
+  "rentalSearchTimeEvening": "مساءً",
+  "rentalSearchCta": "بحث",
+  "rentalResultsTitle": "نتائج المركبات",
+  "rentalResultsTripLabel": "رحلة {days} أيام",
+  "@rentalResultsTripLabel": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "rentalResultsRewardsBannerTitle": "استخدم مكافآتك",
+  "rentalResultsRewardsBannerBody": "لديك {points} نقطة من نقاط PayHub، بقيمة {value} لهذا الحجز.",
+  "@rentalResultsRewardsBannerBody": {
+    "placeholders": {
+      "points": {"type": "int"},
+      "value": {"type": "String"}
+    }
+  },
+  "rentalResultsRewardsBadge": "قابلة للاستبدال",
+  "rentalResultsEmptyTitle": "لا توجد مركبات متاحة",
+  "rentalResultsEmptyBody": "جرّب تواريخ مختلفة أو موقع استلام آخر.",
+  "rentalDetailTitle": "المركبة والإضافات",
+  "rentalDetailSpecsSeats": "{count} مقاعد",
+  "@rentalDetailSpecsSeats": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "rentalDetailSpecsBags": "{count} حقائب",
+  "@rentalDetailSpecsBags": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "rentalDetailRedeemPointsTitle": "استبدال نقاط المكافآت",
+  "rentalDetailRedeemPointsBody": "{points} نقطة متاحة",
+  "@rentalDetailRedeemPointsBody": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "rentalDetailAddonsTitle": "الإضافات",
+  "rentalDetailContinueCta": "متابعة",
+  "rentalAddonDoublePoints": "نقاط مضاعفة",
+  "rentalReviewTitle": "مراجعة الحجز",
+  "rentalReviewRentalCostLabel": "تكلفة التأجير",
+  "rentalReviewAddonsCostLabel": "الإضافات",
+  "rentalReviewPointsDiscountLabel": "خصم المكافآت",
+  "rentalReviewEarnedPointsLabel": "ستكسب",
+  "rentalReviewEarnedPointsValue": "{points} نقطة",
+  "@rentalReviewEarnedPointsValue": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "rentalReviewConfirmCta": "تأكيد والدفع",
+  "rentalMyRentalsTitle": "تأجيراتي",
+  "rentalMyRentalsEmptyTitle": "لا توجد تأجيرات حتى الآن",
+  "rentalMyRentalsEmptyBody": "استأجر سيارة لتظهر هنا.",
+  "rentalMyRentalsEmptyCta": "استأجر سيارة"
 }

@@ -1,0 +1,6 @@
+[
+  { "id": "rl1", "name": "Muscat International Airport", "subtitle": "Terminal 1 Arrivals", "isAirport": true },
+  { "id": "rl2", "name": "Salalah Airport", "subtitle": "Arrivals Hall", "isAirport": true },
+  { "id": "rl3", "name": "Muscat City Centre Branch", "subtitle": "Al Khuwair", "isAirport": false },
+  { "id": "rl4", "name": "Sohar Branch", "subtitle": "Sohar Industrial Port Road", "isAirport": false }
+]

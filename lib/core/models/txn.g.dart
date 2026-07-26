@@ -49,6 +49,7 @@ const _$TxnTypeEnumMap = {
   TxnType.walletRequest: 'walletRequest',
   TxnType.remittance: 'remittance',
   TxnType.qrPay: 'qrPay',
+  TxnType.carRental: 'carRental',
 };
 
 const _$TxnStatusEnumMap = {

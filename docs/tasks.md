@@ -87,6 +87,23 @@
 - [ ] `flutter analyze` zero warnings; remove widget gallery from release nav
 - [ ] Dry-run the full demo script (product.md §8) twice, EN and AR
 
+## Phase 11 — Car Rental Module (Module L, screens + booking)
+- [x] Mock data: `rental_locations.json`, `rental_vehicle_classes.json`, `rental_addons.json`; freezed models + codegen
+- [x] `RentalRepository` (locations/classes/addons fetch, booking save/fetch, pricing helpers) + providers (search, results, draft selection, derived pricing, bookings)
+- [x] L1 Rental Search (location picker, pickup/return date + morning/evening chips)
+- [x] L2 Vehicle Results (class cards + trip total, rewards-redeemable banner)
+- [x] L3 Vehicle & Extras (spec card, points-redeem toggle, add-on toggles incl. Full Damage Protection double-points badge, sticky summary)
+- [x] L4 Booking Review → shared payment flow (`TxnType.carRental`) → post-success bonus-points credit + booking record saved
+- [x] L5 My Rentals (booking history list, empty-state CTA back to L1)
+- [x] Home services-grid entry tile wired to L1
+- [ ] **Checkpoint**: full L1→L5 flow runs end-to-end on mock data, EN + AR/RTL verified, `flutter analyze` zero warnings — `flutter analyze` is clean and L1 (location picker, date pickers, morning/evening chips) was live-verified on-device in EN; L2–L5 and the AR/RTL pass still need a manual on-device walk before this checkbox is ticked
+
+## Phase 12 — AI Assistant: Car Rental Scenario (Module K extension)
+- [ ] Extend `chat_intent_engine.dart` with rental-booking intents (location → dates → class options → points redemption → add-on cross-sell → licence-expiry reminder → airport roadside-assistance cross-sell → summary), reusing Module L's repository/models
+- [ ] New `PendingOffer` states + multi-turn dialogue for the add-on/cross-sell/reminder beats, mirroring the existing vehicle-renewal nudge pattern
+- [ ] Chat rich cards for vehicle-class options and add-on prompts
+- [ ] ARB keys for every new canned reply (both locales)
+
 ---
 
 **Priority logic:** Phases 0–3 make the app *run smoothly on mock data* with the spine (auth → home → payment flow → history) — everything after is plugging modules into that spine. If demo time runs short, ship after Phase 6: it covers the entire client script except remittance.

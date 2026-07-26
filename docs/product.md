@@ -175,6 +175,18 @@
 
 **Rules:** All assistant reply copy goes through `context.l10n.*` like any other screen — no hardcoded canned strings, even for mock "AI" text.
 
+### Module L — Car Rental Booking
+
+| ID | Screen | Requirements |
+|----|--------|--------------|
+| L1 | Rental Search | Pickup location picker (mock branches/airports), pickup + return date with morning/evening time-of-day chips, "Search" CTA |
+| L2 | Vehicle Results | Class cards (Economy / Compact SUV / Premium Saloon) with trip total for the searched dates; rewards banner surfaces the user's points balance + OMR value when redeemable |
+| L3 | Vehicle & Extras | Vehicle spec card (seats, transmission, bags, mileage policy), points-redemption toggle, add-on list (Full Damage Protection, Roadside Assistance Plus, Unlimited Mileage, Fuel Package) with per-add-on pricing and a loyalty-multiplier badge on Full Damage Protection, sticky live price/points summary |
+| L4 | Booking Review | Final line-item breakdown (rental cost, points discount, add-ons, total) + estimated points to be earned (incl. doubling when Full Damage Protection is selected) → hands off to the shared payment flow |
+| L5 | My Rentals | List of past/upcoming bookings (repeat-booking entry point for later AI cross-sell); empty state CTA routes back to L1 |
+
+**Rules:** Every booking builds a `PaymentRequest` (`TxnType.carRental`) and goes through the shared payment flow like every other module — never a bespoke confirm/PIN/receipt. Trip cost = class day-rate × trip length; 100 reward points = OMR 1 when redeemed. This module's screens/mock data are the foundation for a future K1 chat extension (Scenario 2: rental booking with loyalty rewards + cross-sell) — not built in this phase.
+
 ## 5. Cross-cutting Rules
 
 1. **Every payment flow ends in the shared Confirmation → PIN → Success Receipt pattern** (C7/E9). One reusable flow component.
@@ -192,6 +204,7 @@
 - 30 historical transactions across all types (last 3 months)
 - 5 traffic fines, 1 vehicle, 2 insurance quotes, 3 institutions with students
 - 320 reward points pre-seeded (below 500 threshold → shows progress)
+- 4 rental pickup locations (2 airports, 2 city branches), 3 rental vehicle classes, 4 rental add-ons
 
 ## 7. Out of Scope (Prototype)
 

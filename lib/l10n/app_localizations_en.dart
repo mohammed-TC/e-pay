@@ -357,6 +357,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeServiceRemittance => 'Remittance';
 
   @override
+  String get homeServiceCarRental => 'Car Rental';
+
+  @override
   String get homeServiceRewards => 'Rewards';
 
   @override
@@ -474,6 +477,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get historyFilterRemittance => 'Remittance';
+
+  @override
+  String get historyFilterRental => 'Rental';
 
   @override
   String get historyStatusAll => 'All statuses';
@@ -988,4 +994,122 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chatAutoPayDeclined => 'No problem, AutoPay stays off for now.';
+
+  @override
+  String get rentalSearchTitle => 'Rental Search';
+
+  @override
+  String get rentalSearchLocationLabel => 'Pickup location';
+
+  @override
+  String get rentalSearchLocationPlaceholder => 'Select pickup location';
+
+  @override
+  String get rentalSearchPickupLabel => 'Pickup date';
+
+  @override
+  String get rentalSearchReturnLabel => 'Return date';
+
+  @override
+  String get rentalSearchDatePlaceholder => 'Select date';
+
+  @override
+  String get rentalSearchTimeMorning => 'Morning';
+
+  @override
+  String get rentalSearchTimeEvening => 'Evening';
+
+  @override
+  String get rentalSearchCta => 'Search';
+
+  @override
+  String get rentalResultsTitle => 'Vehicle Results';
+
+  @override
+  String rentalResultsTripLabel(int days) {
+    return '$days-day trip';
+  }
+
+  @override
+  String get rentalResultsRewardsBannerTitle => 'Use your rewards';
+
+  @override
+  String rentalResultsRewardsBannerBody(int points, String value) {
+    return 'You have $points PayHub Rewards Points, worth $value towards this booking.';
+  }
+
+  @override
+  String get rentalResultsRewardsBadge => 'Redeemable';
+
+  @override
+  String get rentalResultsEmptyTitle => 'No vehicles available';
+
+  @override
+  String get rentalResultsEmptyBody =>
+      'Try different dates or a different pickup location.';
+
+  @override
+  String get rentalDetailTitle => 'Vehicle & Extras';
+
+  @override
+  String rentalDetailSpecsSeats(int count) {
+    return '$count seats';
+  }
+
+  @override
+  String rentalDetailSpecsBags(int count) {
+    return '$count bags';
+  }
+
+  @override
+  String get rentalDetailRedeemPointsTitle => 'Redeem reward points';
+
+  @override
+  String rentalDetailRedeemPointsBody(int points) {
+    return '$points pts available';
+  }
+
+  @override
+  String get rentalDetailAddonsTitle => 'Add-ons';
+
+  @override
+  String get rentalDetailContinueCta => 'Continue';
+
+  @override
+  String get rentalAddonDoublePoints => '2× points';
+
+  @override
+  String get rentalReviewTitle => 'Booking Review';
+
+  @override
+  String get rentalReviewRentalCostLabel => 'Rental cost';
+
+  @override
+  String get rentalReviewAddonsCostLabel => 'Add-ons';
+
+  @override
+  String get rentalReviewPointsDiscountLabel => 'Rewards discount';
+
+  @override
+  String get rentalReviewEarnedPointsLabel => 'You\'ll earn';
+
+  @override
+  String rentalReviewEarnedPointsValue(int points) {
+    return '$points pts';
+  }
+
+  @override
+  String get rentalReviewConfirmCta => 'Confirm & Pay';
+
+  @override
+  String get rentalMyRentalsTitle => 'My Rentals';
+
+  @override
+  String get rentalMyRentalsEmptyTitle => 'No rentals yet';
+
+  @override
+  String get rentalMyRentalsEmptyBody => 'Book a car to see it here.';
+
+  @override
+  String get rentalMyRentalsEmptyCta => 'Rent a car';
 }

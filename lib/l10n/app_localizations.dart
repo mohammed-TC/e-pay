@@ -776,6 +776,12 @@ abstract class AppLocalizations {
   /// **'Remittance'**
   String get homeServiceRemittance;
 
+  /// No description provided for @homeServiceCarRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Car Rental'**
+  String get homeServiceCarRental;
+
   /// No description provided for @homeServiceRewards.
   ///
   /// In en, this message translates to:
@@ -1003,6 +1009,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remittance'**
   String get historyFilterRemittance;
+
+  /// No description provided for @historyFilterRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental'**
+  String get historyFilterRental;
 
   /// No description provided for @historyStatusAll.
   ///
@@ -1951,6 +1963,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No problem, AutoPay stays off for now.'**
   String get chatAutoPayDeclined;
+
+  /// No description provided for @rentalSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental Search'**
+  String get rentalSearchTitle;
+
+  /// No description provided for @rentalSearchLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup location'**
+  String get rentalSearchLocationLabel;
+
+  /// No description provided for @rentalSearchLocationPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Select pickup location'**
+  String get rentalSearchLocationPlaceholder;
+
+  /// No description provided for @rentalSearchPickupLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup date'**
+  String get rentalSearchPickupLabel;
+
+  /// No description provided for @rentalSearchReturnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Return date'**
+  String get rentalSearchReturnLabel;
+
+  /// No description provided for @rentalSearchDatePlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Select date'**
+  String get rentalSearchDatePlaceholder;
+
+  /// No description provided for @rentalSearchTimeMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning'**
+  String get rentalSearchTimeMorning;
+
+  /// No description provided for @rentalSearchTimeEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Evening'**
+  String get rentalSearchTimeEvening;
+
+  /// No description provided for @rentalSearchCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get rentalSearchCta;
+
+  /// No description provided for @rentalResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle Results'**
+  String get rentalResultsTitle;
+
+  /// No description provided for @rentalResultsTripLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day trip'**
+  String rentalResultsTripLabel(int days);
+
+  /// No description provided for @rentalResultsRewardsBannerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your rewards'**
+  String get rentalResultsRewardsBannerTitle;
+
+  /// No description provided for @rentalResultsRewardsBannerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You have {points} PayHub Rewards Points, worth {value} towards this booking.'**
+  String rentalResultsRewardsBannerBody(int points, String value);
+
+  /// No description provided for @rentalResultsRewardsBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeemable'**
+  String get rentalResultsRewardsBadge;
+
+  /// No description provided for @rentalResultsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No vehicles available'**
+  String get rentalResultsEmptyTitle;
+
+  /// No description provided for @rentalResultsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try different dates or a different pickup location.'**
+  String get rentalResultsEmptyBody;
+
+  /// No description provided for @rentalDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vehicle & Extras'**
+  String get rentalDetailTitle;
+
+  /// No description provided for @rentalDetailSpecsSeats.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} seats'**
+  String rentalDetailSpecsSeats(int count);
+
+  /// No description provided for @rentalDetailSpecsBags.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} bags'**
+  String rentalDetailSpecsBags(int count);
+
+  /// No description provided for @rentalDetailRedeemPointsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Redeem reward points'**
+  String get rentalDetailRedeemPointsTitle;
+
+  /// No description provided for @rentalDetailRedeemPointsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} pts available'**
+  String rentalDetailRedeemPointsBody(int points);
+
+  /// No description provided for @rentalDetailAddonsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-ons'**
+  String get rentalDetailAddonsTitle;
+
+  /// No description provided for @rentalDetailContinueCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get rentalDetailContinueCta;
+
+  /// No description provided for @rentalAddonDoublePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'2× points'**
+  String get rentalAddonDoublePoints;
+
+  /// No description provided for @rentalReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Review'**
+  String get rentalReviewTitle;
+
+  /// No description provided for @rentalReviewRentalCostLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental cost'**
+  String get rentalReviewRentalCostLabel;
+
+  /// No description provided for @rentalReviewAddonsCostLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-ons'**
+  String get rentalReviewAddonsCostLabel;
+
+  /// No description provided for @rentalReviewPointsDiscountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Rewards discount'**
+  String get rentalReviewPointsDiscountLabel;
+
+  /// No description provided for @rentalReviewEarnedPointsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll earn'**
+  String get rentalReviewEarnedPointsLabel;
+
+  /// No description provided for @rentalReviewEarnedPointsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} pts'**
+  String rentalReviewEarnedPointsValue(int points);
+
+  /// No description provided for @rentalReviewConfirmCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm & Pay'**
+  String get rentalReviewConfirmCta;
+
+  /// No description provided for @rentalMyRentalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Rentals'**
+  String get rentalMyRentalsTitle;
+
+  /// No description provided for @rentalMyRentalsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No rentals yet'**
+  String get rentalMyRentalsEmptyTitle;
+
+  /// No description provided for @rentalMyRentalsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a car to see it here.'**
+  String get rentalMyRentalsEmptyBody;
+
+  /// No description provided for @rentalMyRentalsEmptyCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Rent a car'**
+  String get rentalMyRentalsEmptyCta;
 }
 
 class _AppLocalizationsDelegate

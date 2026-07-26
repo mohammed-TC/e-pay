@@ -54,3 +54,6 @@ flutter:
     - assets/mock/merchants.json
     - assets/mock/recharge_plans.json
     - assets/mock/sample_bill.pdf
+    - assets/mock/rental_locations.json
+    - assets/mock/rental_vehicle_classes.json
+    - assets/mock/rental_addons.json

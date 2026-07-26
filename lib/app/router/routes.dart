@@ -66,6 +66,13 @@ abstract final class Routes {
   // AI Assistant K1
   static const assistant = '/assistant';
 
+  // Car Rental L1–L5
+  static const rentalSearch = '/rental/search';
+  static const rentalResults = '/rental/results';
+  static const rentalVehicleDetail = '/rental/vehicle-detail';
+  static const rentalBookingReview = '/rental/booking-review';
+  static const myRentals = '/rental/my-rentals';
+
   // Settings J4–J9
   static const settings = '/settings';
   static const settingsCards = '/settings/cards';

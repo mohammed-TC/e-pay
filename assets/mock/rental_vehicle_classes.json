@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rc1",
+    "name": "Economy",
+    "iconKey": "economy",
+    "seats": 4,
+    "transmission": "Automatic",
+    "bags": 1,
+    "perDay": { "minorUnits": 33750, "currencyCode": "OMR" },
+    "mileagePolicy": "200 km/day included"
+  },
+  {
+    "id": "rc2",
+    "name": "Compact SUV",
+    "iconKey": "suv",
+    "seats": 5,
+    "transmission": "Automatic",
+    "bags": 2,
+    "perDay": { "minorUnits": 42000, "currencyCode": "OMR" },
+    "mileagePolicy": "250 km/day included"
+  },
+  {
+    "id": "rc3",
+    "name": "Premium Saloon",
+    "iconKey": "saloon",
+    "seats": 5,
+    "transmission": "Automatic",
+    "bags": 3,
+    "perDay": { "minorUnits": 61250, "currencyCode": "OMR" },
+    "mileagePolicy": "300 km/day included"
+  }
+]

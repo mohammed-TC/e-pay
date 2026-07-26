@@ -133,6 +133,7 @@
   "homeServiceInsurance": "Insurance",
   "homeServiceEducation": "Education",
   "homeServiceRemittance": "Remittance",
+  "homeServiceCarRental": "Car Rental",
   "homeServiceRewards": "Rewards",
   "homeServiceAiAssistant": "Ask Emral",
   "homeServiceMore": "More",
@@ -179,6 +180,7 @@
   "historyFilterGovernment": "Government",
   "historyFilterWallet": "Wallet",
   "historyFilterRemittance": "Remittance",
+  "historyFilterRental": "Rental",
   "historyStatusAll": "All statuses",
   "historyStatusSuccess": "Success",
   "historyStatusPending": "Pending",
@@ -403,5 +405,71 @@
   "chatAutoPayPitchIntro": "Before you go, would you like to enrol in AutoPay for future bills on this account? It helps avoid late payment charges.",
   "chatAutoPayExplain": "AutoPay automatically pays this bill on the due date using your wallet balance. You stay in control and can cancel anytime. Would you like to enable it?",
   "chatAutoPayEnabled": "Done! AutoPay is now active.",
-  "chatAutoPayDeclined": "No problem, AutoPay stays off for now."
+  "chatAutoPayDeclined": "No problem, AutoPay stays off for now.",
+  "rentalSearchTitle": "Rental Search",
+  "rentalSearchLocationLabel": "Pickup location",
+  "rentalSearchLocationPlaceholder": "Select pickup location",
+  "rentalSearchPickupLabel": "Pickup date",
+  "rentalSearchReturnLabel": "Return date",
+  "rentalSearchDatePlaceholder": "Select date",
+  "rentalSearchTimeMorning": "Morning",
+  "rentalSearchTimeEvening": "Evening",
+  "rentalSearchCta": "Search",
+  "rentalResultsTitle": "Vehicle Results",
+  "rentalResultsTripLabel": "{days}-day trip",
+  "@rentalResultsTripLabel": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "rentalResultsRewardsBannerTitle": "Use your rewards",
+  "rentalResultsRewardsBannerBody": "You have {points} PayHub Rewards Points, worth {value} towards this booking.",
+  "@rentalResultsRewardsBannerBody": {
+    "placeholders": {
+      "points": {"type": "int"},
+      "value": {"type": "String"}
+    }
+  },
+  "rentalResultsRewardsBadge": "Redeemable",
+  "rentalResultsEmptyTitle": "No vehicles available",
+  "rentalResultsEmptyBody": "Try different dates or a different pickup location.",
+  "rentalDetailTitle": "Vehicle & Extras",
+  "rentalDetailSpecsSeats": "{count} seats",
+  "@rentalDetailSpecsSeats": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "rentalDetailSpecsBags": "{count} bags",
+  "@rentalDetailSpecsBags": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "rentalDetailRedeemPointsTitle": "Redeem reward points",
+  "rentalDetailRedeemPointsBody": "{points} pts available",
+  "@rentalDetailRedeemPointsBody": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "rentalDetailAddonsTitle": "Add-ons",
+  "rentalDetailContinueCta": "Continue",
+  "rentalAddonDoublePoints": "2× points",
+  "rentalReviewTitle": "Booking Review",
+  "rentalReviewRentalCostLabel": "Rental cost",
+  "rentalReviewAddonsCostLabel": "Add-ons",
+  "rentalReviewPointsDiscountLabel": "Rewards discount",
+  "rentalReviewEarnedPointsLabel": "You'll earn",
+  "rentalReviewEarnedPointsValue": "{points} pts",
+  "@rentalReviewEarnedPointsValue": {
+    "placeholders": {
+      "points": {"type": "int"}
+    }
+  },
+  "rentalReviewConfirmCta": "Confirm & Pay",
+  "rentalMyRentalsTitle": "My Rentals",
+  "rentalMyRentalsEmptyTitle": "No rentals yet",
+  "rentalMyRentalsEmptyBody": "Book a car to see it here.",
+  "rentalMyRentalsEmptyCta": "Rent a car"
 }
